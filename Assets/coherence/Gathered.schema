@@ -1,0 +1,6 @@
+component _8bcb38f142e01ba4db9b68bf249cb184_8902942521136083295 [id "18"]
+  WalkValue Float [compression "None"]
+
+component _8bcb38f142e01ba4db9b68bf249cb184_9200042291201023446 [id "19"]
+  enabled Bool [bits "1"]
+

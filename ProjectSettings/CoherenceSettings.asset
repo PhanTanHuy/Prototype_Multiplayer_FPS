@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6b58ca8e478745dfab801a85671962e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showHubModuleQuickHelp: 1
+  portalToken: 
+  localRoomsCleanupTimeSeconds: 120
+  localWorldHostAuthority: 0
+  rsConsoleLogLevel: 2
+  rsLogToFile: 0
+  rsLogFilePath: Logs/rs_logs.txt
+  rsFileLogLevel: 1
+  reportAnalytics: 1
+  RSBundlingEnabled: 0
+  keepConnectionAlive: 0
+  activeSchemas: []
+  organization:
+    id: d3p0tqtbei2u2unnlipg
+    name: phantanhuy265
+    slug: phantanhuy265
+    projects:
+    - id: d3p0tqtbei2u2unnliq0
+      portal_token: df96b94cb09148ddac19d01654cea305
+      runtime_key: 7370cfa67ea54b72b8696437b255b948
+      name: Default Project
+    - id: d3p5a1dbei2hn75co5o0
+      portal_token: e9b2d028030b4ac580244d65c541ef65
+      runtime_key: fee52ac8b71048c187763f5a3349dc78
+      name: Demo Online Coherence
+  multipleProjects: []
