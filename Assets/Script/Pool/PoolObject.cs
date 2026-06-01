@@ -46,7 +46,7 @@ public class PoolObject : MonoBehaviour
         if (bombProjectilePool.Count == 0) return;
         BombProjectile bomb = bombProjectilePool.Dequeue();
         bomb.gameObject.transform.position = position;
-        bomb.gameObject.transform.parent = rootPlayer;
+        //bomb.gameObject.transform.parent = rootPlayer;
         bomb.gameObject.SetActive(true);
         bomb.SetBombProjectile(direction);
         StartCoroutine(IEReturnToPool<BombProjectile>(bombProjectilePool, bomb.gameObject, 7f));
@@ -59,8 +59,8 @@ public class PoolObject : MonoBehaviour
         }
         Bullet b = bulletPool.Dequeue();
         b.gameObject.transform.position = position;
-        b.gameObject.transform.parent = rootPlayer;
-        Debug.Log(rootPlayer.name);
+        //b.gameObject.transform.parent = rootPlayer;
+        //Debug.Log(rootPlayer.name);
         b.gameObject.SetActive(true);
         b.SetBullet(direction, speed, d);
         StartCoroutine(IEReturnToPool<Bullet>(bulletPool, b.gameObject, 5f));

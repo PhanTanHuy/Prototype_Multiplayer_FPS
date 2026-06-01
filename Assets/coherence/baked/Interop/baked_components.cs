@@ -2921,6 +2921,455 @@ namespace Coherence.Generated
                     $"Stopped: { System.Convert.ToString(StoppedMask, 2).PadLeft(1, '0') })";
             }
         }
+        public struct _8bcb38f142e01ba4db9b68bf249cb184_7276820793504160194 : ICoherenceComponentData
+        {
+            public void ResetFrame(AbsoluteSimulationFrame frame)
+            {
+                FieldsMask |= _8bcb38f142e01ba4db9b68bf249cb184_7276820793504160194.selfCameraMask;
+                selfCameraSimulationFrame = frame;
+                FieldsMask |= _8bcb38f142e01ba4db9b68bf249cb184_7276820793504160194.netRigMoveWeightMask;
+                netRigMoveWeightSimulationFrame = frame;
+                FieldsMask |= _8bcb38f142e01ba4db9b68bf249cb184_7276820793504160194.netRigRunWeightMask;
+                netRigRunWeightSimulationFrame = frame;
+                FieldsMask |= _8bcb38f142e01ba4db9b68bf249cb184_7276820793504160194.netRigAimWeightMask;
+                netRigAimWeightSimulationFrame = frame;
+                FieldsMask |= _8bcb38f142e01ba4db9b68bf249cb184_7276820793504160194.netRigReloadWeightMask;
+                netRigReloadWeightSimulationFrame = frame;
+                FieldsMask |= _8bcb38f142e01ba4db9b68bf249cb184_7276820793504160194.netRigChangeWpWeightMask;
+                netRigChangeWpWeightSimulationFrame = frame;
+                FieldsMask |= _8bcb38f142e01ba4db9b68bf249cb184_7276820793504160194.netAnimStateMask;
+                netAnimStateSimulationFrame = frame;
+                FieldsMask |= _8bcb38f142e01ba4db9b68bf249cb184_7276820793504160194.netWeaponIndexMask;
+                netWeaponIndexSimulationFrame = frame;
+                FieldsMask |= _8bcb38f142e01ba4db9b68bf249cb184_7276820793504160194.netPitchMask;
+                netPitchSimulationFrame = frame;
+            }
+    
+            public static uint selfCameraMask => 0b00000000000000000000000000000001;
+            public AbsoluteSimulationFrame selfCameraSimulationFrame;
+            public Entity selfCamera;
+            public static uint netRigMoveWeightMask => 0b00000000000000000000000000000010;
+            public AbsoluteSimulationFrame netRigMoveWeightSimulationFrame;
+            public System.Single netRigMoveWeight;
+            public static uint netRigRunWeightMask => 0b00000000000000000000000000000100;
+            public AbsoluteSimulationFrame netRigRunWeightSimulationFrame;
+            public System.Single netRigRunWeight;
+            public static uint netRigAimWeightMask => 0b00000000000000000000000000001000;
+            public AbsoluteSimulationFrame netRigAimWeightSimulationFrame;
+            public System.Single netRigAimWeight;
+            public static uint netRigReloadWeightMask => 0b00000000000000000000000000010000;
+            public AbsoluteSimulationFrame netRigReloadWeightSimulationFrame;
+            public System.Single netRigReloadWeight;
+            public static uint netRigChangeWpWeightMask => 0b00000000000000000000000000100000;
+            public AbsoluteSimulationFrame netRigChangeWpWeightSimulationFrame;
+            public System.Single netRigChangeWpWeight;
+            public static uint netAnimStateMask => 0b00000000000000000000000001000000;
+            public AbsoluteSimulationFrame netAnimStateSimulationFrame;
+            public System.Int32 netAnimState;
+            public static uint netWeaponIndexMask => 0b00000000000000000000000010000000;
+            public AbsoluteSimulationFrame netWeaponIndexSimulationFrame;
+            public System.Int32 netWeaponIndex;
+            public static uint netPitchMask => 0b00000000000000000000000100000000;
+            public AbsoluteSimulationFrame netPitchSimulationFrame;
+            public System.Single netPitch;
+    
+            public uint FieldsMask { get; set; }
+            public uint StoppedMask { get; set; }
+            public uint GetComponentType() => 18;
+            public int PriorityLevel() => 100;
+            public const int order = 0;
+            public uint InitialFieldsMask() => 0b00000000000000000000000111111111;
+            public bool HasFields() => true;
+            public bool HasRefFields() => true;
+    
+    
+            public long[] GetSimulationFrames() {
+                return null;
+            }
+    
+            public int GetFieldCount() => 9;
+    
+    
+            
+            public HashSet<Entity> GetEntityRefs()
+            {
+                return new HashSet<Entity>()
+                {
+                    this.selfCamera,
+                };
+            }
+    
+            public uint ReplaceReferences(Entity fromEntity, Entity toEntity)
+            {
+                uint refsMask = 0;
+    
+                if (this.selfCamera == fromEntity)
+                {
+                    this.selfCamera = toEntity;
+                    refsMask |= 1u << 0;
+                }
+    
+                FieldsMask |= refsMask;
+    
+                return refsMask;
+            }
+
+            public void ClearReferences(ISet<Entity> clearEntities) 
+            {
+                if (clearEntities.Contains(this.selfCamera))
+                {
+                    this.selfCamera = Entity.InvalidRelative;
+                }
+            }
+            
+            public IEntityMapper.Error MapToAbsolute(IEntityMapper mapper)
+            {
+                Entity absoluteEntity;
+                IEntityMapper.Error err;
+                err = mapper.MapToAbsoluteEntity(this.selfCamera, false, out absoluteEntity);
+    
+                if (err != IEntityMapper.Error.None)
+                {
+                    return err;
+                }
+    
+                this.selfCamera = absoluteEntity;
+                return IEntityMapper.Error.None;
+            }
+    
+            public IEntityMapper.Error MapToRelative(IEntityMapper mapper)
+            {
+                Entity relativeEntity;
+                IEntityMapper.Error err;
+                // We assume that the inConnection held changes with unresolved references, so the 'createMapping=true' is
+                // there only because there's a chance that the parent creation change will be processed after this one
+                // meaning there's no mapping for the parent yet. This wouldn't be necessary if mapping creation would happen
+                // in the clientWorld via create/destroy requests while here we would only check whether mapping exists or not.
+                var createParentMapping_selfCamera = true;
+                err = mapper.MapToRelativeEntity(this.selfCamera, createParentMapping_selfCamera,
+                 out relativeEntity);
+    
+                if (err != IEntityMapper.Error.None)
+                {
+                    return err;
+                }
+    
+                this.selfCamera = relativeEntity;
+                return IEntityMapper.Error.None;
+            }
+    
+            public ICoherenceComponentData Clone() => this;
+            public int GetComponentOrder() => order;
+            public bool IsSendOrdered() => false;
+            public bool IsWorldPositionComponent() => false;
+    
+            private static readonly System.Int32 _netAnimState_Min = -2147483648;
+            private static readonly System.Int32 _netAnimState_Max = 2147483647;
+            private static readonly System.Int32 _netWeaponIndex_Min = -2147483648;
+            private static readonly System.Int32 _netWeaponIndex_Max = 2147483647;
+    
+            public AbsoluteSimulationFrame? GetMinSimulationFrame()
+            {
+                AbsoluteSimulationFrame? min = null;
+    
+    
+                return min;
+            }
+    
+            public ICoherenceComponentData MergeWith(ICoherenceComponentData data)
+            {
+                var other = (_8bcb38f142e01ba4db9b68bf249cb184_7276820793504160194)data;
+                var otherMask = other.FieldsMask;
+    
+                FieldsMask |= otherMask;
+                StoppedMask &= ~(otherMask);
+    
+                if ((otherMask & 0x01) != 0)
+                {
+                    this.selfCameraSimulationFrame = other.selfCameraSimulationFrame;
+                    this.selfCamera = other.selfCamera;
+                }
+    
+                otherMask >>= 1;
+                if ((otherMask & 0x01) != 0)
+                {
+                    this.netRigMoveWeightSimulationFrame = other.netRigMoveWeightSimulationFrame;
+                    this.netRigMoveWeight = other.netRigMoveWeight;
+                }
+    
+                otherMask >>= 1;
+                if ((otherMask & 0x01) != 0)
+                {
+                    this.netRigRunWeightSimulationFrame = other.netRigRunWeightSimulationFrame;
+                    this.netRigRunWeight = other.netRigRunWeight;
+                }
+    
+                otherMask >>= 1;
+                if ((otherMask & 0x01) != 0)
+                {
+                    this.netRigAimWeightSimulationFrame = other.netRigAimWeightSimulationFrame;
+                    this.netRigAimWeight = other.netRigAimWeight;
+                }
+    
+                otherMask >>= 1;
+                if ((otherMask & 0x01) != 0)
+                {
+                    this.netRigReloadWeightSimulationFrame = other.netRigReloadWeightSimulationFrame;
+                    this.netRigReloadWeight = other.netRigReloadWeight;
+                }
+    
+                otherMask >>= 1;
+                if ((otherMask & 0x01) != 0)
+                {
+                    this.netRigChangeWpWeightSimulationFrame = other.netRigChangeWpWeightSimulationFrame;
+                    this.netRigChangeWpWeight = other.netRigChangeWpWeight;
+                }
+    
+                otherMask >>= 1;
+                if ((otherMask & 0x01) != 0)
+                {
+                    this.netAnimStateSimulationFrame = other.netAnimStateSimulationFrame;
+                    this.netAnimState = other.netAnimState;
+                }
+    
+                otherMask >>= 1;
+                if ((otherMask & 0x01) != 0)
+                {
+                    this.netWeaponIndexSimulationFrame = other.netWeaponIndexSimulationFrame;
+                    this.netWeaponIndex = other.netWeaponIndex;
+                }
+    
+                otherMask >>= 1;
+                if ((otherMask & 0x01) != 0)
+                {
+                    this.netPitchSimulationFrame = other.netPitchSimulationFrame;
+                    this.netPitch = other.netPitch;
+                }
+    
+                otherMask >>= 1;
+                StoppedMask |= other.StoppedMask;
+    
+                return this;
+            }
+    
+            public uint DiffWith(ICoherenceComponentData data)
+            {
+                throw new System.NotSupportedException($"{nameof(DiffWith)} is not supported in Unity");
+            }
+    
+            public static uint Serialize(_8bcb38f142e01ba4db9b68bf249cb184_7276820793504160194 data, bool isRefSimFrameValid, AbsoluteSimulationFrame referenceSimulationFrame, IOutProtocolBitStream bitStream, Logger logger)
+            {
+                if (bitStream.WriteMask(data.StoppedMask != 0))
+                {
+                    bitStream.WriteMaskBits(data.StoppedMask, 9);
+                }
+    
+                var mask = data.FieldsMask;
+    
+                if (bitStream.WriteMask((mask & 0x01) != 0))
+                {
+    
+    
+                    var fieldValue = data.selfCamera;
+    
+
+    
+                    bitStream.WriteEntity(fieldValue);
+                }
+    
+                mask >>= 1;
+                if (bitStream.WriteMask((mask & 0x01) != 0))
+                {
+    
+    
+                    var fieldValue = data.netRigMoveWeight;
+    
+
+    
+                    bitStream.WriteFloat(fieldValue, FloatMeta.NoCompression());
+                }
+    
+                mask >>= 1;
+                if (bitStream.WriteMask((mask & 0x01) != 0))
+                {
+    
+    
+                    var fieldValue = data.netRigRunWeight;
+    
+
+    
+                    bitStream.WriteFloat(fieldValue, FloatMeta.NoCompression());
+                }
+    
+                mask >>= 1;
+                if (bitStream.WriteMask((mask & 0x01) != 0))
+                {
+    
+    
+                    var fieldValue = data.netRigAimWeight;
+    
+
+    
+                    bitStream.WriteFloat(fieldValue, FloatMeta.NoCompression());
+                }
+    
+                mask >>= 1;
+                if (bitStream.WriteMask((mask & 0x01) != 0))
+                {
+    
+    
+                    var fieldValue = data.netRigReloadWeight;
+    
+
+    
+                    bitStream.WriteFloat(fieldValue, FloatMeta.NoCompression());
+                }
+    
+                mask >>= 1;
+                if (bitStream.WriteMask((mask & 0x01) != 0))
+                {
+    
+    
+                    var fieldValue = data.netRigChangeWpWeight;
+    
+
+    
+                    bitStream.WriteFloat(fieldValue, FloatMeta.NoCompression());
+                }
+    
+                mask >>= 1;
+                if (bitStream.WriteMask((mask & 0x01) != 0))
+                {
+    
+                    Coherence.Utils.Bounds.Check(data.netAnimState, _netAnimState_Min, _netAnimState_Max, "_8bcb38f142e01ba4db9b68bf249cb184_7276820793504160194.netAnimState", logger);
+    
+                    data.netAnimState = Coherence.Utils.Bounds.Clamp(data.netAnimState, _netAnimState_Min, _netAnimState_Max);
+    
+                    var fieldValue = data.netAnimState;
+    
+
+    
+                    bitStream.WriteIntegerRange(fieldValue, 32, -2147483648);
+                }
+    
+                mask >>= 1;
+                if (bitStream.WriteMask((mask & 0x01) != 0))
+                {
+    
+                    Coherence.Utils.Bounds.Check(data.netWeaponIndex, _netWeaponIndex_Min, _netWeaponIndex_Max, "_8bcb38f142e01ba4db9b68bf249cb184_7276820793504160194.netWeaponIndex", logger);
+    
+                    data.netWeaponIndex = Coherence.Utils.Bounds.Clamp(data.netWeaponIndex, _netWeaponIndex_Min, _netWeaponIndex_Max);
+    
+                    var fieldValue = data.netWeaponIndex;
+    
+
+    
+                    bitStream.WriteIntegerRange(fieldValue, 32, -2147483648);
+                }
+    
+                mask >>= 1;
+                if (bitStream.WriteMask((mask & 0x01) != 0))
+                {
+    
+    
+                    var fieldValue = data.netPitch;
+    
+
+    
+                    bitStream.WriteFloat(fieldValue, FloatMeta.NoCompression());
+                }
+    
+                mask >>= 1;
+    
+                return mask;
+            }
+    
+            public static _8bcb38f142e01ba4db9b68bf249cb184_7276820793504160194 Deserialize(AbsoluteSimulationFrame referenceSimulationFrame, InProtocolBitStream bitStream)
+            {
+                var stoppedMask = (uint)0;
+                if (bitStream.ReadMask())
+                {
+                    stoppedMask = bitStream.ReadMaskBits(9);
+                }
+    
+                var val = new _8bcb38f142e01ba4db9b68bf249cb184_7276820793504160194();
+                if (bitStream.ReadMask())
+                {
+    
+                    val.selfCamera = bitStream.ReadEntity();
+                    val.FieldsMask |= _8bcb38f142e01ba4db9b68bf249cb184_7276820793504160194.selfCameraMask;
+                }
+                if (bitStream.ReadMask())
+                {
+    
+                    val.netRigMoveWeight = bitStream.ReadFloat(FloatMeta.NoCompression());
+                    val.FieldsMask |= _8bcb38f142e01ba4db9b68bf249cb184_7276820793504160194.netRigMoveWeightMask;
+                }
+                if (bitStream.ReadMask())
+                {
+    
+                    val.netRigRunWeight = bitStream.ReadFloat(FloatMeta.NoCompression());
+                    val.FieldsMask |= _8bcb38f142e01ba4db9b68bf249cb184_7276820793504160194.netRigRunWeightMask;
+                }
+                if (bitStream.ReadMask())
+                {
+    
+                    val.netRigAimWeight = bitStream.ReadFloat(FloatMeta.NoCompression());
+                    val.FieldsMask |= _8bcb38f142e01ba4db9b68bf249cb184_7276820793504160194.netRigAimWeightMask;
+                }
+                if (bitStream.ReadMask())
+                {
+    
+                    val.netRigReloadWeight = bitStream.ReadFloat(FloatMeta.NoCompression());
+                    val.FieldsMask |= _8bcb38f142e01ba4db9b68bf249cb184_7276820793504160194.netRigReloadWeightMask;
+                }
+                if (bitStream.ReadMask())
+                {
+    
+                    val.netRigChangeWpWeight = bitStream.ReadFloat(FloatMeta.NoCompression());
+                    val.FieldsMask |= _8bcb38f142e01ba4db9b68bf249cb184_7276820793504160194.netRigChangeWpWeightMask;
+                }
+                if (bitStream.ReadMask())
+                {
+    
+                    val.netAnimState = bitStream.ReadIntegerRange(32, -2147483648);
+                    val.FieldsMask |= _8bcb38f142e01ba4db9b68bf249cb184_7276820793504160194.netAnimStateMask;
+                }
+                if (bitStream.ReadMask())
+                {
+    
+                    val.netWeaponIndex = bitStream.ReadIntegerRange(32, -2147483648);
+                    val.FieldsMask |= _8bcb38f142e01ba4db9b68bf249cb184_7276820793504160194.netWeaponIndexMask;
+                }
+                if (bitStream.ReadMask())
+                {
+    
+                    val.netPitch = bitStream.ReadFloat(FloatMeta.NoCompression());
+                    val.FieldsMask |= _8bcb38f142e01ba4db9b68bf249cb184_7276820793504160194.netPitchMask;
+                }
+    
+                val.StoppedMask = stoppedMask;
+    
+                return val;
+            }
+    
+    
+            public override string ToString()
+            {
+                return $"_8bcb38f142e01ba4db9b68bf249cb184_7276820793504160194(" +
+                    $" selfCamera: { this.selfCamera }" +
+                    $" netRigMoveWeight: { this.netRigMoveWeight }" +
+                    $" netRigRunWeight: { this.netRigRunWeight }" +
+                    $" netRigAimWeight: { this.netRigAimWeight }" +
+                    $" netRigReloadWeight: { this.netRigReloadWeight }" +
+                    $" netRigChangeWpWeight: { this.netRigChangeWpWeight }" +
+                    $" netAnimState: { this.netAnimState }" +
+                    $" netWeaponIndex: { this.netWeaponIndex }" +
+                    $" netPitch: { this.netPitch }" +
+                    $" Mask: { System.Convert.ToString(FieldsMask, 2).PadLeft(9, '0') }, " +
+                    $"Stopped: { System.Convert.ToString(StoppedMask, 2).PadLeft(9, '0') })";
+            }
+        }
         public struct _8bcb38f142e01ba4db9b68bf249cb184_8902942521136083295 : ICoherenceComponentData
         {
             public void ResetFrame(AbsoluteSimulationFrame frame)
@@ -2935,7 +3384,7 @@ namespace Coherence.Generated
     
             public uint FieldsMask { get; set; }
             public uint StoppedMask { get; set; }
-            public uint GetComponentType() => 18;
+            public uint GetComponentType() => 19;
             public int PriorityLevel() => 100;
             public const int order = 0;
             public uint InitialFieldsMask() => 0b00000000000000000000000000000001;
@@ -3065,154 +3514,6 @@ namespace Coherence.Generated
             {
                 return $"_8bcb38f142e01ba4db9b68bf249cb184_8902942521136083295(" +
                     $" WalkValue: { this.WalkValue }" +
-                    $" Mask: { System.Convert.ToString(FieldsMask, 2).PadLeft(1, '0') }, " +
-                    $"Stopped: { System.Convert.ToString(StoppedMask, 2).PadLeft(1, '0') })";
-            }
-        }
-        public struct _8bcb38f142e01ba4db9b68bf249cb184_9200042291201023446 : ICoherenceComponentData
-        {
-            public void ResetFrame(AbsoluteSimulationFrame frame)
-            {
-                FieldsMask |= _8bcb38f142e01ba4db9b68bf249cb184_9200042291201023446.enabledMask;
-                enabledSimulationFrame = frame;
-            }
-    
-            public static uint enabledMask => 0b00000000000000000000000000000001;
-            public AbsoluteSimulationFrame enabledSimulationFrame;
-            public System.Boolean enabled;
-    
-            public uint FieldsMask { get; set; }
-            public uint StoppedMask { get; set; }
-            public uint GetComponentType() => 19;
-            public int PriorityLevel() => 100;
-            public const int order = 0;
-            public uint InitialFieldsMask() => 0b00000000000000000000000000000001;
-            public bool HasFields() => true;
-            public bool HasRefFields() => false;
-    
-    
-            public long[] GetSimulationFrames() {
-                return null;
-            }
-    
-            public int GetFieldCount() => 1;
-    
-    
-            
-            public HashSet<Entity> GetEntityRefs()
-            {
-                return default;
-            }
-    
-            public uint ReplaceReferences(Entity fromEntity, Entity toEntity)
-            {
-                return 0;
-            }
-
-            public void ClearReferences(ISet<Entity> clearEntities) 
-            {
-            }
-            
-            public IEntityMapper.Error MapToAbsolute(IEntityMapper mapper)
-            {
-                return IEntityMapper.Error.None;
-            }
-    
-            public IEntityMapper.Error MapToRelative(IEntityMapper mapper)
-            {
-                return IEntityMapper.Error.None;
-            }
-    
-            public ICoherenceComponentData Clone() => this;
-            public int GetComponentOrder() => order;
-            public bool IsSendOrdered() => false;
-            public bool IsWorldPositionComponent() => false;
-    
-    
-            public AbsoluteSimulationFrame? GetMinSimulationFrame()
-            {
-                AbsoluteSimulationFrame? min = null;
-    
-    
-                return min;
-            }
-    
-            public ICoherenceComponentData MergeWith(ICoherenceComponentData data)
-            {
-                var other = (_8bcb38f142e01ba4db9b68bf249cb184_9200042291201023446)data;
-                var otherMask = other.FieldsMask;
-    
-                FieldsMask |= otherMask;
-                StoppedMask &= ~(otherMask);
-    
-                if ((otherMask & 0x01) != 0)
-                {
-                    this.enabledSimulationFrame = other.enabledSimulationFrame;
-                    this.enabled = other.enabled;
-                }
-    
-                otherMask >>= 1;
-                StoppedMask |= other.StoppedMask;
-    
-                return this;
-            }
-    
-            public uint DiffWith(ICoherenceComponentData data)
-            {
-                throw new System.NotSupportedException($"{nameof(DiffWith)} is not supported in Unity");
-            }
-    
-            public static uint Serialize(_8bcb38f142e01ba4db9b68bf249cb184_9200042291201023446 data, bool isRefSimFrameValid, AbsoluteSimulationFrame referenceSimulationFrame, IOutProtocolBitStream bitStream, Logger logger)
-            {
-                if (bitStream.WriteMask(data.StoppedMask != 0))
-                {
-                    bitStream.WriteMaskBits(data.StoppedMask, 1);
-                }
-    
-                var mask = data.FieldsMask;
-    
-                if (bitStream.WriteMask((mask & 0x01) != 0))
-                {
-    
-    
-                    var fieldValue = data.enabled;
-    
-
-    
-                    bitStream.WriteBool(fieldValue);
-                }
-    
-                mask >>= 1;
-    
-                return mask;
-            }
-    
-            public static _8bcb38f142e01ba4db9b68bf249cb184_9200042291201023446 Deserialize(AbsoluteSimulationFrame referenceSimulationFrame, InProtocolBitStream bitStream)
-            {
-                var stoppedMask = (uint)0;
-                if (bitStream.ReadMask())
-                {
-                    stoppedMask = bitStream.ReadMaskBits(1);
-                }
-    
-                var val = new _8bcb38f142e01ba4db9b68bf249cb184_9200042291201023446();
-                if (bitStream.ReadMask())
-                {
-    
-                    val.enabled = bitStream.ReadBool();
-                    val.FieldsMask |= _8bcb38f142e01ba4db9b68bf249cb184_9200042291201023446.enabledMask;
-                }
-    
-                val.StoppedMask = stoppedMask;
-    
-                return val;
-            }
-    
-    
-            public override string ToString()
-            {
-                return $"_8bcb38f142e01ba4db9b68bf249cb184_9200042291201023446(" +
-                    $" enabled: { this.enabled }" +
                     $" Mask: { System.Convert.ToString(FieldsMask, 2).PadLeft(1, '0') }, " +
                     $"Stopped: { System.Convert.ToString(StoppedMask, 2).PadLeft(1, '0') })";
             }

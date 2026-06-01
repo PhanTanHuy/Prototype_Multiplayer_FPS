@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -45,17 +45,44 @@ public abstract class Gun : Weapon
             lastShootTime = Time.time;
         }
     }
+    // Cập nhật lại các hàm này trong script Gun.cs
+
+    // Hàm phụ để máy Client gọi khi nhận lệnh từ mạng
+    public override void PlayReloadVisuals()
+    {
+        if (weaponAnimator != null) weaponAnimator.AnimatedReload();
+    }
+
     public override void WeaponReload()
     {
-        playerHolder.CameraRotReload();
         isReload = true;
-        weaponAnimator.AnimatedReload();
+
+        // 1. Máy Owner tự chạy hiệu ứng của mình
+        playerHolder.CameraRotReload(); // Thay đổi IK Weight
+        PlayReloadVisuals();            // Chạy Animation súng
+
+        // 2. Máy Owner ra lệnh cho các máy Client khác chạy hiệu ứng súng
+        playerHolder.SendNetworkReload();
     }
+
     public override void WeaponReloadDone()
     {
         currentAmmo = mag;
         isReload = false;
     }
+    // Tách riêng các hiệu ứng hình ảnh/hạt (Visuals) ra một hàm
+    public override void PlayAttackVisuals(float aimValue)
+    {
+        // Chạy Coroutine giật súng
+        if (gunShakeCoroutine != null) StopCoroutine(gunShakeCoroutine);
+        gunShakeCoroutine = StartCoroutine(GunShake(aimValue));
+
+        // Chạy các hiệu ứng tia lửa đạn và khói
+        muzzleFlash.Play();
+        muzzleFlash.gameObject.transform.localRotation = Quaternion.Euler(new Vector3(Random.Range(0f, 360f), -90, 0));
+        PoolObject.Instance.CreatmuzzleFlashSmoke(firePosition.position, firePosition.rotation);
+    }
+
     public virtual bool Shoot(float aimValue)
     {
         if (isReload) return false;
@@ -64,13 +91,18 @@ public abstract class Gun : Weapon
             WeaponReload();
             return false;
         }
-        if (gunShakeCoroutine != null) StopCoroutine(gunShakeCoroutine);
-        gunShakeCoroutine = StartCoroutine(GunShake(aimValue));
+
+        // 1. LOGIC NÒNG CỐT (Chỉ chạy trên máy bạn)
         currentAmmo--;
-        muzzleFlash.Play();
-        muzzleFlash.gameObject.transform.localRotation = Quaternion.Euler(new Vector3(Random.Range(0f, 360f), -90, 0));
-        PoolObject.Instance.CreatmuzzleFlashSmoke(firePosition.position, firePosition.rotation);
-        playerHolder.cameraHolder.RecoilCamera(recoilAmount); 
+        // Camera giật chỉ cần máy bạn thấy, không cần đồng bộ sang màn hình người khác
+        playerHolder.cameraHolder.RecoilCamera(recoilAmount);
+
+        // 2. CHẠY HIỆU ỨNG TRÊN MÁY BẠN
+        PlayAttackVisuals(aimValue);
+
+        // 3. PHÁT LỆNH SANG MÁY KHÁC ĐỂ HỌ THẤY SÚNG BẠN GIẬT + TÓE LỬA
+        playerHolder.SendNetworkShoot(aimValue);
+
         return true;
     }
     public virtual void BoltAction()

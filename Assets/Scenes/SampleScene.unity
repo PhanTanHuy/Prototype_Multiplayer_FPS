@@ -10525,6 +10525,7 @@ MonoBehaviour:
   weaponHolder: {fileID: 1495059809}
   cameraHolder: {fileID: 1708122654}
   pivotCameraMove: {fileID: 862522684}
+  playerNetworkSetting: {fileID: 0}
 --- !u!114 &1401027525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11227,6 +11228,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Room Connection Dialog
       objectReference: {fileID: 0}
+    - target: {fileID: 7410436684582398122, guid: 6899ff7d40b580c49b15d0c4dff6a5b4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7429996265202418019, guid: 6899ff7d40b580c49b15d0c4dff6a5b4, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -11892,6 +11897,7 @@ MonoBehaviour:
   maxLookUpAngle: 80
   rootPlayer: {fileID: 1401027522}
   cameraShake: {fileID: 0}
+  playerNetworkSetting: {fileID: 0}
   mouseSmoothTime: 0.05
 --- !u!114 &1708122655
 MonoBehaviour:

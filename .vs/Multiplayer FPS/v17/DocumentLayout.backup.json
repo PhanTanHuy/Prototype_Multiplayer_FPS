@@ -3,20 +3,12 @@
   "WorkspaceRootPath": "D:\\huyLamGameUnity\\Multiplayer FPS\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|d:\\huylamgameunity\\multiplayer fps\\assets\\script\\takedam\\hitbox.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\takedam\\hitbox.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|d:\\huylamgameunity\\multiplayer fps\\assets\\script\\weapon\\weapon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\weapon\\weapon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\huyLamGameUnity\\Multiplayer FPS\\Library\\PackageCache\\com.unity.render-pipelines.universal@26412651eee9\\Editor\\BuildProcessors\\URPPreprocessBuild.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Library\\PackageCache\\com.unity.render-pipelines.universal@26412651eee9\\Editor\\BuildProcessors\\URPPreprocessBuild.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|D:\\huyLamGameUnity\\Multiplayer FPS\\assets\\script\\weapon\\luudan\\bomb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\weapon\\luudan\\bomb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|D:\\huyLamGameUnity\\Multiplayer FPS\\assets\\script\\pool\\poolobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\pool\\poolobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|D:\\huyLamGameUnity\\Multiplayer FPS\\assets\\script\\weapon\\weaponanimator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\weapon\\weaponanimator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|D:\\huyLamGameUnity\\Multiplayer FPS\\assets\\script\\player\\playermanagerstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -27,92 +19,32 @@
       "RelativeMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\weapon\\weaponholder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|D:\\huyLamGameUnity\\Multiplayer FPS\\assets\\script\\weapon\\gun\\handgun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\weapon\\gun\\handgun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|D:\\huyLamGameUnity\\Multiplayer FPS\\assets\\script\\weapon\\weapon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\weapon\\weapon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|D:\\huyLamGameUnity\\Multiplayer FPS\\assets\\script\\weapon\\gun\\gun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\weapon\\gun\\gun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|D:\\huyLamGameUnity\\Multiplayer FPS\\assets\\script\\weapon\\gun\\riifle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\weapon\\gun\\riifle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|D:\\huyLamGameUnity\\Multiplayer FPS\\assets\\script\\camera\\cameraholder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\camera\\cameraholder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|D:\\huyLamGameUnity\\Multiplayer FPS\\assets\\script\\camera\\camerashake.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\camera\\camerashake.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|D:\\huyLamGameUnity\\Multiplayer FPS\\assets\\script\\weapon\\gun\\snip.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\weapon\\gun\\snip.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|D:\\huyLamGameUnity\\Multiplayer FPS\\assets\\script\\enemy\\enemymanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\enemy\\enemymanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|D:\\huyLamGameUnity\\Multiplayer FPS\\assets\\script\\player\\playernetworksetting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\player\\playernetworksetting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|D:\\huyLamGameUnity\\Multiplayer FPS\\assets\\script\\weapon\\gun\\riifle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\weapon\\gun\\riifle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|D:\\huyLamGameUnity\\Multiplayer FPS\\assets\\script\\base\\basemanagerstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\base\\basemanagerstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|D:\\huyLamGameUnity\\Multiplayer FPS\\assets\\script\\ui\\playerruntime\\playerui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\ui\\playerruntime\\playerui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|D:\\huyLamGameUnity\\Multiplayer FPS\\assets\\script\\enemy\\enemymanagerstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\enemy\\enemymanagerstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|D:\\huyLamGameUnity\\Multiplayer FPS\\assets\\script\\weapon\\attackbox.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\weapon\\attackbox.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|D:\\huyLamGameUnity\\Multiplayer FPS\\assets\\script\\weapon\\gun\\snip.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\weapon\\gun\\snip.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|D:\\huyLamGameUnity\\Multiplayer FPS\\assets\\script\\weapon\\gun\\shotgun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\weapon\\gun\\shotgun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|D:\\huyLamGameUnity\\Multiplayer FPS\\assets\\script\\takedam\\healthmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\takedam\\healthmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|D:\\huyLamGameUnity\\Multiplayer FPS\\assets\\script\\enemy\\enemylifemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\enemy\\enemylifemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|D:\\huyLamGameUnity\\Multiplayer FPS\\assets\\script\\player\\playerlifemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\player\\playerlifemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Weapon\\Riifle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Script\\Weapon\\Riifle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|D:\\huyLamGameUnity\\Multiplayer FPS\\assets\\script\\pickup\\inplaying\\pickupable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\pickup\\inplaying\\pickupable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{79032CF7-E127-9D8F-4C4E-E4495D736C3F}|Unity.InputSystem.csproj|D:\\huyLamGameUnity\\Multiplayer FPS\\library\\packagecache\\com.unity.inputsystem@02433b2481ab\\inputsystem\\utilities\\delegatehelpers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{79032CF7-E127-9D8F-4C4E-E4495D736C3F}|Unity.InputSystem.csproj|solutionrelative:library\\packagecache\\com.unity.inputsystem@02433b2481ab\\inputsystem\\utilities\\delegatehelpers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|D:\\huyLamGameUnity\\Multiplayer FPS\\assets\\script\\weapon\\weaponsway.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\weapon\\weaponsway.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|D:\\huyLamGameUnity\\Multiplayer FPS\\assets\\script\\weapon\\shell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\weapon\\shell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|D:\\huyLamGameUnity\\Multiplayer FPS\\assets\\script\\base\\basestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\base\\basestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|D:\\huyLamGameUnity\\Multiplayer FPS\\assets\\script\\pool\\poolobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\pool\\poolobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|D:\\huyLamGameUnity\\Multiplayer FPS\\assets\\script\\pickup\\playerpickup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -123,28 +55,24 @@
       "RelativeMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\pickup\\pickupableitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|D:\\huyLamGameUnity\\Multiplayer FPS\\assets\\script\\weapon\\weaponanimator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\weapon\\weaponanimator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|D:\\huyLamGameUnity\\Multiplayer FPS\\assets\\script\\takedam\\hitbox.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\takedam\\hitbox.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|D:\\huyLamGameUnity\\Multiplayer FPS\\assets\\script\\weapon\\hexagonmesh.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\weapon\\hexagonmesh.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|D:\\huyLamGameUnity\\Multiplayer FPS\\assets\\script\\weapon\\projectile\\bullet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\weapon\\projectile\\bullet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|D:\\huyLamGameUnity\\Multiplayer FPS\\assets\\script\\weapon\\trangbi\\gunlaser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\weapon\\trangbi\\gunlaser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|D:\\huyLamGameUnity\\Multiplayer FPS\\assets\\script\\weapon\\luudan\\bomb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\weapon\\luudan\\bomb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Player\\PlayerPickup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Script\\Player\\PlayerPickup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|D:\\huyLamGameUnity\\Multiplayer FPS\\assets\\script\\weapon\\projectile\\bombprojectile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\weapon\\projectile\\bombprojectile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Weapon\\Gun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Script\\Weapon\\Gun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Weapon\\Bullet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Script\\Weapon\\Bullet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|D:\\huyLamGameUnity\\Multiplayer FPS\\assets\\script\\weapon\\attackbox.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{97617248-A931-8E10-55DE-C15551FC3759}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\weapon\\attackbox.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -154,439 +82,224 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "CameraShake.cs",
-              "DocumentMoniker": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Camera\\CameraShake.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\Camera\\CameraShake.cs",
-              "ToolTip": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Camera\\CameraShake.cs",
-              "RelativeToolTip": "Assets\\Script\\Camera\\CameraShake.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAABFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-28T16:15:43.062Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Riifle.cs",
-              "DocumentMoniker": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Weapon\\Gun\\Riifle.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\Weapon\\Gun\\Riifle.cs",
-              "ToolTip": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Weapon\\Gun\\Riifle.cs",
-              "RelativeToolTip": "Assets\\Script\\Weapon\\Gun\\Riifle.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAABzAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-12T07:08:08.398Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Weapon.cs",
-              "DocumentMoniker": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Weapon\\Weapon.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\Weapon\\Weapon.cs",
-              "ToolTip": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Weapon\\Weapon.cs",
-              "RelativeToolTip": "Assets\\Script\\Weapon\\Weapon.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAMAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-19T08:18:55.965Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Gun.cs",
-              "DocumentMoniker": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Weapon\\Gun\\Gun.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\Weapon\\Gun\\Gun.cs",
-              "ToolTip": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Weapon\\Gun\\Gun.cs",
-              "RelativeToolTip": "Assets\\Script\\Weapon\\Gun\\Gun.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEgAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-12T14:54:10.29Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "WeaponHolder.cs",
-              "DocumentMoniker": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Weapon\\WeaponHolder.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\Weapon\\WeaponHolder.cs",
-              "ToolTip": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Weapon\\WeaponHolder.cs",
-              "RelativeToolTip": "Assets\\Script\\Weapon\\WeaponHolder.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-29T09:35:53.824Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "HandGun.cs",
-              "DocumentMoniker": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Weapon\\Gun\\HandGun.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\Weapon\\Gun\\HandGun.cs",
-              "ToolTip": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Weapon\\Gun\\HandGun.cs",
-              "RelativeToolTip": "Assets\\Script\\Weapon\\Gun\\HandGun.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAABzAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-16T03:43:25.383Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "PoolObject.cs",
-              "DocumentMoniker": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Pool\\PoolObject.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\Pool\\PoolObject.cs",
-              "ToolTip": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Pool\\PoolObject.cs",
-              "RelativeToolTip": "Assets\\Script\\Pool\\PoolObject.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAYwCkAAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-22T07:21:16.513Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "PlayerUI.cs",
-              "DocumentMoniker": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\UI\\PlayerRuntime\\PlayerUI.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\UI\\PlayerRuntime\\PlayerUI.cs",
-              "ToolTip": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\UI\\PlayerRuntime\\PlayerUI.cs",
-              "RelativeToolTip": "Assets\\Script\\UI\\PlayerRuntime\\PlayerUI.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAxAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-03T09:28:00.593Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "HitBox.cs",
-              "DocumentMoniker": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\takedam\\HitBox.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\takedam\\HitBox.cs",
-              "ToolTip": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\takedam\\HitBox.cs",
-              "RelativeToolTip": "Assets\\Script\\takedam\\HitBox.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAmAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-05T11:48:06.435Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "PlayerManagerState.cs",
-              "DocumentMoniker": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Player\\PlayerManagerState.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\Player\\PlayerManagerState.cs",
-              "ToolTip": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Player\\PlayerManagerState.cs",
-              "RelativeToolTip": "Assets\\Script\\Player\\PlayerManagerState.cs",
-              "ViewState": "AgIAANgAAAAAAAAAAAApwOEAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-16T10:10:30.077Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Bomb.cs",
-              "DocumentMoniker": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Weapon\\LuuDan\\Bomb.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\Weapon\\LuuDan\\Bomb.cs",
-              "ToolTip": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Weapon\\LuuDan\\Bomb.cs",
-              "RelativeToolTip": "Assets\\Script\\Weapon\\LuuDan\\Bomb.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-24T05:37:40.774Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "URPPreprocessBuild.cs",
-              "DocumentMoniker": "D:\\huyLamGameUnity\\Multiplayer FPS\\Library\\PackageCache\\com.unity.render-pipelines.universal@26412651eee9\\Editor\\BuildProcessors\\URPPreprocessBuild.cs",
-              "RelativeDocumentMoniker": "Library\\PackageCache\\com.unity.render-pipelines.universal@26412651eee9\\Editor\\BuildProcessors\\URPPreprocessBuild.cs",
-              "ToolTip": "D:\\huyLamGameUnity\\Multiplayer FPS\\Library\\PackageCache\\com.unity.render-pipelines.universal@26412651eee9\\Editor\\BuildProcessors\\URPPreprocessBuild.cs",
-              "RelativeToolTip": "Library\\PackageCache\\com.unity.render-pipelines.universal@26412651eee9\\Editor\\BuildProcessors\\URPPreprocessBuild.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAB8AAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-26T06:40:38.497Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "BaseManagerState.cs",
-              "DocumentMoniker": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Base\\BaseManagerState.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\Base\\BaseManagerState.cs",
-              "ToolTip": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Base\\BaseManagerState.cs",
-              "RelativeToolTip": "Assets\\Script\\Base\\BaseManagerState.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAAAAABcAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-16T09:52:49.401Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "EnemyManager.cs",
-              "DocumentMoniker": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Enemy\\EnemyManager.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\Enemy\\EnemyManager.cs",
-              "ToolTip": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Enemy\\EnemyManager.cs",
-              "RelativeToolTip": "Assets\\Script\\Enemy\\EnemyManager.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAAwCAAAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-05T11:53:09.415Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "CameraHolder.cs",
-              "DocumentMoniker": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Camera\\CameraHolder.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\Camera\\CameraHolder.cs",
-              "ToolTip": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Camera\\CameraHolder.cs",
-              "RelativeToolTip": "Assets\\Script\\Camera\\CameraHolder.cs",
-              "ViewState": "AgIAAFAAAAAAAAAAAAAhwGMAAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-26T15:02:54.975Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "EnemyManagerState.cs",
-              "DocumentMoniker": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Enemy\\EnemyManagerState.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\Enemy\\EnemyManagerState.cs",
-              "ToolTip": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Enemy\\EnemyManagerState.cs",
-              "RelativeToolTip": "Assets\\Script\\Enemy\\EnemyManagerState.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABUAAABBAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-02T09:54:39.758Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "AttackBox.cs",
-              "DocumentMoniker": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Weapon\\AttackBox.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\Weapon\\AttackBox.cs",
-              "ToolTip": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Weapon\\AttackBox.cs",
-              "RelativeToolTip": "Assets\\Script\\Weapon\\AttackBox.cs",
-              "ViewState": "AgIAAC4AAAAAAAAAAAAtwC8AAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-16T03:48:46.112Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
               "Title": "Snip.cs",
               "DocumentMoniker": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Weapon\\Gun\\Snip.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Weapon\\Gun\\Snip.cs",
               "ToolTip": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Weapon\\Gun\\Snip.cs",
               "RelativeToolTip": "Assets\\Script\\Weapon\\Gun\\Snip.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAByAAAAAAAAAA==",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-16T03:47:39.864Z"
+              "WhenOpened": "2026-06-01T05:56:05.147Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "ShotGun.cs",
-              "DocumentMoniker": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Weapon\\Gun\\ShotGun.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\Weapon\\Gun\\ShotGun.cs",
-              "ToolTip": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Weapon\\Gun\\ShotGun.cs",
-              "RelativeToolTip": "Assets\\Script\\Weapon\\Gun\\ShotGun.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAABsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-12T14:21:58.837Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 35,
-              "Title": "Bullet.cs",
-              "DocumentMoniker": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Weapon\\Bullet.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\Weapon\\Bullet.cs",
-              "ToolTip": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Weapon\\Bullet.cs",
-              "RelativeToolTip": "Assets\\Script\\Weapon\\Bullet.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAQwAcAAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-22T09:33:34.315Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "HealthManager.cs",
-              "DocumentMoniker": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\takedam\\HealthManager.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\takedam\\HealthManager.cs",
-              "ToolTip": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\takedam\\HealthManager.cs",
-              "RelativeToolTip": "Assets\\Script\\takedam\\HealthManager.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-05T11:43:03.011Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "EnemyLifeManager.cs",
-              "DocumentMoniker": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Enemy\\EnemyLifeManager.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\Enemy\\EnemyLifeManager.cs",
-              "ToolTip": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Enemy\\EnemyLifeManager.cs",
-              "RelativeToolTip": "Assets\\Script\\Enemy\\EnemyLifeManager.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-12T08:01:03.269Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "Riifle.cs",
-              "DocumentMoniker": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Weapon\\Riifle.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\Weapon\\Riifle.cs",
-              "ToolTip": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Weapon\\Riifle.cs",
-              "RelativeToolTip": "Assets\\Script\\Weapon\\Riifle.cs",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-19T09:14:16.455Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 33,
-              "Title": "PlayerPickup.cs",
-              "DocumentMoniker": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Player\\PlayerPickup.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\Player\\PlayerPickup.cs",
-              "ToolTip": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Player\\PlayerPickup.cs",
-              "RelativeToolTip": "Assets\\Script\\Player\\PlayerPickup.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-31T07:47:46.747Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 4,
               "Title": "Gun.cs",
-              "DocumentMoniker": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Weapon\\Gun.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\Weapon\\Gun.cs",
-              "ToolTip": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Weapon\\Gun.cs",
-              "RelativeToolTip": "Assets\\Script\\Weapon\\Gun.cs",
-              "ViewState": "AgIAADIAAAAAAAAAAAAqwEgAAAAVAAAAAAAAAA==",
+              "DocumentMoniker": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Weapon\\Gun\\Gun.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Weapon\\Gun\\Gun.cs",
+              "ToolTip": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Weapon\\Gun\\Gun.cs",
+              "RelativeToolTip": "Assets\\Script\\Weapon\\Gun\\Gun.cs",
+              "ViewState": "AgIAAEoAAAAAAAAAAAAAAGQAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-19T08:28:06.353Z"
+              "WhenOpened": "2026-06-01T03:08:24.151Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "PlayerLifeManager.cs",
-              "DocumentMoniker": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Player\\PlayerLifeManager.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\Player\\PlayerLifeManager.cs",
-              "ToolTip": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Player\\PlayerLifeManager.cs",
-              "RelativeToolTip": "Assets\\Script\\Player\\PlayerLifeManager.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAATAAAAAAAAAA==",
+              "DocumentIndex": 8,
+              "Title": "Riifle.cs",
+              "DocumentMoniker": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Weapon\\Gun\\Riifle.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Weapon\\Gun\\Riifle.cs",
+              "ToolTip": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Weapon\\Gun\\Riifle.cs",
+              "RelativeToolTip": "Assets\\Script\\Weapon\\Gun\\Riifle.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAQwAkAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-12T08:00:12.219Z"
+              "WhenOpened": "2026-05-29T15:36:45.103Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "DelegateHelpers.cs",
-              "DocumentMoniker": "D:\\huyLamGameUnity\\Multiplayer FPS\\Library\\PackageCache\\com.unity.inputsystem@02433b2481ab\\InputSystem\\Utilities\\DelegateHelpers.cs",
-              "RelativeDocumentMoniker": "Library\\PackageCache\\com.unity.inputsystem@02433b2481ab\\InputSystem\\Utilities\\DelegateHelpers.cs",
-              "ToolTip": "D:\\huyLamGameUnity\\Multiplayer FPS\\Library\\PackageCache\\com.unity.inputsystem@02433b2481ab\\InputSystem\\Utilities\\DelegateHelpers.cs",
-              "RelativeToolTip": "Library\\PackageCache\\com.unity.inputsystem@02433b2481ab\\InputSystem\\Utilities\\DelegateHelpers.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAYwDMAAACAAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "WeaponHolder.cs",
+              "DocumentMoniker": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Weapon\\WeaponHolder.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Weapon\\WeaponHolder.cs",
+              "ToolTip": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Weapon\\WeaponHolder.cs",
+              "RelativeToolTip": "Assets\\Script\\Weapon\\WeaponHolder.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAAAADUAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-03T09:21:34.865Z"
+              "WhenOpened": "2026-05-29T06:10:02.848Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "Shell.cs",
-              "DocumentMoniker": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Weapon\\Shell.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\Weapon\\Shell.cs",
-              "ToolTip": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Weapon\\Shell.cs",
-              "RelativeToolTip": "Assets\\Script\\Weapon\\Shell.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAAwCIAAAAZAAAAAAAAAA==",
+              "DocumentIndex": 5,
+              "Title": "CameraHolder.cs",
+              "DocumentMoniker": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Camera\\CameraHolder.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Camera\\CameraHolder.cs",
+              "ToolTip": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Camera\\CameraHolder.cs",
+              "RelativeToolTip": "Assets\\Script\\Camera\\CameraHolder.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAAAAAA4AAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-03T08:28:18.751Z"
+              "WhenOpened": "2026-05-29T06:08:42.067Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "PickupAble.cs",
-              "DocumentMoniker": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Pickup\\InPlaying\\PickupAble.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\Pickup\\InPlaying\\PickupAble.cs",
-              "ToolTip": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Pickup\\InPlaying\\PickupAble.cs",
-              "RelativeToolTip": "Assets\\Script\\Pickup\\InPlaying\\PickupAble.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAJAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "PlayerManagerState.cs",
+              "DocumentMoniker": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Player\\PlayerManagerState.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Player\\PlayerManagerState.cs",
+              "ToolTip": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Player\\PlayerManagerState.cs",
+              "RelativeToolTip": "Assets\\Script\\Player\\PlayerManagerState.cs",
+              "ViewState": "AgIAADYAAAAAAAAAAAAAAL4AAABAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-31T07:57:35.827Z"
+              "WhenOpened": "2026-05-29T06:12:31.733Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "WeaponSway.cs",
-              "DocumentMoniker": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Weapon\\WeaponSway.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\Weapon\\WeaponSway.cs",
-              "ToolTip": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Weapon\\WeaponSway.cs",
-              "RelativeToolTip": "Assets\\Script\\Weapon\\WeaponSway.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABUAAAAoAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "Weapon.cs",
+              "DocumentMoniker": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Weapon\\Weapon.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Weapon\\Weapon.cs",
+              "ToolTip": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Weapon\\Weapon.cs",
+              "RelativeToolTip": "Assets\\Script\\Weapon\\Weapon.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-18T06:19:20.58Z"
+              "WhenOpened": "2026-05-29T15:37:10.808Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
-              "Title": "PlayerPickup.cs",
-              "DocumentMoniker": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Pickup\\PlayerPickup.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\Pickup\\PlayerPickup.cs",
-              "ToolTip": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Pickup\\PlayerPickup.cs",
-              "RelativeToolTip": "Assets\\Script\\Pickup\\PlayerPickup.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-31T07:58:35.705Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "BaseState.cs",
-              "DocumentMoniker": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Base\\BaseState.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\Base\\BaseState.cs",
-              "ToolTip": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Base\\BaseState.cs",
-              "RelativeToolTip": "Assets\\Script\\Base\\BaseState.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-16T09:59:37.196Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 29,
-              "Title": "PickupAbleItem.cs",
-              "DocumentMoniker": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Pickup\\PickupAbleItem.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\Pickup\\PickupAbleItem.cs",
-              "ToolTip": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Pickup\\PickupAbleItem.cs",
-              "RelativeToolTip": "Assets\\Script\\Pickup\\PickupAbleItem.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAgAAAA3AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-31T07:55:16.166Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 1,
               "Title": "WeaponAnimator.cs",
               "DocumentMoniker": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Weapon\\WeaponAnimator.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Weapon\\WeaponAnimator.cs",
               "ToolTip": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Weapon\\WeaponAnimator.cs",
               "RelativeToolTip": "Assets\\Script\\Weapon\\WeaponAnimator.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAgAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAIAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-24T16:08:02.393Z"
+              "WhenOpened": "2026-05-29T15:26:56Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
-              "Title": "HexagonMesh.cs",
-              "DocumentMoniker": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Weapon\\HexagonMesh.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\Weapon\\HexagonMesh.cs",
-              "ToolTip": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Weapon\\HexagonMesh.cs",
-              "RelativeToolTip": "Assets\\Script\\Weapon\\HexagonMesh.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAkwA8AAABIAAAAAAAAAA==",
+              "DocumentIndex": 7,
+              "Title": "PlayerNetworkSetting.cs",
+              "DocumentMoniker": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Player\\PlayerNetworkSetting.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Player\\PlayerNetworkSetting.cs",
+              "ToolTip": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Player\\PlayerNetworkSetting.cs",
+              "RelativeToolTip": "Assets\\Script\\Player\\PlayerNetworkSetting.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAAwBEAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-30T08:45:29.023Z"
+              "WhenOpened": "2026-06-01T03:20:09.255Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
-              "Title": "GunLaser.cs",
-              "DocumentMoniker": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Weapon\\TrangBi\\GunLaser.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\Weapon\\TrangBi\\GunLaser.cs",
-              "ToolTip": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Weapon\\TrangBi\\GunLaser.cs",
-              "RelativeToolTip": "Assets\\Script\\Weapon\\TrangBi\\GunLaser.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAABFAAAAAAAAAA==",
+              "DocumentIndex": 11,
+              "Title": "PlayerPickup.cs",
+              "DocumentMoniker": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Pickup\\PlayerPickup.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Pickup\\PlayerPickup.cs",
+              "ToolTip": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Pickup\\PlayerPickup.cs",
+              "RelativeToolTip": "Assets\\Script\\Pickup\\PlayerPickup.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-28T18:00:59.757Z"
+              "WhenOpened": "2026-05-29T16:31:37.517Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Bomb.cs",
+              "DocumentMoniker": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Weapon\\LuuDan\\Bomb.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Weapon\\LuuDan\\Bomb.cs",
+              "ToolTip": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Weapon\\LuuDan\\Bomb.cs",
+              "RelativeToolTip": "Assets\\Script\\Weapon\\LuuDan\\Bomb.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-29T15:25:52.84Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "BombProjectile.cs",
+              "DocumentMoniker": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Weapon\\Projectile\\BombProjectile.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Weapon\\Projectile\\BombProjectile.cs",
+              "ToolTip": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Weapon\\Projectile\\BombProjectile.cs",
+              "RelativeToolTip": "Assets\\Script\\Weapon\\Projectile\\BombProjectile.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-29T15:26:02.804Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "BaseManagerState.cs",
+              "DocumentMoniker": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Base\\BaseManagerState.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Base\\BaseManagerState.cs",
+              "ToolTip": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Base\\BaseManagerState.cs",
+              "RelativeToolTip": "Assets\\Script\\Base\\BaseManagerState.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAowAIAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-30T11:21:10.347Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "PoolObject.cs",
+              "DocumentMoniker": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Pool\\PoolObject.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Pool\\PoolObject.cs",
+              "ToolTip": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Pool\\PoolObject.cs",
+              "RelativeToolTip": "Assets\\Script\\Pool\\PoolObject.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAuwDcAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-29T15:40:18Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "PickupAbleItem.cs",
+              "DocumentMoniker": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Pickup\\PickupAbleItem.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Pickup\\PickupAbleItem.cs",
+              "ToolTip": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Pickup\\PickupAbleItem.cs",
+              "RelativeToolTip": "Assets\\Script\\Pickup\\PickupAbleItem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-29T16:31:37.031Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Bullet.cs",
+              "DocumentMoniker": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Weapon\\Projectile\\Bullet.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Weapon\\Projectile\\Bullet.cs",
+              "ToolTip": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Weapon\\Projectile\\Bullet.cs",
+              "RelativeToolTip": "Assets\\Script\\Weapon\\Projectile\\Bullet.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAIAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-29T15:25:35.479Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "HitBox.cs",
+              "DocumentMoniker": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\takedam\\HitBox.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\takedam\\HitBox.cs",
+              "ToolTip": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\takedam\\HitBox.cs",
+              "RelativeToolTip": "Assets\\Script\\takedam\\HitBox.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-29T15:22:39.197Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "AttackBox.cs",
+              "DocumentMoniker": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Weapon\\AttackBox.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Weapon\\AttackBox.cs",
+              "ToolTip": "D:\\huyLamGameUnity\\Multiplayer FPS\\Assets\\Script\\Weapon\\AttackBox.cs",
+              "RelativeToolTip": "Assets\\Script\\Weapon\\AttackBox.cs",
+              "ViewState": "AgIAADIAAAAAAAAAAAAgwC0AAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-29T15:47:02.381Z"
             }
           ]
         }

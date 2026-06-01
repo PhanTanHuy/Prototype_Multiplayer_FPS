@@ -23,7 +23,7 @@ public class HitBox : MonoBehaviour
         };
     public void TakeDame(int damage, Transform ori, Vector3 pos, Quaternion rot)
     {
-        if (ori.root == this.transform.root) return;
+        //if (ori.root == this.transform.root) return;
         PoolObject.Instance.CreatBlood(pos, rot);
         int multi = damageMultiplier[hitBoxTag];
         healthManager.TakeDame(multi * damage);

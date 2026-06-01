@@ -1,6 +1,19 @@
-component _8bcb38f142e01ba4db9b68bf249cb184_8902942521136083295 [id "18"]
+component _8bcb38f142e01ba4db9b68bf249cb184_7276820793504160194 [id "18"]
+  selfCamera Entity [bits "20", client-type "GameObject"]
+  netRigMoveWeight Float [compression "None"]
+  netRigRunWeight Float [compression "None"]
+  netRigAimWeight Float [compression "None"]
+  netRigReloadWeight Float [compression "None"]
+  netRigChangeWpWeight Float [compression "None"]
+  netAnimState Int [bits "32", range-min "-2147483648", range-max "2147483647"]
+  netWeaponIndex Int [bits "32", range-min "-2147483648", range-max "2147483647"]
+  netPitch Float [compression "None"]
+
+component _8bcb38f142e01ba4db9b68bf249cb184_8902942521136083295 [id "19"]
   WalkValue Float [compression "None"]
 
-component _8bcb38f142e01ba4db9b68bf249cb184_9200042291201023446 [id "19"]
-  enabled Bool [bits "1"]
+command _8bcb38f142e01ba4db9b68bf249cb184_94ab8b9eee184f9ca6c11f020d2ec4d0 [id "6", routing "All"]
+  aimValue Float [compression "None"]
+
+command _8bcb38f142e01ba4db9b68bf249cb184_a4c0f72bf77b4fb38dc27bb92ed0e512 [id "7", routing "All"]
 

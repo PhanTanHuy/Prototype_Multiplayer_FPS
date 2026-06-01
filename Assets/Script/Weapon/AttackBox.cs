@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections.Generic;
 
 public class AttackBox : MonoBehaviour
@@ -10,11 +10,15 @@ public class AttackBox : MonoBehaviour
 
     HashSet<HitBox> hitTargets = new HashSet<HitBox>();
 
+    private Transform myRoot;
+
     void Awake()
     {
         box = GetComponent<BoxCollider>();
         box.enabled = false;
         enabled = false;
+
+        myRoot = transform.root;
     }
 
     void OnEnable()
@@ -28,7 +32,6 @@ public class AttackBox : MonoBehaviour
         Vector3 halfExtents = box.size * 0.5f;
         Quaternion rotation = box.transform.rotation;
 
-
         Collider[] hits = Physics.OverlapBox(
             center,
             halfExtents,
@@ -40,18 +43,18 @@ public class AttackBox : MonoBehaviour
         {
             if (col.TryGetComponent<HitBox>(out HitBox hitBox))
             {
+                if (hitBox.transform.root == myRoot) continue;
+
                 if (hitTargets.Contains(hitBox)) continue;
 
                 hitTargets.Add(hitBox);
                 Vector3 hitPoint = col.ClosestPoint(center);
                 Quaternion hitRot = Quaternion.LookRotation(transform.forward);
                 hitBox.TakeDame(damage, this.transform, hitPoint, hitRot);
-
-              
-
             }
         }
     }
+
     void OnDrawGizmos()
     {
         if (!box) box = GetComponent<BoxCollider>();
@@ -64,7 +67,6 @@ public class AttackBox : MonoBehaviour
         );
         Gizmos.DrawWireCube(Vector3.zero, box.size);
     }
-
 
     public void OnDisable()
     {

@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections.Generic;
 
 public class WeaponHolder : MonoBehaviour
@@ -17,7 +17,8 @@ public class WeaponHolder : MonoBehaviour
             weapon.rootParent = transform.root;
             weapon.transform.parent.gameObject.SetActive(false);
         }
-        if (weapons.Count != 0) SetCurrentWeapon(weapons[0]);
+        Debug.Log(playerHolder.playerNetworkSetting.netWeaponIndex);
+        if (weapons.Count != 0) SetCurrentWeapon(weapons[playerHolder.playerNetworkSetting.netWeaponIndex]);
     }
     // Update is called once per frame
     void Update()
@@ -50,10 +51,12 @@ public class WeaponHolder : MonoBehaviour
     public void ChangeWeapon(int i)
     {
         if (weapons.Count <= 1) return;
+        i = Mathf.Abs(i);
         currentWeapon.transform.parent.gameObject.SetActive(false);
         currentWeaponIndex += i;
         currentWeaponIndex = Mathf.Abs(currentWeaponIndex % weapons.Count);
         SetCurrentWeapon(weapons[currentWeaponIndex]);
+        Debug.Log(gameObject.name + " đã chuyển sang vũ khí: " + currentWeapon.name);
     }
     private void SetCurrentWeapon(Weapon wp)
     {

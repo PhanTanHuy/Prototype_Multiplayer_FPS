@@ -1,5 +1,6 @@
-using UnityEngine;
 using System;
+using UnityEngine;
+using UnityEngine.UIElements;
 
 public abstract class Weapon : PickupAbleItem
 {
@@ -18,5 +19,8 @@ public abstract class Weapon : PickupAbleItem
     public abstract void WeaponAttack(float aimValue);
     public abstract void WeaponReload();
     public abstract void WeaponReloadDone();
-   
+    public virtual void PlayReloadVisuals() { }
+    public virtual void PlayAttackVisuals(float aimValue) { }
+
+
 }
