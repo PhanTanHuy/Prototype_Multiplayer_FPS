@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85b91f942a5214496b0e11eaedb54c36, type: 3}
+  m_Script: {fileID: 0}
   m_Name: RuntimeSettings
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Coherence:Coherence:RuntimeSettings
   logSettings:
     EditorLogLevel: 2
     LogLevel: 2
@@ -25,9 +25,9 @@ MonoBehaviour:
     LogFilePath: Logs/player_logs.txt
     MigratedToSerializedObject: 0
     FileLogLevel: 1
-  schemaID: 263ead3224af3337f98a2f4abb050bb80abf145b
-  versionInfo: {fileID: 11400000, guid: 2191b6f902c97477baa32a7919010503, type: 2}
-  runtimeKey: 0c96c1bfa4144cf888c421d7b200aaa4
+  schemaID: 
+  versionInfo: {fileID: 0}
+  runtimeKey: 
   simulatorSlug: 
   localHost: 127.0.0.1
   localWorldUDPPort: 32001
@@ -42,8 +42,8 @@ MonoBehaviour:
   recvFrequency: 60
   useDebugStreams: 0
   organizationID: 
-  projectID: d8ajlltoq0nnq5qb1kog
-  projectName: FPS_Multiplayer
+  projectID: 
+  projectName: 
   organizationName: 
   transportType: 0
   advancedSettings:
@@ -55,9 +55,7 @@ MonoBehaviour:
   rsVersionOverride: 
   playApiEndpoint: https://api.prod.coherence.io/v1/play
   storedSdkVersionBuildMetadata: 
-  schemas:
-  - {fileID: -1758743643018166929, guid: 266a112c2c9e941a58a87a48e7a4f8cb, type: 3}
-  - {fileID: -1758743643018166929, guid: e337f8d591e5dad44b5bb2ad703e2cb5, type: 3}
+  schemas: []
   extraSchemas: []
   defaultAuthorityTransferType: 2
   simulatorLockTargetFramerate: 1

@@ -1,0 +1,126 @@
+﻿using Photon.Pun;
+using UnityEngine;
+
+public class PlayerNetworkSetup : MonoBehaviourPun, IPunObservable
+{
+    public GameObject playerCamera;
+    public PlayerManagerState playerManagerState;
+    public CameraHolder cameraHolder;
+    public WeaponHolder weaponHolder;
+    public GameObject PlayerUI;
+    public WeaponSway weaponSway;
+
+    [SerializeField] private PlayerManagerState playerState;
+
+    private int networkAnimState;
+    private int receivedAnimState = -1;
+
+    private bool networkAim;
+    private bool receivedAim;
+
+    private int networkRigMode;
+    private int receivedRigMode = -1;
+
+    private float networkCameraPitch;
+    private float receivedCameraPitch;
+    private void Update()
+    {
+        if (!photonView.IsMine)
+            return;
+
+        networkAnimState = playerState.GetNetworkAnimationState();
+        networkAim = playerState.IsAiming();
+        networkRigMode = playerState.GetNetworkRigMode();
+        networkCameraPitch = playerState.GetNetworkCameraPitch();
+    }
+    public void SetLocalPlayer()
+    {
+        playerCamera.SetActive(true);
+        playerManagerState.enabled = true;
+        cameraHolder.enabled = true;
+        PlayerUI.SetActive(true);
+        weaponSway.enabled = true;
+    }
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(networkAnimState);
+            stream.SendNext(networkAim);
+            stream.SendNext(networkRigMode);
+            stream.SendNext(networkCameraPitch);
+        }
+        else
+        {
+            receivedAnimState = (int)stream.ReceiveNext();
+            receivedAim = (bool)stream.ReceiveNext();
+            receivedRigMode = (int)stream.ReceiveNext();
+            receivedCameraPitch = (float)stream.ReceiveNext();
+
+            playerState.ApplyNetworkCameraPitch(receivedCameraPitch);
+            playerState.ApplyNetworkAnimation(receivedAnimState, receivedAim);
+            playerState.ApplyNetworkRig(receivedRigMode);
+        }
+    }
+
+    public void SendReload()
+    {
+        if (!photonView.IsMine)
+            return;
+
+        photonView.RPC(nameof(RPC_Reload), RpcTarget.Others);
+    }
+
+    [PunRPC]
+    private void RPC_Reload()
+    {
+        playerState.PlayNetworkReload();
+    }
+
+    public void SendWeaponAttack(float aimValue)
+    {
+        if (!photonView.IsMine)
+            return;
+
+        photonView.RPC(nameof(RPC_WeaponAttack), RpcTarget.Others, aimValue);
+    }
+
+    [PunRPC]
+    private void RPC_WeaponAttack(float aimValue)
+    {
+        weaponHolder.currentWeapon.PlayAttackVisuals(aimValue);
+    }
+
+    public void SendDeath()
+    {
+        if (!photonView.IsMine)
+            return;
+
+        photonView.RPC(nameof(RPC_Death), RpcTarget.Others);
+    }
+
+    [PunRPC]
+    private void RPC_Death()
+    {
+        //playerState.PlayNetworkDeath();
+    }
+    
+    public void RequestChangeWeapon(int index)
+    {
+        // Chỉ player sở hữu object này mới được gửi
+        if (!photonView.IsMine)
+            return;
+
+        photonView.RPC(
+            nameof(RPC_SetWeapon),
+            RpcTarget.Others,
+            index
+        );
+    }
+
+    [PunRPC]
+    private void RPC_SetWeapon(int index)
+    {
+        playerState.ChangeWeapon(index);
+    }
+}

@@ -61,8 +61,6 @@ public abstract class Gun : Weapon
         playerHolder.CameraRotReload(); // Thay đổi IK Weight
         PlayReloadVisuals();            // Chạy Animation súng
 
-        // 2. Máy Owner ra lệnh cho các máy Client khác chạy hiệu ứng súng
-        playerHolder.SendNetworkReload();
     }
 
     public override void WeaponReloadDone()
@@ -97,11 +95,8 @@ public abstract class Gun : Weapon
         // Camera giật chỉ cần máy bạn thấy, không cần đồng bộ sang màn hình người khác
         playerHolder.cameraHolder.RecoilCamera(recoilAmount);
 
-        // 2. CHẠY HIỆU ỨNG TRÊN MÁY BẠN
         PlayAttackVisuals(aimValue);
-
-        // 3. PHÁT LỆNH SANG MÁY KHÁC ĐỂ HỌ THẤY SÚNG BẠN GIẬT + TÓE LỬA
-        playerHolder.SendNetworkShoot(aimValue);
+        playerHolder.SendWeaponAttack(aimValue); // Gửi lệnh cho máy khác chạy hiệu ứng bắn
 
         return true;
     }

@@ -1,13 +1,10 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
-using Coherence.Toolkit; // Thêm namespace Coherence
 
 public class PlayerManagerState : BaseManagerState<PlayerManagerState>
 {
     // Tham chiếu tới Coherence
-    public CoherenceSync coherenceSync { get; private set; }
-
     private InputSystemActions inputActions;
     [Header("Physic Setting")]
     [SerializeField] private float speedWalk = 2f;
@@ -27,8 +24,8 @@ public class PlayerManagerState : BaseManagerState<PlayerManagerState>
     [Header("Camera Setting")]
     public CameraHolder cameraHolder;
     [SerializeField] private Transform pivotCameraMove;
-    public PlayerNetworkSetting playerNetworkSetting;
-
+    [Header("Network Setting")]
+    public PlayerNetworkSetup playerNetworkSetup;
 
     // state
     private PlayerStateIdle idleState = new PlayerStateIdle();
@@ -42,26 +39,11 @@ public class PlayerManagerState : BaseManagerState<PlayerManagerState>
     private int lastAnimState = -1;
     private int lastWeaponIndex = -1;
 
-    private void Awake()
-    {
-        coherenceSync = GetComponentInParent<CoherenceSync>();
-    }
     private void Start()
     {
-        if (coherenceSync == null) Debug.Log("ko thay coherence");
-        // KIỂM TRA QUYỀN: Nếu là máy khác spawn, KHÔNG setup Input tránh điều khiển đè nhau
-        if (coherenceSync != null && !coherenceSync.HasStateAuthority)
-        {
-            return;
-        }
-
         currentState = idleState;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-
-        // Khởi tạo vũ khí mặc định
-        playerNetworkSetting.netWeaponIndex = 0;
-        weaponHolder.ChangeWeapon(0);
 
         inputActions = new InputSystemActions();
         inputActions.Enable();
@@ -70,6 +52,7 @@ public class PlayerManagerState : BaseManagerState<PlayerManagerState>
         {
             int targetWp = (int)ctx.ReadValue<Vector2>().y;
             ChangeWeapon(targetWp);
+            playerNetworkSetup.RequestChangeWeapon(targetWp); // Gửi yêu cầu thay đổi vũ khí qua mạng
         };
 
         inputActions.Player.Move.performed += ctx =>
@@ -120,103 +103,25 @@ public class PlayerManagerState : BaseManagerState<PlayerManagerState>
 
         inputActions.Player.Reload.performed += ctx =>
         {
-            if (weaponHolder.currentWeapon != null) weaponHolder.currentWeapon.WeaponReload();
+            if (weaponHolder.currentWeapon != null)
+            {
+                weaponHolder.currentWeapon.WeaponReload();
+                playerNetworkSetup.SendReload(); 
+            }
         };
     }
 
     protected override void Update()
     {
-        if (coherenceSync == null) return;
-
-        if (coherenceSync.HasStateAuthority)
-        {
-            base.Update();
-            // CHỦ SỞ HỮU (OWNER): Đẩy dữ liệu Weight thực tế của Coroutine cục bộ lên các biến mạng
-            playerNetworkSetting.netRigMoveWeight = rigMove.weight;
-            playerNetworkSetting.netRigRunWeight = rigRun.weight;
-            playerNetworkSetting.netRigAimWeight = rigAim.weight;
-            playerNetworkSetting.netRigReloadWeight = rigRotCameraReload.weight;
-            playerNetworkSetting.netRigChangeWpWeight = rigChangeWeapon.weight;
-        }
-        else
-        {
-            // MÁY KHÁC (REMOTE CLIENT): Liên tục đọc dữ liệu mạng về và ép trực tiếp vào các Rig
-            rigMove.weight = playerNetworkSetting.netRigMoveWeight;
-            rigRun.weight = playerNetworkSetting.netRigRunWeight;
-            rigAim.weight = playerNetworkSetting.netRigAimWeight;
-            rigRotCameraReload.weight = playerNetworkSetting.netRigReloadWeight;
-            rigChangeWeapon.weight = playerNetworkSetting.netRigChangeWpWeight;
-            // Đồng bộ Animation khi có sự thay đổi trạng thái từ Owner gửi về
-            if (playerNetworkSetting.netAnimState != lastAnimState)
-            {
-                TriggerRemoteAnimation(playerNetworkSetting.netAnimState);
-                lastAnimState = playerNetworkSetting.netAnimState;
-            }
-
-            // Đồng bộ hiển thị đổi súng trên màn hình người khác
-            if (playerNetworkSetting.netWeaponIndex != lastWeaponIndex)
-            {
-                changeWp = StartCoroutine(IEChangeWeapon(playerNetworkSetting.netWeaponIndex));
-                lastWeaponIndex = playerNetworkSetting.netWeaponIndex;
-            }
-        }
+        base.Update();
     }
     // Thêm hàm này vào bất kỳ đâu trong PlayerManagerState.cs
 
-    public void SendNetworkReload()
-    {
-        // TẤM KHIÊN: Máy Owner gọi hàm này để mượn đường truyền mạng phát lệnh đi,
-        // nhưng bản thân nó không chạy code bên dưới (vì Owner đã tự chạy ở script Gun rồi).
-        if (coherenceSync != null && coherenceSync.HasStateAuthority) return;
+   
 
-        // Máy Client nhận lệnh sẽ đi qua tấm khiên và chạy code này:
-        if (weaponHolder.currentWeapon != null)
-        {
-            weaponHolder.currentWeapon.PlayReloadVisuals();
-            Debug.Log(gameObject.name + " là client reload ");
-        }
-    }
-    // Thêm hàm này vào PlayerManagerState.cs cùng chỗ với hàm SendNetworkReload
-
-    public void SendNetworkShoot(float aimValue)
-    {
-        // TẤM KHIÊN: Nếu là chủ sở hữu (Owner) thì KHÔNG chạy đoạn code dưới đây, 
-        // vì súng của bạn đã tự chạy PlayShootVisuals() ở trong script Gun rồi.
-        if (coherenceSync != null && coherenceSync.HasStateAuthority) return;
-
-        // CÁC MÁY CLIENT KHÁC NHẬN LỆNH sẽ đi qua tấm khiên và chạy đoạn code này:
-        if (weaponHolder.currentWeapon != null)
-        {
-            weaponHolder.currentWeapon.PlayAttackVisuals(aimValue);
-            Debug.Log(gameObject.name + " là client bắn súng ");
-        }
-    }
-    private void TriggerRemoteAnimation(int stateIndex)
-    {
-        // Hàm này chỉ chạy trên các máy khách để nhại lại Animation của bạn
-        switch (stateIndex)
-        {
-            case 0: // Idle
-                animator.CrossFade("Idle", 0.25f, 1);
-                animator.CrossFade("Idle", 0.25f, 0);
-                break;
-            case 1: // Walk
-                animator.CrossFade("Walk", 0.25f, 0); // Chỉnh lại theo tên chuẩn trong HandelWalkAnimation() của bạn
-                break;
-            case 2: // Run
-                animator.CrossFade("Run", 0.15f, 1);
-                animator.CrossFade("Run", 0.15f, 0);
-                break;
-            case 4: // Death
-                animator.Play("Death");
-                break;
-        }
-    }
-
-    void ChangeWeapon(int vl)
+    public void ChangeWeapon(int vl)
     {
         if (changeWp != null) return;
-        playerNetworkSetting.netWeaponIndex = vl; // Cập nhật để mạng gửi đi
         changeWp = StartCoroutine(IEChangeWeapon(vl));
     }
 
@@ -231,7 +136,7 @@ public class PlayerManagerState : BaseManagerState<PlayerManagerState>
             startT += Time.deltaTime;
             yield return null;
         }
-        weaponHolder.ChangeWeapon(vl);
+        weaponHolder.ChangeWeaponLocal(vl);
 
         if (rigAim.weight == 1f) cameraHolder.SetAimSentivity(weaponHolder.currentWeapon.AimSentivity);
         else cameraHolder.ResetAimSentivity();
@@ -274,10 +179,6 @@ public class PlayerManagerState : BaseManagerState<PlayerManagerState>
 
     public void PlayerDie()
     {
-        if (coherenceSync != null && coherenceSync.HasStateAuthority)
-        {
-            playerNetworkSetting.netAnimState = 4; // Trạng thái chết mạng
-        }
         weaponHolder.ReleaseAllWeapon();
         rigMove.weight = 0f;
         rigRun.weight = 0f;
@@ -350,8 +251,6 @@ public class PlayerManagerState : BaseManagerState<PlayerManagerState>
 
     public override void AllStateLogic()
     {
-        // Chỉ chạy logic tấn công nếu là chủ sở hữu nhân vật này
-        if (coherenceSync != null && !coherenceSync.HasStateAuthority) return;
         HandleAttack();
     }
 
@@ -362,6 +261,10 @@ public class PlayerManagerState : BaseManagerState<PlayerManagerState>
     public override void SwitchToWalkState()
     {
         SwitchState(walkState);
+    }
+    public void SendWeaponAttack(float vl)
+    {
+        playerNetworkSetup.SendWeaponAttack(vl);
     }
     public override void SwitchToRunState()
     {
@@ -389,22 +292,134 @@ public class PlayerManagerState : BaseManagerState<PlayerManagerState>
     {
         if (inputActions != null) inputActions.Disable();
     }
+    ////////////////////////////NETWORK FUNCTIONS////////////////////////////
+    public int GetNetworkAnimationState()
+    {
+        switch (currentState)
+        {
+            case PlayerStateIdle:
+                return 0; // Idle
+            case PlayerStateWalk:
+                return 1; // Walk
+            case PlayerStateRun:
+                return 2; // Run
+            case PlayerStateJump:
+                return 3; // Jump
+            default:
+                return -1; // Unknown state
+        }
+    }
+    private void ApplyNetworkAnimatorState(int stateIndex)
+    {
+        // Hàm này chỉ chạy trên các máy khách để nhại lại Animation của bạn
+        switch (stateIndex)
+        {
+            case 0: // Idle
+                animator.CrossFade("Idle", 0.25f, 1);
+                animator.CrossFade("Idle", 0.25f, 0);
+                break;
+            case 1: // Walk
+                animator.CrossFade("Walk", 0.25f, 0); // Chỉnh lại theo tên chuẩn trong HandelWalkAnimation() của bạn
+                break;
+            case 2: // Run
+                animator.CrossFade("Run", 0.15f, 1);
+                animator.CrossFade("Run", 0.15f, 0);
+                break;
+            case 4: // Death
+                animator.Play("Death");
+                break;
+        }
+    }
+    public void PlayNetworkReload()
+    {
+        weaponHolder.currentWeapon.WeaponReload();
+    }
+  
+    public float GetNetworkCameraPitch()
+    {
+        return cameraHolder.GetNetworkPitch();
+    }
+    public void ApplyNetworkCameraPitch(float pitch)
+    {
+        cameraHolder.SetNetworkPitch(pitch);
+    }
+    public void ApplyNetworkAnimation(int stateIndex, bool aim)
+    {
+        if (photonView != null && photonView.IsMine)
+            return;
+
+        ApplyNetworkAnimatorState(stateIndex);
+    }
+    private Coroutine networkRigCoroutine;
+
+    public void ApplyNetworkRig(int rigMode)
+    {
+        if (photonView != null && photonView.IsMine)
+            return;
+
+        float move = 1f;
+        float run = 0f;
+        float aim = 0f;
+
+        if (rigMode == 1)
+        {
+            move = 0f;
+            run = 1f;
+        }
+        else if (rigMode == 2)
+        {
+            move = 1f;
+            aim = 1f;
+        }
+
+        if (networkRigCoroutine != null)
+            StopCoroutine(networkRigCoroutine);
+
+        networkRigCoroutine = StartCoroutine(IENetworkRig(move, run, aim));
+    }
+    private IEnumerator IENetworkRig(float move, float run, float aim)
+    {
+        float startMove = rigMove.weight;
+        float startRun = rigRun.weight;
+        float startAim = rigAim.weight;
+
+        float time = 0f;
+        float duration = 0.1f;
+
+        while (time < duration)
+        {
+            rigMove.weight = Mathf.Lerp(startMove, move, time / duration);
+            rigRun.weight = Mathf.Lerp(startRun, run, time / duration);
+            rigAim.weight = Mathf.Lerp(startAim, aim, time / duration);
+
+            time += Time.deltaTime;
+            yield return null;
+        }
+
+        rigMove.weight = move;
+        rigRun.weight = run;
+        rigAim.weight = aim;
+    }
+    public int GetNetworkRigMode()
+    {
+        if (rigAim.weight > 0.5f) return 2;
+        if (rigRun.weight > 0.5f) return 1;
+        return 0;
+    }
+    public bool IsAiming()
+    {
+        return rigAim.weight > 0.1f;
+    }
 }
 public class PlayerStateIdle : BaseState<PlayerManagerState>
 {
     public override void EnterState(PlayerManagerState bms)
     {
-        if (bms.coherenceSync != null && !bms.coherenceSync.HasStateAuthority) return;
-
-        bms.playerNetworkSetting.netAnimState = 0; // Cập nhật mã trạng thái mạng thành 0 (Idle)
         bms.animator.CrossFade("Idle", 0.25f, 1);
         bms.animator.CrossFade("Idle", 0.25f, 0);
     }
     public override void UpdateState(PlayerManagerState bms)
     {
-        // TẤM KHIÊN CHẶN: Máy khác không được tự chuyển đổi state của tôi
-        if (bms.coherenceSync != null && !bms.coherenceSync.HasStateAuthority) return;
-
         if (bms.MoveInput != Vector2.zero) bms.SwitchToWalkState();
         if (bms.IsHoldSprint) bms.SwitchToRunState();
     }
@@ -415,15 +430,10 @@ public class PlayerStateWalk : BaseState<PlayerManagerState>
 {
     public override void EnterState(PlayerManagerState bms)
     {
-        if (bms.coherenceSync != null && !bms.coherenceSync.HasStateAuthority) return;
-
-        bms.playerNetworkSetting.netAnimState = 1; // Mã trạng thái mạng thành 1 (Walk)
         bms.HandelWalkAnimation();
     }
     public override void UpdateState(PlayerManagerState bms)
     {
-        if (bms.coherenceSync != null && !bms.coherenceSync.HasStateAuthority) return;
-
         if (bms.MoveInput == Vector2.zero) bms.SwitchToIdleState();
         if (bms.IsHoldSprint) bms.SwitchToRunState();
 
@@ -437,22 +447,16 @@ public class PlayerStateRun : BaseState<PlayerManagerState>
 {
     public override void EnterState(PlayerManagerState bms)
     {
-        if (bms.coherenceSync != null && !bms.coherenceSync.HasStateAuthority) return;
-
-        bms.playerNetworkSetting.netAnimState = 2; // Mã trạng thái mạng thành 2 (Run)
         bms.animator.CrossFade("Run", 0.15f, 1);
         bms.animator.CrossFade("Run", 0.15f, 0);
     }
     public override void UpdateState(PlayerManagerState bms)
     {
-        if (bms.coherenceSync != null && !bms.coherenceSync.HasStateAuthority) return;
-
         if (!(bms.MoveInput.y > 0f)) bms.SwitchToIdleState();
         bms.characterController.Move(bms.transform.forward * Time.deltaTime * bms.SpeedRun);
     }
     public override void ExitState(PlayerManagerState bms)
     {
-        if (bms.coherenceSync != null && !bms.coherenceSync.HasStateAuthority) return;
         bms.SetRigMove();
     }
 }

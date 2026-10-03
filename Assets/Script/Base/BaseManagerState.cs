@@ -1,6 +1,6 @@
 using UnityEngine;
-
-public abstract class BaseManagerState<T> : MonoBehaviour where T : BaseManagerState<T>
+using Photon.Pun;
+public abstract class BaseManagerState<T> : MonoBehaviourPun where T : BaseManagerState<T>
 {
     public Animator animator;
     public CharacterController characterController;
