@@ -1,4 +1,5 @@
 ﻿using Photon.Pun;
+using TMPro;
 using UnityEngine;
 
 public class PlayerNetworkSetup : MonoBehaviourPun, IPunObservable
@@ -9,7 +10,8 @@ public class PlayerNetworkSetup : MonoBehaviourPun, IPunObservable
     public WeaponHolder weaponHolder;
     public GameObject PlayerUI;
     public WeaponSway weaponSway;
-
+    public TextMeshProUGUI playerNameText;
+    public HealthManager healthManager;
     [SerializeField] private PlayerManagerState playerState;
 
     private int networkAnimState;
@@ -23,6 +25,14 @@ public class PlayerNetworkSetup : MonoBehaviourPun, IPunObservable
 
     private float networkCameraPitch;
     private float receivedCameraPitch;
+    private void Start()
+    {
+        if (photonView.InstantiationData != null)
+        {
+            string playerName = (string)photonView.InstantiationData[0];
+            playerNameText.text = playerName;
+        }
+    }
     private void Update()
     {
         if (!photonView.IsMine)
@@ -122,5 +132,23 @@ public class PlayerNetworkSetup : MonoBehaviourPun, IPunObservable
     private void RPC_SetWeapon(int index)
     {
         playerState.ChangeWeapon(index);
+    }
+    public void SendTakeDamage(int damage)
+    {
+        photonView.RPC(nameof(RPC_TakeDamage), RpcTarget.All, damage);
+    }
+    [PunRPC]
+    private void RPC_TakeDamage(int damage)
+    {
+        healthManager.TakeDameSync(damage);
+    }
+    public void SendReSpawn()
+    {
+        photonView.RPC(nameof(RPC_ReSpawn), RpcTarget.All);
+    }
+    [PunRPC]
+    private void RPC_ReSpawn()
+    {
+        healthManager.ReSpawn();
     }
 }

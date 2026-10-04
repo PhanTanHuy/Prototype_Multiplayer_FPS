@@ -6,23 +6,21 @@ public class PlayerLifeManager : LifeManager
    
     public override void ReSpawn()
     {
-        base.ReSpawn();
-        playerManagerState.characterController.enabled = true;
-        playerManagerState.enabled = true;
-        playerManagerState.ContinueMove();
+        base.ReSpawn(); //sync
+        transform.position = RoomManager.Instance.GetSpawnPoint(); // sync
+        if (!photonView.IsMine) return;
+        playerManagerState.PlayerLive();
     }
     public override void Die()
     {
-        base.Die();
-        //playerManagerState.PlayerDie();
-        //playerManagerState.animator.Play("Death");
-        //playerManagerState.enabled = false;
-        //playerManagerState.characterController.enabled = false;
-        //playerManagerState.StopMove();
-        Debug.Log("PLAYER DIEEEEEEEEEEEEEEEE");
+        base.Die(); // sync
+        if (!photonView.IsMine) return;
+        playerManagerState.PlayerDie(); 
+        Invoke(nameof(ReSpawn), 3f); 
     }
-    public override void ActiveFalse()
+    private void SendReSpawn()
     {
-        
+        healthManager.playerNetworkSetup.SendReSpawn();
     }
+
 }

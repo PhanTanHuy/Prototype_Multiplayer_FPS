@@ -58,7 +58,8 @@ public class WeaponHolder : MonoBehaviour
         i = Math.Sign(i);
         currentWeapon.transform.parent.gameObject.SetActive(false);
         currentWeaponIndex += i;
-        currentWeaponIndex = Mathf.Abs(currentWeaponIndex % weapons.Count);
+        if (currentWeaponIndex < 0) currentWeaponIndex = weapons.Count - 1;
+        if (currentWeaponIndex >= weapons.Count) currentWeaponIndex = 0;
         SetCurrentWeapon(weapons[currentWeaponIndex]);
     }
     private void SetCurrentWeapon(Weapon wp)
@@ -69,8 +70,12 @@ public class WeaponHolder : MonoBehaviour
         currentWeapon.transform.parent.localPosition = Vector3.zero;
         currentWeapon.transform.parent.localRotation = Quaternion.identity;
     }
-    public void ReleaseAllWeapon()
+    public void Die()
     {
-
+        currentWeapon.gameObject.SetActive(false);
+    }
+    public void Live()
+    {
+        currentWeapon.gameObject.SetActive(true);
     }
 }

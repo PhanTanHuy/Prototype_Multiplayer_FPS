@@ -20,9 +20,4 @@ public class EnemyLifeManager : LifeManager
         enemyManagerState.characterController.enabled = false;
         enemyManagerState.StopMove();
     }
-    public override void ActiveFalse()
-    {
-        base.ActiveFalse();
-        EnemyManager.instance.ReturnEnemy(this.gameObject);
-    }
 }

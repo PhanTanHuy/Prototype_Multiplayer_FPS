@@ -22,11 +22,16 @@ public class CameraHolder : MonoBehaviour
     private Vector2 mouseDeltaVelocity;
     private float aimStateSensitivity = 1f;
 
-
+    private void OnEnable()
+    {
+        if (inputActions == null)
+        {
+            inputActions = new InputSystemActions();
+        }
+        inputActions.Enable();
+    }
     private void Start()
     {
-            inputActions = new InputSystemActions();
-            inputActions.Enable();
             inputActions.Player.Look.performed += ctx => mouseDelta = ctx.ReadValue<Vector2>();
             inputActions.Player.Look.canceled += ctx => mouseDelta = Vector2.zero;
             defauleFieldOfView = Camera.main.fieldOfView;

@@ -4,7 +4,8 @@ using UnityEngine.Animations.Rigging;
 
 public class PlayerManagerState : BaseManagerState<PlayerManagerState>
 {
-    // Tham chiếu tới Coherence
+    private bool isDead;
+    public bool IsDead => isDead;
     private InputSystemActions inputActions;
     [Header("Physic Setting")]
     [SerializeField] private float speedWalk = 2f;
@@ -58,7 +59,12 @@ public class PlayerManagerState : BaseManagerState<PlayerManagerState>
         inputActions.Player.Move.performed += ctx =>
         {
             MoveInput = ctx.ReadValue<Vector2>();
-            if (!IsHoldSprint) HandelWalkAnimation();
+            if (!IsHoldSprint && currentState != jumpState) HandelWalkAnimation();
+        };
+        inputActions.Player.Jump.performed += ctx =>
+        {
+            if (CheckGrounded())
+                SwitchToJumpState();
         };
         inputActions.Player.Move.canceled += ctx => MoveInput = Vector2.zero;
 
@@ -78,6 +84,7 @@ public class PlayerManagerState : BaseManagerState<PlayerManagerState>
 
         inputActions.Player.Sprint.performed += ctx =>
         {
+            if (currentState == jumpState) return;
             SwitchToRunState();
             IsHoldSprint = true;
         };
@@ -113,12 +120,25 @@ public class PlayerManagerState : BaseManagerState<PlayerManagerState>
 
     protected override void Update()
     {
+        if (isDead) return;
         base.Update();
     }
     // Thêm hàm này vào bất kỳ đâu trong PlayerManagerState.cs
 
-   
 
+    public void Jump()
+    {
+        VerticalVelocity = 7f;
+        animator.CrossFade("Jumping", 0f);
+    }
+    protected override void HandleGravity()
+    {
+        base.HandleGravity();
+        if (IsFalling() && currentState != jumpState)
+        {
+            SwitchToJumpState();
+        }
+    }
     public void ChangeWeapon(int vl)
     {
         if (changeWp != null) return;
@@ -179,13 +199,26 @@ public class PlayerManagerState : BaseManagerState<PlayerManagerState>
 
     public void PlayerDie()
     {
-        weaponHolder.ReleaseAllWeapon();
-        rigMove.weight = 0f;
-        rigRun.weight = 0f;
-        rigAim.weight = 0f;
-        rigRotCameraReload.weight = 0f;
-        rigChangeWeapon.weight = 0f;
-        animator.Play("Death");
+        if (isDead) return;
+        characterController.enabled = false;
+        isDead = true;
+        cameraHolder.enabled = false;
+        inputActions.Disable();
+
+        weaponHolder.Die();
+    }
+    public void PlayerLive()
+    {
+        isDead = false;
+        characterController.enabled = true;
+        cameraHolder.enabled = true;
+
+        VerticalVelocity = 0f;
+        MoveInput = Vector2.zero;
+        IsHoldSprint = false;
+        weaponHolder.Live();
+        inputActions.Enable();
+        SwitchToIdleState();
     }
 
     private void ThrowWeapon()
@@ -295,37 +328,50 @@ public class PlayerManagerState : BaseManagerState<PlayerManagerState>
     ////////////////////////////NETWORK FUNCTIONS////////////////////////////
     public int GetNetworkAnimationState()
     {
+        if (isDead) return 5;
         switch (currentState)
         {
             case PlayerStateIdle:
-                return 0; // Idle
+                return 0;
+
             case PlayerStateWalk:
-                return 1; // Walk
+                return 1;
+
             case PlayerStateRun:
-                return 2; // Run
+                return 2;
+
             case PlayerStateJump:
-                return 3; // Jump
+                return VerticalVelocity > 0f ? 3 : 4;
+
             default:
-                return -1; // Unknown state
+                return -1;
         }
     }
     private void ApplyNetworkAnimatorState(int stateIndex)
     {
-        // Hàm này chỉ chạy trên các máy khách để nhại lại Animation của bạn
         switch (stateIndex)
         {
-            case 0: // Idle
-                animator.CrossFade("Idle", 0.25f, 1);
-                animator.CrossFade("Idle", 0.25f, 0);
+            case 0:
+                animator.CrossFade("Idle", 0.25f);
                 break;
-            case 1: // Walk
-                animator.CrossFade("Walk", 0.25f, 0); // Chỉnh lại theo tên chuẩn trong HandelWalkAnimation() của bạn
+
+            case 1:
+                animator.CrossFade("Walk", 0.25f);
                 break;
-            case 2: // Run
-                animator.CrossFade("Run", 0.15f, 1);
-                animator.CrossFade("Run", 0.15f, 0);
+
+            case 2:
+                animator.CrossFade("Run", 0.15f);
                 break;
-            case 4: // Death
+
+            case 3:
+                animator.CrossFade("Jumping", 0.1f);
+                break;
+
+            case 4:
+                animator.CrossFade("Falling", 0.1f);
+                break;
+
+            case 5:
                 animator.Play("Death");
                 break;
         }
@@ -462,13 +508,42 @@ public class PlayerStateRun : BaseState<PlayerManagerState>
 }
 public class PlayerStateJump : BaseState<PlayerManagerState>
 {
+    private bool hasLeftGround;
+
     public override void EnterState(PlayerManagerState bms)
     {
+        hasLeftGround = false;
+        bms.Jump();
     }
+
     public override void UpdateState(PlayerManagerState bms)
     {
+        if (!hasLeftGround)
+        {
+            if (!bms.CheckGrounded())
+                hasLeftGround = true;
 
+            return;
+        }
+
+        if (bms.VerticalVelocity <= 0f)
+
+        {
+            bms.animator.CrossFade("Falling", 0.1f);
+        }
+        Vector3 move = bms.transform.right * bms.MoveInput.x + bms.transform.forward * bms.MoveInput.y;
+        float speed = bms.IsHoldSprint ? bms.SpeedRun : bms.SpeedWalk;
+        bms.characterController.Move(move * Time.deltaTime * speed);
+        if (bms.CheckGrounded() && bms.VerticalVelocity < 0f)
+        {
+            Debug.Log("Landed from jump");
+            if (bms.MoveInput != Vector2.zero)
+                bms.SwitchToWalkState();
+            else
+                bms.SwitchToIdleState();
+        }
     }
+
     public override void ExitState(PlayerManagerState bms)
     {
     }

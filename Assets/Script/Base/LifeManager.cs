@@ -1,13 +1,14 @@
 using UnityEngine;
 using UnityEngine.AI;
-
-public abstract class LifeManager : MonoBehaviour
+using Photon.Pun;
+public abstract class LifeManager : MonoBehaviourPun
 {
     [SerializeField] protected HealthManager healthManager;
     [SerializeField] protected HitBox[] hitBoxes;
     protected virtual void Start()
     {
         healthManager.OnZeroHealth += Die;
+        healthManager.OnReSpawn += ReSpawn;
     }
     public virtual void FirstSpawn()
     {
@@ -18,17 +19,12 @@ public abstract class LifeManager : MonoBehaviour
     {
     
         foreach (HitBox hb in hitBoxes) hb.gameObject.SetActive(true);
-        gameObject.SetActive(true);
         healthManager.RecoverHealth();
     }
     public virtual void Die()
     {
-        foreach (HitBox hb in hitBoxes) hb.gameObject.SetActive(false);
-        Invoke("ActiveFalse", 5f);
+        foreach (HitBox hb in hitBoxes) hb.gameObject.SetActive(false); // sync
     }
-    public virtual void ActiveFalse()
-    {
-        gameObject.SetActive(false);
-    }
+   
 }
 

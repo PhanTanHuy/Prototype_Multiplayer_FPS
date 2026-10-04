@@ -6,6 +6,10 @@ public abstract class BaseManagerState<T> : MonoBehaviourPun where T : BaseManag
     public CharacterController characterController;
     protected BaseState<T> currentState;
     private float walkValueBlend;
+    [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private float groundCheckDistance = 0.1f;
+    public float VerticalVelocity { get; protected set; }
+
     public Vector2 MoveInput { get; protected set; }
 
     protected virtual void Update()
@@ -14,12 +18,39 @@ public abstract class BaseManagerState<T> : MonoBehaviourPun where T : BaseManag
         HandleGravity();
         AllStateLogic();
     }
-    private void HandleGravity()
+
+    protected virtual void HandleGravity()
     {
-        if (!characterController.isGrounded)
-        {
-            characterController.Move(9.8f * Vector3.down * Time.deltaTime);
-        }
+        if (CheckGrounded() && VerticalVelocity < 0f)
+            VerticalVelocity = -2f;
+
+        VerticalVelocity -= 9.8f * Time.deltaTime;
+        characterController.Move(Vector3.up * VerticalVelocity * Time.deltaTime);
+    }
+    protected bool IsFalling()
+    {
+        return VerticalVelocity < -0.1f && !CheckGrounded();
+    }
+    public bool CheckGrounded()
+    {
+        Vector3 center = characterController.transform.TransformPoint(characterController.center);
+
+        float bottom = characterController.height * 0.5f;
+
+        Vector3 checkPosition = center + Vector3.down * (bottom + 0.05f);
+
+        Vector3 halfExtents = new Vector3(
+            characterController.radius * 0.8f,
+            0.05f,
+            characterController.radius * 0.8f
+        );
+
+        return Physics.CheckBox(
+            checkPosition,
+            halfExtents,
+            Quaternion.identity,
+            groundLayer
+        );
     }
     public void SwitchState(BaseState<T> newState)
     {

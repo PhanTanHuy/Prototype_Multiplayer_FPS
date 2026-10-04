@@ -11,9 +11,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
     [SerializeField] private byte maxPlayers = 4;
     [SerializeField] private GameObject loadingUI;
 
-    [Header("Player")]
-    [SerializeField] private GameObject playerPrefab;
-    [SerializeField] private Transform spawnPoint;
+    public Transform[] spawnPoint;
 
     private void Awake()
     {
@@ -32,7 +30,10 @@ public class RoomManager : MonoBehaviourPunCallbacks
     {
         ConnectToPhoton();
     }
-
+    public Vector3 GetSpawnPoint()
+    {
+        return spawnPoint[Random.Range(0, spawnPoint.Length)].position;
+    }
     private void ConnectToPhoton()
     {
         if (PhotonNetwork.IsConnected)
@@ -122,34 +123,34 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
     private void SpawnPlayer()
     {
-        if (playerPrefab == null)
-        {
-            Debug.LogError("Player Prefab is not assigned!");
-            return;
-        }
-
         Vector3 position = Vector3.zero;
 
         if (spawnPoint != null)
         {
-            position = spawnPoint.position;
+            position = spawnPoint[Random.Range(0, spawnPoint.Length)].position;
         }
+        PhotonNetwork.NickName = MenuCustomPlayer.Instance.PlayerName;
+
+        object[] data = { MenuCustomPlayer.Instance.PlayerName };
 
         GameObject player = PhotonNetwork.Instantiate(
-            playerPrefab.name,
+            MenuCustomPlayer.Instance.nameResourcesPrefabSelected,
             position,
-            Quaternion.identity
+            Quaternion.identity,
+            0,
+            data
         );
+        player.GetComponent<PlayerNetworkSetup>().enabled = true;
+        player.GetComponent<PlayerNetworkSetup>().playerNameText.text = MenuCustomPlayer.Instance.PlayerName;
         player.GetComponent<PlayerNetworkSetup>().SetLocalPlayer();
         Debug.Log(
-            $"Spawned Player: {player.name}"
+            $"Spawned Player: {PhotonNetwork.NickName}"
         );
     }
 
     // =========================
     // DISCONNECT
     // =========================
-
     public override void OnDisconnected(
         DisconnectCause cause)
     {
