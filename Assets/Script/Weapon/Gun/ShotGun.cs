@@ -12,21 +12,15 @@ public class ShotGun : Gun
 
         BoltAction();
 
-        RaycastHit hit;
-        Vector3 camPos = camTransform.position + camTransform.forward * 0.3f;
-
         for (int i = 0; i < castPerShot; i++)
         {
             Vector3 shootDir = GetShotgunDirection(camTransform.forward, spreadAngle);
 
-            if (Physics.Raycast(camPos, shootDir, out hit, 300f))
+            if (Physics.Raycast(camTransform.position + camTransform.forward * 0.3f, shootDir, out RaycastHit hit, distanceRaycast))
             {
-                PoolObject.Instance.CreatBullet(firePosition.position, hit.point - firePosition.position, force, damage, rootParent);
+                OnHit(hit, shootDir);
             }
-            else
-            {
-                PoolObject.Instance.CreatBullet(firePosition.position, shootDir, force, damage, rootParent);
-            }
+            return true;
         }
 
         return true;

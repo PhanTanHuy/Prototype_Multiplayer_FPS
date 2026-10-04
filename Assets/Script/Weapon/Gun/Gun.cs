@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 public abstract class Gun : Weapon
 {
     [Header("Gun Power")]
-    [SerializeField] protected float force;
+    [SerializeField] protected float distanceRaycast = 800;
     [SerializeField] protected float rpm = 600;
     [SerializeField] protected int mag;
     [SerializeField] protected float recoilAmount = 2f;
@@ -124,5 +124,19 @@ public abstract class Gun : Weapon
             yield return null;
         }
         transform.localPosition = originLocalPosition;
+    }
+    public void OnHit(RaycastHit hit, Vector3 moveDir)
+    {
+        Vector3 pos = hit.point + hit.normal * 0.01f;
+        Quaternion rot = Quaternion.LookRotation(hit.normal);
+        if (hit.collider.TryGetComponent<HitBox>(out HitBox target))
+        {
+            target.TakeDame(damage, this.transform, pos, rot);
+            PlayerUI.instance.HitSignal();
+        }
+        else
+        {
+            PoolObject.Instance.CreatBulletHole(pos, rot);
+        }
     }
 }

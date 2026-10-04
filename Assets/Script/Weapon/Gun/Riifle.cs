@@ -8,12 +8,10 @@ public class Riifle : Gun
     {
         if(!base.Shoot(aimValue)) return false;
         this.BoltAction();
-        RaycastHit hitPointFormCamera;
-        if(Physics.Raycast(camTransform.position + camTransform.forward * 0.3f, camTransform.forward, out hitPointFormCamera, 1000f))
+        if (Physics.Raycast(camTransform.position + camTransform.forward * 0.3f, camTransform.forward, out RaycastHit hit, distanceRaycast))
         {
-            PoolObject.Instance.CreatBullet(firePosition.position, hitPointFormCamera.point - firePosition.position, force, damage, rootParent);
+            OnHit(hit, camTransform.forward);
         }
-        else PoolObject.Instance.CreatBullet(firePosition.position, firePosition.forward, force, damage, rootParent);
         return true;
     }
     public override void BoltAction()

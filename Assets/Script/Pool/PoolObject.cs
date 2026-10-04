@@ -64,10 +64,10 @@ public class PoolObject : MonoBehaviourPun
         StartCoroutine(IEReturnToPool<BombProjectile>(bombProjectilePool, bomb.gameObject, 7f));
     }
 
-    public void CreatBullet(Vector3 position, Vector3 direction, float speed, int d, Transform rootPlayer)
-    {
-        photonView.RPC(nameof(RPC_CreateBullet), RpcTarget.All, position, direction, speed, d);
-    }
+    //public void CreatBullet(Vector3 position, Vector3 direction, float speed, int d, Transform rootPlayer)
+    //{
+    //    photonView.RPC(nameof(RPC_CreateBullet), RpcTarget.All, position, direction, speed, d);
+    //}
 
     [PunRPC]
     private void RPC_CreateBullet(Vector3 position, Vector3 direction, float speed, int d)

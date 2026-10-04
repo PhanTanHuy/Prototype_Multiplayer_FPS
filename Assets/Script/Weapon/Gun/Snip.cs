@@ -15,20 +15,10 @@ public class Snip : Gun
         if (!base.Shoot(aimValue)) return false;
 
         BoltAction();
-
-        RaycastHit hit;
-        Vector3 camPos = camTransform.position + camTransform.forward * 0.3f;
-
-
-        if (Physics.Raycast(camPos, camTransform.forward, out hit, 3000f))
+        if (Physics.Raycast(camTransform.position + camTransform.forward * 0.3f, camTransform.forward, out RaycastHit hit, distanceRaycast))
         {
-            PoolObject.Instance.CreatBullet(firePosition.position, hit.point - firePosition.position, force, damage, rootParent);
+            OnHit(hit, camTransform.forward);
         }
-        else
-        {
-            PoolObject.Instance.CreatBullet(firePosition.position, firePosition.forward, force, damage, rootParent);
-        }
-
         return true;
     }
 
