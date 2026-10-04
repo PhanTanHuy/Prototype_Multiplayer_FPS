@@ -130,18 +130,13 @@ public class RoomManager : MonoBehaviourPunCallbacks
             position = spawnPoint[Random.Range(0, spawnPoint.Length)].position;
         }
         PhotonNetwork.NickName = MenuCustomPlayer.Instance.PlayerName;
-
-        object[] data = { MenuCustomPlayer.Instance.PlayerName };
-
         GameObject player = PhotonNetwork.Instantiate(
             MenuCustomPlayer.Instance.nameResourcesPrefabSelected,
             position,
             Quaternion.identity,
-            0,
-            data
+            0
         );
         player.GetComponent<PlayerNetworkSetup>().enabled = true;
-        player.GetComponent<PlayerNetworkSetup>().playerNameText.text = MenuCustomPlayer.Instance.PlayerName;
         player.GetComponent<PlayerNetworkSetup>().SetLocalPlayer();
         Debug.Log(
             $"Spawned Player: {PhotonNetwork.NickName}"

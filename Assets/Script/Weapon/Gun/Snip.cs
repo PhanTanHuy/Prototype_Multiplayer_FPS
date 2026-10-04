@@ -4,6 +4,12 @@ using System.Collections.Generic;
 
 public class Snip : Gun
 {
+    public GameObject CameraSnip;
+    public override void SetLocalWeapon(bool isMine)
+    {
+        if (!isMine) return;
+        CameraSnip.SetActive(true);
+    }
     public override bool Shoot(float aimValue)
     {
         if (!base.Shoot(aimValue)) return false;

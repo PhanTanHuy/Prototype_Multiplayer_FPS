@@ -17,6 +17,7 @@ public class WeaponHolder : MonoBehaviour
             weapon.playerHolder = playerHolder;
             weapon.rootParent = transform.root;
             weapon.transform.parent.gameObject.SetActive(false);
+            weapon.SetLocalWeapon(playerHolder.photonView.IsMine);
         }
         ChangeWeaponLocal(0);
     }
@@ -46,6 +47,7 @@ public class WeaponHolder : MonoBehaviour
         wp.transform.parent.localPosition = Vector3.zero;
         wp.transform.parent.localScale = Vector3.one;
         currentWeaponIndex = weapons.Count - 1;
+        wp.SetLocalWeapon(playerHolder.photonView.IsMine);
         SetCurrentWeapon(wp);
     }
     public void ChangeWeaponNetwork(int i)
@@ -78,4 +80,5 @@ public class WeaponHolder : MonoBehaviour
     {
         currentWeapon.gameObject.SetActive(true);
     }
+    
 }

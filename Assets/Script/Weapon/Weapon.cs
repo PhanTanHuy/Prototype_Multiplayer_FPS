@@ -21,6 +21,7 @@ public abstract class Weapon : PickupAbleItem
     public abstract void WeaponReloadDone();
     public virtual void PlayReloadVisuals() { }
     public virtual void PlayAttackVisuals(float aimValue) { }
+    public virtual void SetLocalWeapon(bool isMine) { }
 
 
 }

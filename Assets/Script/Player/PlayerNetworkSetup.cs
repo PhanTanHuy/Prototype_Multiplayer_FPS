@@ -27,11 +27,11 @@ public class PlayerNetworkSetup : MonoBehaviourPun, IPunObservable
     private float receivedCameraPitch;
     private void Start()
     {
-        if (photonView.InstantiationData != null)
+        if (photonView.IsMine)
         {
-            string playerName = (string)photonView.InstantiationData[0];
-            playerNameText.text = playerName;
+            playerNameText.transform.parent.gameObject.SetActive(false);
         }
+        playerNameText.text = photonView.Owner.NickName;
     }
     private void Update()
     {
