@@ -151,4 +151,22 @@ public class PlayerNetworkSetup : MonoBehaviourPun, IPunObservable
     {
         healthManager.ReSpawn();
     }
+    public void SendActivePlayer()
+    {
+        photonView.RPC(nameof(RPC_ActivePlayer), RpcTarget.All);
+    }
+    [PunRPC]
+    private void RPC_ActivePlayer()
+    {
+        playerManagerState.ActivePlayer();
+    }
+    public void SendDisactivePlayer()
+    {
+        photonView.RPC(nameof(RPC_DisactivePlayer), RpcTarget.All);
+    }
+    [PunRPC]
+    private void RPC_DisactivePlayer()
+    {
+        playerManagerState.DisactivePlayer();
+    }
 }

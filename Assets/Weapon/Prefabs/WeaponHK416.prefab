@@ -377,6 +377,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4370879367174555656}
     - target: {fileID: 588631890387775857, guid: 77426db18e9d00c4f91c492985ce7ab0, type: 3}
+      propertyPath: distanceRaycast
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 588631890387775857, guid: 77426db18e9d00c4f91c492985ce7ab0, type: 3}
       propertyPath: shellEjectPosition
       value: 
       objectReference: {fileID: 2392061881747615480}

@@ -4,12 +4,13 @@ using UnityEngine;
 public class CameraHolder : MonoBehaviour
 {
     [Header("Network Setting")]
-
+    public static CameraHolder instance;
     private Coroutine recoil;
     [SerializeField] private float mouseSensitivity = 5f;
     [SerializeField] private float maxLookUpAngle = 80f;
     [SerializeField] private Transform rootPlayer;
     [SerializeField] private CameraShake cameraShake;
+    public Camera cameramain;
     private float xRotation = 0f;
     private Vector2 mouseDelta;
     private InputSystemActions inputActions;
@@ -21,20 +22,21 @@ public class CameraHolder : MonoBehaviour
     private Vector2 currentMouseDelta;
     private Vector2 mouseDeltaVelocity;
     private float aimStateSensitivity = 1f;
-
+    private void Awake()
+    {
+        inputActions = new InputSystemActions();
+        instance = this;
+    }
     private void OnEnable()
     {
-        if (inputActions == null)
-        {
-            inputActions = new InputSystemActions();
-        }
+       
         inputActions.Enable();
     }
     private void Start()
     {
             inputActions.Player.Look.performed += ctx => mouseDelta = ctx.ReadValue<Vector2>();
             inputActions.Player.Look.canceled += ctx => mouseDelta = Vector2.zero;
-            defauleFieldOfView = Camera.main.fieldOfView;
+            defauleFieldOfView = cameramain.fieldOfView;
     }
 
     private void Update()
@@ -91,7 +93,7 @@ public class CameraHolder : MonoBehaviour
 
     IEnumerator IESetView(float target)
     {
-        Camera cam = Camera.main;
+        Camera cam = cameramain;
         float speed = 50f;
 
         while (!Mathf.Approximately(cam.fieldOfView, target))

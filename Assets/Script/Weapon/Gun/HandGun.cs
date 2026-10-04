@@ -30,7 +30,6 @@ public class HandGun : Gun
         {
             while (timeBoltAction < timeDoneAction / 2f)
             {
-                Debug.Log("a");
                 bolt.localPosition = Vector3.Lerp(localOriginBoltPosition, localEndBoltPosition, timeBoltAction / (timeDoneAction / 2f));
                 timeBoltAction += Time.deltaTime;
                 yield return null;

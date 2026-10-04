@@ -20,9 +20,7 @@ public class ShotGun : Gun
             {
                 OnHit(hit, shootDir);
             }
-            return true;
         }
-
         return true;
     }
 

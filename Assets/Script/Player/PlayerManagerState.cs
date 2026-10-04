@@ -204,8 +204,19 @@ public class PlayerManagerState : BaseManagerState<PlayerManagerState>
         isDead = true;
         cameraHolder.enabled = false;
         inputActions.Disable();
+        //
+        playerNetworkSetup.SendDisactivePlayer();
 
+    }
+    public void DisactivePlayer()
+    {
         weaponHolder.Die();
+        transform.GetChild(0).gameObject.SetActive(false);
+    }
+    public void ActivePlayer()
+    {
+        weaponHolder.Live();
+        transform.GetChild(0).gameObject.SetActive(true);
     }
     public void PlayerLive()
     {
@@ -216,9 +227,13 @@ public class PlayerManagerState : BaseManagerState<PlayerManagerState>
         VerticalVelocity = 0f;
         MoveInput = Vector2.zero;
         IsHoldSprint = false;
-        weaponHolder.Live();
+        //
+        playerNetworkSetup.SendActivePlayer();
+        //
         inputActions.Enable();
         SwitchToIdleState();
+        //
+
     }
 
     private void ThrowWeapon()

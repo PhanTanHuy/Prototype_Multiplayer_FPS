@@ -2,19 +2,15 @@ using UnityEngine;
 
 public class NameBillboard : MonoBehaviour
 {
-    private Camera targetCamera;
 
-    public void SetCamera(Camera camera)
-    {
-        targetCamera = camera;
-    }
 
     private void LateUpdate()
     {
-        if (targetCamera == null)
+        if (CameraHolder.instance == null)
             return;
 
-        transform.LookAt(targetCamera.transform);
-        transform.Rotate(0f, 180f, 0f);
+        Vector3 direction = transform.position - CameraHolder.instance.cameramain.transform.position;
+
+        transform.rotation = Quaternion.LookRotation(direction);
     }
 }

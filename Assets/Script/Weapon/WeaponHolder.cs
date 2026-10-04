@@ -19,7 +19,7 @@ public class WeaponHolder : MonoBehaviour
             weapon.transform.parent.gameObject.SetActive(false);
             weapon.SetLocalWeapon(playerHolder.photonView.IsMine);
         }
-        ChangeWeaponLocal(0);
+        SetCurrentWeapon(weapons[0]);
     }
     // Update is called once per frame
     void Update()
@@ -74,11 +74,11 @@ public class WeaponHolder : MonoBehaviour
     }
     public void Die()
     {
-        currentWeapon.gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
     public void Live()
     {
-        currentWeapon.gameObject.SetActive(true);
+        gameObject.SetActive(true);
     }
     
 }

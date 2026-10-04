@@ -25763,7 +25763,7 @@ MonoBehaviour:
   playerHolder: {fileID: 0}
   aimSentivity: 8
   rootParent: {fileID: 0}
-  force: 900
+  distanceRaycast: 2000
   rpm: 50
   mag: 30
   recoilAmount: -5
