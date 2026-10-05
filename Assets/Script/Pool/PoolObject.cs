@@ -140,12 +140,6 @@ public class PoolObject : MonoBehaviourPun
 
     public void CreatmuzzleFlashSmoke(Vector3 position, Quaternion rotation)
     {
-        photonView.RPC(nameof(RPC_CreateMuzzleFlashSmoke), RpcTarget.All, position, rotation);
-    }
-
-    [PunRPC]
-    private void RPC_CreateMuzzleFlashSmoke(Vector3 position, Quaternion rotation)
-    {
         if (muzzleFlashSmokePool.Count == 0) return;
 
         ParticleSystem ps = muzzleFlashSmokePool.Dequeue();
@@ -153,10 +147,8 @@ public class PoolObject : MonoBehaviourPun
         ps.gameObject.transform.position = position;
         ps.gameObject.transform.rotation = rotation;
         ps.Play();
-
         StartCoroutine(IEReturnToPool<ParticleSystem>(muzzleFlashSmokePool, ps.gameObject, 1f));
     }
-
     private IEnumerator IEReturnToPool<T>(Queue<T> q, GameObject obj, float time)
     {
         yield return new WaitForSeconds(time);

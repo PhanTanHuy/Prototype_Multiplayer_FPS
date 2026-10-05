@@ -13,7 +13,6 @@ public class HealthManager : MonoBehaviourPun
     }
     public void ReSpawn()
     {
-        if (photonView.IsMine) PlayerUI.instance.TurnOffWattingImage();
         OnReSpawn?.Invoke();
     }
     public void RecoverHealth()
@@ -29,7 +28,6 @@ public class HealthManager : MonoBehaviourPun
         {
             currentHealth = 0;
             OnZeroHealth?.Invoke();
-            if (photonView.IsMine) PlayerUI.instance.TurnOnWattingImage();
         }
     }
 }

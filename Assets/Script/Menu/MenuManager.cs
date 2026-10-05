@@ -22,6 +22,7 @@ public class MenuManager : MonoBehaviourPunCallbacks
     [Header("Room List")]
     [SerializeField] private Transform roomListContent;
     [SerializeField] private RoomItem roomItemPrefab;
+    private readonly Dictionary<string, RoomInfo> cachedRooms = new();
 
     // =========================
     // ROOM SETTINGS
@@ -35,8 +36,8 @@ public class MenuManager : MonoBehaviourPunCallbacks
 
     private readonly int[] maxPlayers =
     {
-        4,
         8,
+        4,
     };
 
     private readonly string[] maps =
@@ -60,6 +61,7 @@ public class MenuManager : MonoBehaviourPunCallbacks
     {
         Instance = this;
         wattingImage.SetActive(true);
+        Cursor.visible = true;
         PhotonNetwork.AutomaticallySyncScene = true;
     }
 
@@ -279,27 +281,49 @@ public class MenuManager : MonoBehaviourPunCallbacks
     // ROOM LIST
     // =========================================================
 
-    public override void OnRoomListUpdate(
-        List<RoomInfo> roomList)
+    public override void OnRoomListUpdate(List<RoomInfo> roomList)
     {
-        Debug.Log(
-            "Room List Updated: " +
-            roomList.Count
-        );
+        Debug.Log("Room List Updated: " + roomList.Count);
 
-        ClearRoomList();
-        int roomCount = 0;
         foreach (RoomInfo room in roomList)
         {
             if (room.RemovedFromList)
+            {
+                cachedRooms.Remove(room.Name);
+            }
+            else
+            {
+                cachedRooms[room.Name] = room;
+            }
+        }
+
+        RefreshRoomList();
+    }
+    public void RefreshRoomList()
+    {
+        ClearRoomList();
+
+        int roomCount = 0;
+
+        foreach (RoomInfo room in cachedRooms.Values)
+        {
+            if (room == null)
                 continue;
 
             CreateRoomItem(room);
             roomCount++;
         }
-        roomListContent.GetChild(0).gameObject.SetActive(roomCount == 0);
-    }
 
+        if (roomListContent.childCount > 0)
+        {
+            roomListContent
+                .GetChild(0)
+                .gameObject
+                .SetActive(roomCount == 0);
+        }
+
+        Debug.Log($"Refresh Room List: {roomCount} rooms");
+    }
     private void CreateRoomItem(RoomInfo room)
     {
         RoomItem item =

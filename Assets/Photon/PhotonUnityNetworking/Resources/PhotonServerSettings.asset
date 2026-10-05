@@ -56,6 +56,7 @@ MonoBehaviour:
   - RPC_DisactivePlayer
   - RPC_PlayAttackSFX
   - RPC_PlayWeaponAnimatorClip
+  - RPC_ShowPlayerJoined
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 0

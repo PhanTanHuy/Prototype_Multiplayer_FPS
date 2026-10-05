@@ -8,7 +8,6 @@ public class RoomItem : MonoBehaviour
     [SerializeField] private TMP_Text roomNameText;
     [SerializeField] private TMP_Text playersText;
     [SerializeField] private TMP_Text modeText;
-    [SerializeField] private TMP_Text mapText;
 
     private string roomName;
 
@@ -36,22 +35,6 @@ public class RoomItem : MonoBehaviour
         else
         {
             modeText.text = "-";
-        }
-
-        // ----------------------------
-        // MAP
-        // ----------------------------
-
-        if (room.CustomProperties.TryGetValue(
-                "Map",
-                out object map))
-        {
-            mapText.text =
-                map.ToString();
-        }
-        else
-        {
-            mapText.text = "-";
         }
     }
 

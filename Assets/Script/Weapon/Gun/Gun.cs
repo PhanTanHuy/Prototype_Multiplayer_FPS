@@ -27,6 +27,7 @@ public abstract class Gun : Weapon
     protected float timePerRecoil;
     protected Vector3 localOriginBoltPosition, localEndBoltPosition;
     protected Transform camTransform;
+    protected LayerMask hitBoxLayer;
     public virtual void Start()
     {
         originLocalPosition = transform.localPosition;
@@ -36,6 +37,7 @@ public abstract class Gun : Weapon
         localOriginBoltPosition = bolt.localPosition;
         localEndBoltPosition = bolt.localPosition + new Vector3(0f, 0f, offsetBoltZ);
         camTransform = CameraHolder.instance.cameramain.transform;
+        hitBoxLayer = LayerMask.GetMask("HitBox", "StaticMap");
     }
     public override void WeaponAttack(float aimValue)
     {

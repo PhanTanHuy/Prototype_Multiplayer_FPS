@@ -10,7 +10,7 @@ public class HandGun : Gun
     {
         if (!base.Shoot(aimValue)) return false;
         this.BoltAction();
-        if (Physics.Raycast(camTransform.position + camTransform.forward * 0.3f, camTransform.forward, out RaycastHit hit, distanceRaycast))
+        if (Physics.Raycast(camTransform.position + camTransform.forward * 0.3f, camTransform.forward, out RaycastHit hit, distanceRaycast, hitBoxLayer))
         {
             OnHit(hit, camTransform.forward);
         }

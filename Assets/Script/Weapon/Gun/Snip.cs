@@ -15,7 +15,7 @@ public class Snip : Gun
         if (!base.Shoot(aimValue)) return false;
 
         BoltAction();
-        if (Physics.Raycast(camTransform.position + camTransform.forward * 0.3f, camTransform.forward, out RaycastHit hit, distanceRaycast))
+        if (Physics.Raycast(camTransform.position + camTransform.forward * 0.3f, camTransform.forward, out RaycastHit hit, distanceRaycast, hitBoxLayer))
         {
             OnHit(hit, camTransform.forward);
         }

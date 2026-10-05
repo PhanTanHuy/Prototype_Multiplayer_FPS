@@ -9,13 +9,15 @@ public class PlayerLifeManager : LifeManager
         base.ReSpawn(); //sync
         transform.position = RoomManager.Instance.GetSpawnPoint(); // sync
         if (!photonView.IsMine) return;
+        PlayerUI.instance.TurnOffWattingImage();
         playerManagerState.PlayerLive();
     }
     public override void Die()
     {
         base.Die(); // sync
         if (!photonView.IsMine) return;
-        playerManagerState.PlayerDie(); 
+        playerManagerState.PlayerDie();
+        PlayerUI.instance.TurnOnWattingImage();
         Invoke(nameof(ReSpawn), 3f); 
     }
     private void SendReSpawn()

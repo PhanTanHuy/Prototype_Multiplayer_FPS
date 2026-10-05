@@ -1,27 +1,108 @@
 ﻿using Photon.Pun;
 using Photon.Realtime;
-using ExitGames.Client.Photon;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
+using TMPro;
 using UnityEngine;
+using System.Collections;
 
 public class RoomManager : MonoBehaviourPunCallbacks
 {
     public static RoomManager Instance;
 
+    [Header("Player Join Notification")]
+    [SerializeField] private TMP_Text playerJoinText;
+    [SerializeField] private float messageDuration = 5f;
+
+    [Header("Spawn")]
     [SerializeField] private Transform[] spawnPoint;
+
+    private bool hasSpawned;
+    private Coroutine hideMessageCoroutine;
 
     private void Awake()
     {
         Instance = this;
+
+        if (playerJoinText != null)
+            playerJoinText.gameObject.SetActive(false);
+    }
+
+    private void Start()
+    {
+        TrySpawnPlayer();
     }
 
     public override void OnJoinedRoom()
     {
+        Debug.Log("RoomManager: OnJoinedRoom");
+
+        TrySpawnPlayer();
+    }
+
+    // Được gọi trên các player ĐÃ ở trong room
+    public override void OnPlayerEnteredRoom(Player newPlayer)
+    {
+        Debug.Log($"Player joined: {newPlayer.NickName}");
+
+        photonView.RPC(
+            nameof(RPC_ShowPlayerJoined),
+            RpcTarget.All,
+            newPlayer.NickName
+        );
+    }
+
+    [PunRPC]
+    private void RPC_ShowPlayerJoined(string playerName)
+    {
+        ShowPlayerJoinedMessage(playerName);
+    }
+
+    private void ShowPlayerJoinedMessage(string playerName)
+    {
+        if (playerJoinText == null)
+            return;
+
+        playerJoinText.text = $"{playerName} joined the game!";
+        playerJoinText.gameObject.SetActive(true);
+
+        if (hideMessageCoroutine != null)
+            StopCoroutine(hideMessageCoroutine);
+
+        hideMessageCoroutine = StartCoroutine(HideJoinMessage());
+    }
+
+    private IEnumerator HideJoinMessage()
+    {
+        yield return new WaitForSeconds(messageDuration);
+
+        playerJoinText.gameObject.SetActive(false);
+    }
+
+    // =========================
+    // SPAWN
+    // =========================
+
+    private void TrySpawnPlayer()
+    {
+        if (hasSpawned)
+            return;
+
+        if (!PhotonNetwork.InRoom)
+        {
+            Debug.Log("Chưa vào Room, chờ OnJoinedRoom...");
+            return;
+        }
+
         SpawnPlayer();
     }
 
-
     private void SpawnPlayer()
     {
+        if (hasSpawned)
+            return;
+
+        hasSpawned = true;
+
         Hashtable properties =
             PhotonNetwork.LocalPlayer.CustomProperties;
 
@@ -35,7 +116,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
         if (string.IsNullOrEmpty(character))
         {
             Debug.LogError("Character không tồn tại!");
-            MenuInGame.Instance.LeaveRoom();
+            hasSpawned = false;
             return;
         }
 
@@ -47,9 +128,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
             Quaternion.identity
         );
 
-        player
-            .GetComponent<PlayerNetworkSetup>()
-            .SetLocalPlayer();
+        player.GetComponent<PlayerNetworkSetup>().SetLocalPlayer();
 
         Debug.Log(
             $"Player spawned | Character: {character} | Position: {spawnPosition}"

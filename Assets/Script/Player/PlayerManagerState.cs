@@ -68,20 +68,6 @@ public class PlayerManagerState : BaseManagerState<PlayerManagerState>
         };
         inputActions.Player.Move.canceled += ctx => MoveInput = Vector2.zero;
 
-        inputActions.Player.Escape.performed += ctx =>
-        {
-            if (Cursor.lockState == CursorLockMode.Locked)
-            {
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
-            }
-            else
-            {
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
-            }
-        };
-
         inputActions.Player.Sprint.performed += ctx =>
         {
             if (currentState == jumpState) return;
@@ -125,7 +111,17 @@ public class PlayerManagerState : BaseManagerState<PlayerManagerState>
     }
     // Thêm hàm này vào bất kỳ đâu trong PlayerManagerState.cs
 
-
+    public void StopPlayer(bool stop)
+    {
+        if (!stop)
+        {
+            inputActions.Disable();
+        }
+        else
+        {
+            inputActions.Enable();
+        }
+    }
     public void Jump()
     {
         VerticalVelocity = 7f;

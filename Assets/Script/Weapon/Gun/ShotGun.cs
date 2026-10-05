@@ -16,7 +16,7 @@ public class ShotGun : Gun
         {
             Vector3 shootDir = GetShotgunDirection(camTransform.forward, spreadAngle);
 
-            if (Physics.Raycast(camTransform.position + camTransform.forward * 0.3f, shootDir, out RaycastHit hit, distanceRaycast))
+            if (Physics.Raycast(camTransform.position + camTransform.forward * 0.3f, shootDir, out RaycastHit hit, distanceRaycast, hitBoxLayer))
             {
                 OnHit(hit, shootDir);
             }

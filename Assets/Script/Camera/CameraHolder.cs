@@ -22,14 +22,13 @@ public class CameraHolder : MonoBehaviour
     private Vector2 currentMouseDelta;
     private Vector2 mouseDeltaVelocity;
     private float aimStateSensitivity = 1f;
-    private void Awake()
-    {
-        inputActions = new InputSystemActions();
-        instance = this;
-    }
     private void OnEnable()
     {
-       
+        if (inputActions == null)
+        {
+            inputActions = new InputSystemActions();
+            instance = this;
+        }
         inputActions.Enable();
     }
     private void Start()
@@ -53,7 +52,12 @@ public class CameraHolder : MonoBehaviour
     {
         aimStateSensitivity = 1f;
     }
-
+    public void StopPlayer(bool stop)
+    {
+        if (!stop) inputActions.Disable();
+        else inputActions.Enable();
+        rootPlayer.GetComponent<PlayerManagerState>().StopPlayer(stop);
+    }
     private void HandleCameraRotation()
     {
         Vector2 rawMouseDelta = inputActions.Player.Look.ReadValue<Vector2>();
@@ -142,7 +146,7 @@ public class CameraHolder : MonoBehaviour
 
     private void OnDisable()
     {
-        if (inputActions != null) inputActions.Disable();
+        inputActions.Disable();
     }
     /////////NETWORK FUNCTION
     public float GetNetworkPitch()
@@ -153,5 +157,14 @@ public class CameraHolder : MonoBehaviour
     {
         xRotation = pitch;
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+    }
+
+    public void SetMouseSensitivity(float sensitivity)
+    {
+        mouseSensitivity = Mathf.Clamp(sensitivity, 0.1f, 20f);
+    }
+    public float GetMouseSensitivity()
+    {
+        return mouseSensitivity;
     }
 }

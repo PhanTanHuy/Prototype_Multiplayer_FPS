@@ -97,9 +97,6 @@ public class PlayerNetworkSetup : MonoBehaviourPun, IPunObservable
 
     public void SendWeaponAttack(float aimValue)
     {
-        if (!photonView.IsMine)
-            return;
-
         photonView.RPC(nameof(RPC_WeaponAttack), RpcTarget.Others, aimValue);
     }
 
