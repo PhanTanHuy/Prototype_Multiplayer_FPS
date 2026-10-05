@@ -1,4 +1,4 @@
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 
 public class MenuCustomPlayer : MonoBehaviour
@@ -19,15 +19,59 @@ public class MenuCustomPlayer : MonoBehaviour
 
     private int currentPrefabIndex = 0;
 
+    // PlayerPrefs keys
+    private const string PLAYER_NAME_KEY = "PlayerName";
+    private const string PLAYER_SKIN_KEY = "PlayerSkinIndex";
+
     private void Awake()
     {
-            Instance = this;
+        Instance = this;
     }
 
     private void Start()
     {
+        LoadPlayerData();
+    }
+
+    private void LoadPlayerData()
+    {
+        // =========================
+        // LOAD PLAYER NAME
+        // =========================
+
+        PlayerName = PlayerPrefs.GetString(
+            PLAYER_NAME_KEY,
+            ""
+        );
+
+        playerNameInputField.text = PlayerName;
+
+
+        // =========================
+        // LOAD SKIN INDEX
+        // =========================
+
+        currentPrefabIndex = PlayerPrefs.GetInt(
+            PLAYER_SKIN_KEY,
+            0
+        );
+
+        // Đảm bảo index không bị lỗi
         if (clonePrefabs.Length > 0)
         {
+            currentPrefabIndex = Mathf.Clamp(
+                currentPrefabIndex,
+                0,
+                clonePrefabs.Length - 1
+            );
+
+            // Tắt toàn bộ prefab trước
+            for (int i = 0; i < clonePrefabs.Length; i++)
+            {
+                clonePrefabs[i].SetActive(false);
+            }
+
+            // Chọn skin đã lưu
             nameResourcesPrefabSelected =
                 clonePrefabs[currentPrefabIndex].name;
 
@@ -56,9 +100,20 @@ public class MenuCustomPlayer : MonoBehaviour
         clonePrefabs[currentPrefabIndex].SetActive(true);
     }
 
-    public void UpdatePlayerName()
+    private void OnDisable()
     {
+        PlayerPrefs.SetInt(
+            PLAYER_SKIN_KEY,
+            currentPrefabIndex
+        );
         PlayerName = playerNameInputField.text;
+
+        // Lưu tên
+        PlayerPrefs.SetString(
+            PLAYER_NAME_KEY,
+            PlayerName
+        );
+        PlayerPrefs.Save();
     }
 
     public string GetPlayerName()

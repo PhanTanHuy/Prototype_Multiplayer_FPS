@@ -1,26 +1,31 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Shell : MonoBehaviour
 {
     [Header("Force")]
-    [SerializeField] float ejectForce = 2.5f;
-    [SerializeField] float upForce = 1.2f;
-    [SerializeField] float gravity = 9.8f;
+    [SerializeField] private float ejectForce = 2.5f;
+    [SerializeField] private float upForce = 1.2f;
+    [SerializeField] private float gravity = 9.8f;
+
+    [Header("Collision")]
+    [SerializeField] private LayerMask staticMapLayer;
+    [SerializeField] private float collisionRadius = 0.02f;
 
     [Header("Rotation")]
-    [SerializeField] Vector3 spinSpeed = new Vector3(600, 300, 400);
+    [SerializeField] private Vector3 spinSpeed = new Vector3(600, 300, 400);
 
     [Header("Life")]
-    [SerializeField] float lifeTime = 5f;
+    [SerializeField] private float lifeTime = 5f;
 
-    Vector3 velocity;
-    float timer;
-    bool stopped;
+    private Vector3 velocity;
+    private float timer;
+    private bool stopped;
 
-    void OnEnable()
+    private void OnEnable()
     {
         timer = 0f;
         stopped = false;
+        velocity = Vector3.zero;
     }
 
     public void SetShell(Vector3 direction)
@@ -30,31 +35,69 @@ public class Shell : MonoBehaviour
             Vector3.up * upForce;
 
         spinSpeed = Random.insideUnitSphere * 600f;
+
         transform.rotation =
-        Quaternion.LookRotation(direction) *
-        Quaternion.Euler(90f, 0f, 0f);
+            Quaternion.LookRotation(direction) *
+            Quaternion.Euler(90f, 0f, 0f);
     }
 
-    void Update()
+    private void Update()
     {
-        if (stopped) return;
+        if (stopped)
+            return;
 
-        velocity.y -= gravity * Time.deltaTime;
+        float deltaTime = Time.deltaTime;
 
-        transform.position += velocity * Time.deltaTime;
+        // Gravity
+        velocity.y -= gravity * deltaTime;
 
-        transform.Rotate(spinSpeed * Time.deltaTime, Space.Self);
+        Vector3 movement = velocity * deltaTime;
 
-        if (transform.localPosition.y <= 0.02f)
+        // Kiểm tra collision trước khi di chuyển
+        float distance = movement.magnitude;
+
+        if (distance > 0f)
         {
-            stopped = true;
-            velocity = Vector3.zero;
+            if (Physics.SphereCast(
+                transform.position,
+                collisionRadius,
+                movement.normalized,
+                out RaycastHit hit,
+                distance,
+                staticMapLayer,
+                QueryTriggerInteraction.Ignore))
+            {
+                // Đặt shell sát mặt đất/tường
+                transform.position =
+                    hit.point + hit.normal * collisionRadius;
+
+                StopShell();
+
+                return;
+            }
         }
 
-        timer += Time.deltaTime;
+        // Di chuyển
+        transform.position += movement;
+
+        // Xoay
+        transform.Rotate(
+            spinSpeed * deltaTime,
+            Space.Self
+        );
+
+        // Lifetime
+        timer += deltaTime;
+
         if (timer >= lifeTime)
         {
             gameObject.SetActive(false);
         }
+    }
+
+    private void StopShell()
+    {
+        stopped = true;
+        velocity = Vector3.zero;
     }
 }

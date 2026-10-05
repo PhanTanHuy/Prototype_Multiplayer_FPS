@@ -9,6 +9,7 @@ public abstract class LifeManager : MonoBehaviourPun
     {
         healthManager.OnZeroHealth += Die;
         healthManager.OnReSpawn += ReSpawn;
+        GetComponent<PlayerNetworkSetup>().SetName();
     }
     public virtual void FirstSpawn()
     {

@@ -38,8 +38,7 @@ public class PlayerNetworkSetup : MonoBehaviourPun, IPunObservable
         {
             playerNameText.transform.parent.gameObject.SetActive(false);
         }
-        playerNameText.text = photonView.Owner.NickName;
-        string na = playerNameText.text;
+        string na = PhotonNetwork.NickName;
         photonView.RPC(nameof(RPC_ShowPlayerJoined), RpcTarget.Others, na);
     }
     private void Update()
@@ -52,6 +51,10 @@ public class PlayerNetworkSetup : MonoBehaviourPun, IPunObservable
         networkRigMode = playerState.GetNetworkRigMode();
         networkCameraPitch = playerState.GetNetworkCameraPitch();
     }
+    public void SetName()
+    {
+        playerNameText.text = photonView.Owner.NickName;
+    }
     public void SetLocalPlayer()
     {
         playerCamera.SetActive(true);
@@ -60,6 +63,7 @@ public class PlayerNetworkSetup : MonoBehaviourPun, IPunObservable
         PlayerUI.SetActive(true);
         weaponSway.enabled = true;
         this.enabled = true;
+        GetComponent<Outline>().enabled = false;
     }
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {

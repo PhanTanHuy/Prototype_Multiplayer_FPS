@@ -3,7 +3,21 @@ using UnityEngine;
 public class PlayerLifeManager : LifeManager
 {
     [SerializeField] private PlayerManagerState playerManagerState;
-   
+    protected override void Start()
+    {
+        base.Start();
+        SetWeaponLayerToDefault();
+    }
+
+    private void SetWeaponLayerToDefault()
+    {
+        Transform weaponRoot = playerManagerState.weaponHolder.transform;
+
+        foreach (Transform child in weaponRoot.GetComponentsInChildren<Transform>(true))
+        {
+            child.gameObject.layer = LayerMask.NameToLayer("Default");
+        }
+    }
     public override void ReSpawn()
     {
         healthManager.RecoverHealth();

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 327278996008871714}
   - component: {fileID: 1946388850459729030}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: G19
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,6 +57,7 @@ MonoBehaviour:
   playerHolder: {fileID: 0}
   aimSentivity: 2
   rootParent: {fileID: 0}
+  weaponAnimator: {fileID: 3866998082935514854}
   shootSound: {fileID: 8300000, guid: 01b65ffa69a864747bce0cd30905530a, type: 3}
   distanceRaycast: 800
   rpm: 300
@@ -66,7 +67,6 @@ MonoBehaviour:
   bolt: {fileID: 6487998979781657103}
   offsetBoltZ: -0.0474522
   shellEjectPosition: {fileID: 7101088104880711100}
-  weaponAnimator: {fileID: 3866998082935514854}
   muzzleFlash: {fileID: 8353738435378752446}
   automaticHandGun: 0
 --- !u!1 &737936396850113694
@@ -78,7 +78,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 468712084948489834}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: G19
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 7923038642370472120}
   - component: {fileID: 1305634941953068599}
   - component: {fileID: 2775892657104758122}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 9mm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -214,7 +214,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7101088104880711100}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: shellEject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -247,7 +247,7 @@ GameObject:
   - component: {fileID: 1832398888470404779}
   - component: {fileID: 1162652626572128490}
   - component: {fileID: 1365263740587904208}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: rear_sight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -338,7 +338,7 @@ GameObject:
   - component: {fileID: 4325763076331393816}
   - component: {fileID: 900541902559993639}
   - component: {fileID: 3643448013993969395}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: frame_19
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -430,7 +430,7 @@ GameObject:
   - component: {fileID: 8855664287429287604}
   - component: {fileID: 8353738435378752446}
   - component: {fileID: 354493222541830114}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WFX_MF 4P RIFLE2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5306,7 +5306,7 @@ GameObject:
   - component: {fileID: 5388551333257636499}
   - component: {fileID: 570913407439268916}
   - component: {fileID: 7640670990223630824}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: trigger_pack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5395,7 +5395,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7599196345879213572}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5429,7 +5429,7 @@ GameObject:
   - component: {fileID: 9173358514328641315}
   - component: {fileID: 3902656993740071217}
   - component: {fileID: 6761620668674024114}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: extractor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5519,7 +5519,7 @@ GameObject:
   - component: {fileID: 1838244188742727996}
   - component: {fileID: 6864539085941507273}
   - component: {fileID: 5427854683494443804}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10389,7 +10389,7 @@ GameObject:
   - component: {fileID: 6234567501414137886}
   - component: {fileID: 993658013009778870}
   - component: {fileID: 5099720050896067691}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10480,7 +10480,7 @@ GameObject:
   - component: {fileID: 7689393527809003939}
   - component: {fileID: 7401173040737610329}
   - component: {fileID: 397623436192931378}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15350,7 +15350,7 @@ GameObject:
   - component: {fileID: 7168967996762002907}
   - component: {fileID: 3012456345001170485}
   - component: {fileID: 4651553740449803516}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plane2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20218,7 +20218,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8230690585288217739}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TGR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20251,7 +20251,7 @@ GameObject:
   - component: {fileID: 839658183658364079}
   - component: {fileID: 3503764032694367760}
   - component: {fileID: 4798799542469668762}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plane3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25121,7 +25121,7 @@ GameObject:
   - component: {fileID: 3935913347622753642}
   - component: {fileID: 8275295491336339680}
   - component: {fileID: 7155362899003380515}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: trigger_safety
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25211,7 +25211,7 @@ GameObject:
   - component: {fileID: 3973551316892285655}
   - component: {fileID: 745387140186776798}
   - component: {fileID: 1067386973370924291}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: front_sight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25302,7 +25302,7 @@ GameObject:
   - component: {fileID: 225758080533358469}
   - component: {fileID: 4316806207799766786}
   - component: {fileID: 8594075847516584529}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: mag_19
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25392,7 +25392,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6487998979781657103}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bolt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25424,7 +25424,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2959180814538509974}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MuzzleFlashParticlePosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25458,7 +25458,7 @@ GameObject:
   - component: {fileID: 7526518640411084306}
   - component: {fileID: 5261362656464940107}
   - component: {fileID: 4150287179137578628}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: spring_guide
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25548,7 +25548,7 @@ GameObject:
   - component: {fileID: 1690537381613858278}
   - component: {fileID: 7376058974497297607}
   - component: {fileID: 1262534588366803087}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: mag_release
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25638,7 +25638,7 @@ GameObject:
   - component: {fileID: 3981189129740845860}
   - component: {fileID: 87325669422129079}
   - component: {fileID: 7379685338172655613}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: magazine_follower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25726,7 +25726,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4572160082868455699}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TGL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25757,7 +25757,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6802637496627687497}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FirePos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25791,7 +25791,7 @@ GameObject:
   - component: {fileID: 8049214504309978000}
   - component: {fileID: 6790492807749082564}
   - component: {fileID: 7830149824662889521}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25918,7 +25918,7 @@ GameObject:
   - component: {fileID: 8532566429657128141}
   - component: {fileID: 3091981276207385746}
   - component: {fileID: 922683341542155900}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: slide_short_9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26009,7 +26009,7 @@ GameObject:
   - component: {fileID: 5448875091651262224}
   - component: {fileID: 4381734518776874631}
   - component: {fileID: 7691287808221936562}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plane4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30879,7 +30879,7 @@ GameObject:
   - component: {fileID: 982044325330549687}
   - component: {fileID: 3412779435561052007}
   - component: {fileID: 3104457184281995210}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31057,7 +31057,7 @@ GameObject:
   - component: {fileID: 1620834325859684904}
   - component: {fileID: 4234325309665773135}
   - component: {fileID: 3379974277033046613}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: slide_lock_release
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5216505436204503217}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 7838821252951715115}
   - component: {fileID: 6577001329757527636}
   - component: {fileID: 5703324459003919066}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4913,7 +4913,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2420953196698637565}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: firingpin_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4946,7 +4946,7 @@ GameObject:
   - component: {fileID: 802947790306903782}
   - component: {fileID: 6738380195636163704}
   - component: {fileID: 884682739698625435}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plane3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9816,7 +9816,7 @@ GameObject:
   - component: {fileID: 2890951883795592661}
   - component: {fileID: 1310562172690211396}
   - component: {fileID: 7695402883422556151}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plane2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14684,7 +14684,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3934111700631234425}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: boltrotate_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14715,7 +14715,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5406681696569921339}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: bullet_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14746,7 +14746,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 282056256478236927}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: boltmove
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14779,7 +14779,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3778471842442348925}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: bullets_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14810,7 +14810,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1177679617295599490}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: firingpin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14844,7 +14844,7 @@ GameObject:
   - component: {fileID: 9028242101013956674}
   - component: {fileID: 548096909943112294}
   - component: {fileID: 8706947176133162707}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14970,7 +14970,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4607261973090710046}
   - component: {fileID: 2933900225619243597}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15080,7 +15080,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5776767413221206216}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TGR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15113,7 +15113,7 @@ GameObject:
   - component: {fileID: 8847655724451156208}
   - component: {fileID: 4437005441541619845}
   - component: {fileID: 7704016902656441459}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WFX_MF 4P RIFLE2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19989,7 +19989,7 @@ GameObject:
   - component: {fileID: 5480350073918893726}
   - component: {fileID: 1767005058743237941}
   - component: {fileID: 1652075583553460704}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Crosshair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20077,7 +20077,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1983825814613002748}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: boltrotate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20109,7 +20109,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4276652225680708478}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bolt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20142,7 +20142,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8348976574787067234}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: bullets
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20174,7 +20174,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8408448240341359966}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Armature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20208,7 +20208,7 @@ GameObject:
   - component: {fileID: 2220796165087288953}
   - component: {fileID: 2142519498835651848}
   - component: {fileID: 7269208665487642679}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25166,7 +25166,7 @@ GameObject:
   - component: {fileID: 8514032060870080576}
   - component: {fileID: 7251161641899191781}
   - component: {fileID: 1972597700861302972}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Optic_K_Lens (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25267,7 +25267,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3802103051953451257}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25299,7 +25299,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8331334458446646398}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: safety
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25333,7 +25333,7 @@ GameObject:
   - component: {fileID: 3725134342589815229}
   - component: {fileID: 7683899055073520938}
   - component: {fileID: 7107011638108758518}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CameraScope
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25461,7 +25461,7 @@ GameObject:
   - component: {fileID: 1532004334069511788}
   - component: {fileID: 5849390281629419358}
   - component: {fileID: 4777192157974348231}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder.000
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25556,7 +25556,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3838498660962817842}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: mag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25590,7 +25590,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3674125607797419680}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: magrelease
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25622,7 +25622,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 412783033401760748}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: L118a1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25656,7 +25656,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3213798554604870733}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TGl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25687,7 +25687,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7113495760619558414}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MuzzleFlashParticlePosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25720,7 +25720,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2176881507268350279}
   - component: {fileID: 195688233100948631}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: AWM
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25768,6 +25768,7 @@ MonoBehaviour:
   playerHolder: {fileID: 0}
   aimSentivity: 8
   rootParent: {fileID: 0}
+  weaponAnimator: {fileID: 4897019315695671610}
   shootSound: {fileID: 8300000, guid: 01b65ffa69a864747bce0cd30905530a, type: 3}
   distanceRaycast: 2000
   rpm: 50
@@ -25777,7 +25778,6 @@ MonoBehaviour:
   bolt: {fileID: 4276652225680708478}
   offsetBoltZ: -0.12214286
   shellEjectPosition: {fileID: 3934111700631234425}
-  weaponAnimator: {fileID: 4897019315695671610}
   muzzleFlash: {fileID: 4437005441541619845}
   CameraSnip: {fileID: 5670418294565031763}
 --- !u!1 &7461723976243854181
@@ -25789,7 +25789,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8272690915601443609}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: magrelease_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25820,7 +25820,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8623795006435286448}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FirePos (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25854,7 +25854,7 @@ GameObject:
   - component: {fileID: 4349307117894179044}
   - component: {fileID: 3089705938954437022}
   - component: {fileID: 1570706577409671466}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plane4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30722,7 +30722,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7495880851440700009}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: safety_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4066411114069626045}
   - component: {fileID: 2469535589802341670}
   - component: {fileID: 2927478930645133534}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plane4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4879,7 +4879,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3531642743908211815}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: R_870
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4921,7 +4921,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2804022089218134205}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TGR 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4954,7 +4954,7 @@ GameObject:
   - component: {fileID: 8857994492504040595}
   - component: {fileID: 7651501067482825743}
   - component: {fileID: 6950791632784484808}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: shell_carrier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5044,7 +5044,7 @@ GameObject:
   - component: {fileID: 4309941307576385729}
   - component: {fileID: 1495007777467880491}
   - component: {fileID: 6667229959576324235}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bullet_ShotGun_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5135,7 +5135,7 @@ GameObject:
   - component: {fileID: 340611632226253472}
   - component: {fileID: 237767158871006689}
   - component: {fileID: 8606132804929779527}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10005,7 +10005,7 @@ GameObject:
   - component: {fileID: 316374241979106475}
   - component: {fileID: 3505182034025242033}
   - component: {fileID: 52411570088178283}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: shell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10096,7 +10096,7 @@ GameObject:
   - component: {fileID: 3117502494067218470}
   - component: {fileID: 3163564266172281413}
   - component: {fileID: 7090182553289790325}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WFX_MF 4P RIFLE2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14970,7 +14970,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4876351731155894384}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Slide
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15002,7 +15002,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5464278621775448447}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MuzzleFlashParticlePosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15036,7 +15036,7 @@ GameObject:
   - component: {fileID: 4969510552161427675}
   - component: {fileID: 2171098802434895823}
   - component: {fileID: 7394462236475111881}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ejector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15124,7 +15124,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4005967575197767678}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Slide (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15160,7 +15160,7 @@ GameObject:
   - component: {fileID: 631376044043391418}
   - component: {fileID: 4823257391001731214}
   - component: {fileID: 5365432785207801925}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15285,7 +15285,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2323330007128451352}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FirePos (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15319,7 +15319,7 @@ GameObject:
   - component: {fileID: 2600222559990831392}
   - component: {fileID: 1555191604534975635}
   - component: {fileID: 4836934103552692333}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20189,7 +20189,7 @@ GameObject:
   - component: {fileID: 106929270386596086}
   - component: {fileID: 4646535209290130969}
   - component: {fileID: 6101291119300983353}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20279,7 +20279,7 @@ GameObject:
   - component: {fileID: 6438166006635079649}
   - component: {fileID: 8198331174309015368}
   - component: {fileID: 3268437868838468873}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: magazine_tube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20369,7 +20369,7 @@ GameObject:
   - component: {fileID: 6943664109901678288}
   - component: {fileID: 2268775955179997568}
   - component: {fileID: 8458920428558708789}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plane3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25239,7 +25239,7 @@ GameObject:
   - component: {fileID: 4293319692561132803}
   - component: {fileID: 6540044175186862688}
   - component: {fileID: 5301906336752379964}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: trigger_assembly
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25329,7 +25329,7 @@ GameObject:
   - component: {fileID: 4688780911196465830}
   - component: {fileID: 8415351493667039527}
   - component: {fileID: 1650364262171228077}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25419,7 +25419,7 @@ GameObject:
   - component: {fileID: 9026747906114966293}
   - component: {fileID: 5406885760714107744}
   - component: {fileID: 212782787115810017}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: forend_tube_assembly
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25507,7 +25507,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7214910170387529549}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TGL 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25540,7 +25540,7 @@ GameObject:
   - component: {fileID: 5129484621614084778}
   - component: {fileID: 5368051057656378274}
   - component: {fileID: 5829943713762640382}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: handguard_wooden
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25630,7 +25630,7 @@ GameObject:
   - component: {fileID: 2412351008927820172}
   - component: {fileID: 6860983863037482233}
   - component: {fileID: 2027398948668956763}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plane2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30500,7 +30500,7 @@ GameObject:
   - component: {fileID: 4225278325647705371}
   - component: {fileID: 1554222320916199237}
   - component: {fileID: 9192772318192549891}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: bolt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30674,7 +30674,7 @@ GameObject:
   - component: {fileID: 2829428370889653964}
   - component: {fileID: 3240515176965379414}
   - component: {fileID: 7654476721912268240}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: safety
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30763,7 +30763,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1408550141498938136}
   - component: {fileID: 414011367950099543}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: R_870
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30810,6 +30810,7 @@ MonoBehaviour:
   playerHolder: {fileID: 0}
   aimSentivity: 2
   rootParent: {fileID: 0}
+  weaponAnimator: {fileID: 3288655104071443617}
   shootSound: {fileID: 8300000, guid: 01b65ffa69a864747bce0cd30905530a, type: 3}
   distanceRaycast: 300
   rpm: 50
@@ -30819,7 +30820,6 @@ MonoBehaviour:
   bolt: {fileID: 4005967575197767678}
   offsetBoltZ: -0.0877044
   shellEjectPosition: {fileID: 4225278325647705371}
-  weaponAnimator: {fileID: 3288655104071443617}
   muzzleFlash: {fileID: 3163564266172281413}
   castPerShot: 10
   spreadAngle: 4
@@ -30834,7 +30834,7 @@ GameObject:
   - component: {fileID: 7435528312833924279}
   - component: {fileID: 2167991893474699091}
   - component: {fileID: 1965180891983673504}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: buttstock_wooden
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30925,7 +30925,7 @@ GameObject:
   - component: {fileID: 2648896527416738239}
   - component: {fileID: 9124410251278841480}
   - component: {fileID: 8517040559586201859}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: magazine_tube_end_cap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31015,7 +31015,7 @@ GameObject:
   - component: {fileID: 1972845419298233554}
   - component: {fileID: 4281927769227515698}
   - component: {fileID: 788220953684819655}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: receiver
   m_TagString: Untagged
   m_Icon: {fileID: 0}

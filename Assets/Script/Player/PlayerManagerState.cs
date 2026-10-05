@@ -21,7 +21,7 @@ public class PlayerManagerState : BaseManagerState<PlayerManagerState>
     [SerializeField] private Rig rigChangeWeapon;
     [SerializeField] private RigBuilder rigBuilder;
     [Header("Weapon Setting")]
-    [SerializeField] private WeaponHolder weaponHolder;
+    public WeaponHolder weaponHolder;
     [Header("Camera Setting")]
     public CameraHolder cameraHolder;
     [SerializeField] private Transform pivotCameraMove;
@@ -313,6 +313,7 @@ public class PlayerManagerState : BaseManagerState<PlayerManagerState>
         if (MoveInput.y > 0f)
         {
             SwitchState(runState);
+            cameraHolder.SetRunFOV(true);
             if (!inputActions.Player.Attack.IsPressed()) SetRigRun();
         }
     }
@@ -321,6 +322,7 @@ public class PlayerManagerState : BaseManagerState<PlayerManagerState>
         if (currentState == runState)
         {
             SwitchToIdleState();
+            cameraHolder.SetRunFOV(false);
         }
     }
     public override void SwitchToJumpState()

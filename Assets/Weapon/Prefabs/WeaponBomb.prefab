@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 998401295517734662}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LeftTG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 6800545917257422337}
   - component: {fileID: 6968990647978546900}
   - component: {fileID: 5465653790175259334}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RGD-5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,8 +146,8 @@ MonoBehaviour:
   playerHolder: {fileID: 0}
   aimSentivity: 2
   rootParent: {fileID: 0}
-  firePos: {fileID: 4882146016988534206}
   weaponAnimator: {fileID: 604700861302056577}
+  firePos: {fileID: 4882146016988534206}
   timePerShoot: 5
 --- !u!1 &2011259413510065939
 GameObject:
@@ -160,7 +160,7 @@ GameObject:
   - component: {fileID: 8109033469212483580}
   - component: {fileID: 7349530623032049561}
   - component: {fileID: 182457454330132367}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Pin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -251,7 +251,7 @@ GameObject:
   - component: {fileID: 7089768097032510210}
   - component: {fileID: 1351595147015756901}
   - component: {fileID: 5678515353521265275}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -400,6 +400,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WeaponAnimator
   animator: {fileID: 0}
   weapon: {fileID: 5465653790175259334}
+  reloadAudioClips: []
 --- !u!1 &7477375652626026536
 GameObject:
   m_ObjectHideFlags: 0
@@ -409,7 +410,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 865230114322690182}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RightTG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
