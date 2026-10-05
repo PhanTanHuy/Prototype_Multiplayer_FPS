@@ -1,41 +1,27 @@
-﻿using ExitGames.Client.Photon;
-using Photon.Pun;
+﻿using Photon.Pun;
+using Photon.Realtime;
+using ExitGames.Client.Photon;
 using UnityEngine;
 
-public class RoomManager : MonoBehaviour
+public class RoomManager : MonoBehaviourPunCallbacks
 {
     public static RoomManager Instance;
 
-    [Header("Spawn Points")]
-    public Transform[] spawnPoint;
+    [SerializeField] private Transform[] spawnPoint;
 
     private void Awake()
     {
         Instance = this;
     }
 
-    private void Start()
+    public override void OnJoinedRoom()
     {
         SpawnPlayer();
     }
 
-    public Vector3 GetSpawnPoint()
-    {
-        return spawnPoint[
-            Random.Range(0, spawnPoint.Length)
-        ].position;
-    }
 
     private void SpawnPlayer()
     {
-        // Kiểm tra đã vào Room chưa
-        if (!PhotonNetwork.InRoom)
-        {
-            Debug.LogWarning("Player chưa Join Room!");
-            return;
-        }
-
-        // Lấy thông tin Player từ MenuManager đã lưu
         Hashtable properties =
             PhotonNetwork.LocalPlayer.CustomProperties;
 
@@ -46,22 +32,34 @@ public class RoomManager : MonoBehaviour
             character = characterValue.ToString();
         }
 
-        Debug.Log(
-            $"Spawn Player |Character: {character}"
-        );
+        if (string.IsNullOrEmpty(character))
+        {
+            Debug.LogError("Character không tồn tại!");
+            MenuInGame.Instance.LeaveRoom();
+            return;
+        }
 
-        // Lấy vị trí spawn
         Vector3 spawnPosition = GetSpawnPoint();
 
-        // Spawn Player
         GameObject player = PhotonNetwork.Instantiate(
             character,
             spawnPosition,
             Quaternion.identity
         );
-        player.GetComponent<PlayerNetworkSetup>().SetLocalPlayer();
+
+        player
+            .GetComponent<PlayerNetworkSetup>()
+            .SetLocalPlayer();
+
         Debug.Log(
-            $"Player spawned at: {spawnPosition}"
+            $"Player spawned | Character: {character} | Position: {spawnPosition}"
         );
+    }
+
+    public Vector3 GetSpawnPoint()
+    {
+        return spawnPoint[
+            Random.Range(0, spawnPoint.Length)
+        ].position;
     }
 }

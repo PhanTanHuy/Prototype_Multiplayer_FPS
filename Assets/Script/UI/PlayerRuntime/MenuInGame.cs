@@ -7,10 +7,14 @@ public class MenuInGame : MonoBehaviourPunCallbacks
 {
     [Header("Input")]
     [SerializeField] private InputActionReference escapeAction;
-
+    public static MenuInGame Instance;
     [Header("UI")]
     [SerializeField] private GameObject menuPanel;
-
+    public GameObject wattingImage;
+    private void Awake()
+    {
+        Instance = this;
+    }
     private void Start()
     {
         menuPanel.SetActive(false);
@@ -24,6 +28,7 @@ public class MenuInGame : MonoBehaviourPunCallbacks
 
     public void LeaveRoom()
     {
+        wattingImage.SetActive(true);
         PhotonNetwork.LeaveRoom();
     }
 

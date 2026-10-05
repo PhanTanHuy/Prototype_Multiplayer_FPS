@@ -214,12 +214,12 @@ public class MenuManager : MonoBehaviourPunCallbacks
             Debug.LogWarning("Photon chưa kết nối.");
             return;
         }
-
+        wattingImage.SetActive(true);
         Debug.Log(
             "Joining Room: " +
             roomName
         );
-
+        SetLocalPlayerInfo();
         PhotonNetwork.JoinRoom(roomName);
     }
 
@@ -238,22 +238,7 @@ public class MenuManager : MonoBehaviourPunCallbacks
         );
 
         // Lưu thông tin player khi JOIN room
-        string playerName =
-            MenuCustomPlayer.Instance.GetPlayerName();
-
-        string character =
-            MenuCustomPlayer.Instance.GetCharacter();
-
-        PhotonNetwork.NickName = playerName;
-
-        Hashtable playerProperties = new Hashtable
-        {
-            { "Character", character }
-        };
-
-        PhotonNetwork.LocalPlayer.SetCustomProperties(
-            playerProperties
-        );
+        SetLocalPlayerInfo();
 
         // ------------------------------------
         // MASTER LOAD GAME
@@ -405,6 +390,29 @@ public class MenuManager : MonoBehaviourPunCallbacks
         if (playTimeText != null)
             playTimeText.text =
                 playTimes[playTimeIndex] + "m";
+    }
+    private void SetLocalPlayerInfo()
+    {
+        string playerName =
+            MenuCustomPlayer.Instance.GetPlayerName();
+
+        string character =
+            MenuCustomPlayer.Instance.GetCharacter();
+
+        PhotonNetwork.NickName = playerName;
+
+        Hashtable playerProperties = new Hashtable
+    {
+        { "Character", character }
+    };
+
+        PhotonNetwork.LocalPlayer.SetCustomProperties(
+            playerProperties
+        );
+
+        Debug.Log(
+            $"Set Player Info | Name: {playerName} | Character: {character}"
+        );
     }
     public void SearchRoom(string searchText)
     {
