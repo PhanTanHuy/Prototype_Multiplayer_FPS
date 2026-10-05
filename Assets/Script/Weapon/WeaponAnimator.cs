@@ -4,6 +4,8 @@ public class WeaponAnimator : MonoBehaviour
 {
     [HideInInspector] public Animator animator;
     [SerializeField] private Weapon weapon;
+    public AudioClip[] reloadAudioClips;
+
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -25,4 +27,12 @@ public class WeaponAnimator : MonoBehaviour
     {
         weapon.CreateObjectOnAttack();
     }
+    public void PlaySFX(int i)
+    {
+        if (i >= 0 && i < reloadAudioClips.Length)
+        {
+            weapon.playerHolder.playerNetworkSetup.SendPlayWeaponAnimatorClip(i);
+        }
+    }
+    
 }

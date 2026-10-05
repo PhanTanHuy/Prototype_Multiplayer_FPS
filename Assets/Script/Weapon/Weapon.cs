@@ -11,8 +11,12 @@ public abstract class Weapon : PickupAbleItem
     [SerializeField] protected float aimSentivity = 2f;
     public float AimSentivity { get { return aimSentivity; } }
     [HideInInspector] public Transform rootParent;
+    [HideInInspector] public WeaponAnimator weaponAnimator;
 
-
+    private void Awake()
+    {
+        weaponAnimator = transform.parent.GetComponent<WeaponAnimator>();
+    }
     public int Damage { get { return damage; } }
     public int Cost { get { return cost; } }
 
@@ -23,7 +27,7 @@ public abstract class Weapon : PickupAbleItem
     public virtual void PlayAttackVisuals(float aimValue) { }
     public virtual void SetLocalWeapon(bool isMine) { }
     public virtual void CreateObjectOnAttack() { }
-   
+    public virtual void PlayAttackSFX() { } 
 
 
 }

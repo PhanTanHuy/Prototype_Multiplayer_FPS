@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
-public class HealthManager : MonoBehaviour
+using Photon.Pun;
+public class HealthManager : MonoBehaviourPun
 {
     [SerializeField] private int maxHealth = 100;
     public PlayerNetworkSetup playerNetworkSetup;
@@ -12,6 +13,7 @@ public class HealthManager : MonoBehaviour
     }
     public void ReSpawn()
     {
+        if (photonView.IsMine) PlayerUI.instance.TurnOffWattingImage();
         OnReSpawn?.Invoke();
     }
     public void RecoverHealth()
@@ -27,6 +29,7 @@ public class HealthManager : MonoBehaviour
         {
             currentHealth = 0;
             OnZeroHealth?.Invoke();
+            if (photonView.IsMine) PlayerUI.instance.TurnOnWattingImage();
         }
     }
 }

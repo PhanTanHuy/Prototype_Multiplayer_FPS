@@ -37,7 +37,6 @@ public class MenuManager : MonoBehaviourPunCallbacks
     {
         4,
         8,
-        12
     };
 
     private readonly string[] maps =

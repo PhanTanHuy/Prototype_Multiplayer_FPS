@@ -3,7 +3,6 @@ using UnityEngine;
 public class Bomb : Weapon
 {
     [SerializeField] private Transform firePos;
-    [SerializeField] private WeaponAnimator weaponAnimator;
     private Transform cameraTransform;
     [SerializeField] private float timePerShoot;
     private float lastShootTime;

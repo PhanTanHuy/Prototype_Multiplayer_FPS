@@ -177,4 +177,22 @@ public class PlayerNetworkSetup : MonoBehaviourPun, IPunObservable
     {
         playerManagerState.DisactivePlayer();
     }
+    public void SendPlayWeaponAnimatorClip(int i)
+    {
+        photonView.RPC(nameof(RPC_PlayWeaponAnimatorClip), RpcTarget.All, i);
+    }
+    [PunRPC]
+    private void RPC_PlayWeaponAnimatorClip(int i)
+    {
+        AudioSource.PlayClipAtPoint(weaponHolder.currentWeapon.weaponAnimator.reloadAudioClips[i], transform.position);
+    }
+    public void SendPlayAttackSFX()
+    {
+        photonView.RPC(nameof(RPC_PlayAttackSFX), RpcTarget.All);
+    }
+    [PunRPC]
+    private void RPC_PlayAttackSFX()
+    {
+        weaponHolder.currentWeapon.PlayAttackSFX();
+    }
 }

@@ -10,6 +10,7 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] private Animator crossHairAnimator;
     [SerializeField] private TextMeshProUGUI textNormalHit;
     [SerializeField] private TextMeshProUGUI textHeadShotHit;
+    [SerializeField] private GameObject imageWattingRespawn;
 
     private Coroutine normalHitCoroutine;
     private Coroutine headShotCoroutine;
@@ -21,6 +22,14 @@ public class PlayerUI : MonoBehaviour
     private void OnDisable()
     {
         StopAllCoroutines();
+    }
+    public void TurnOnWattingImage()
+    {
+        imageWattingRespawn.SetActive(true);
+    }
+    public void TurnOffWattingImage()
+    {
+        imageWattingRespawn.SetActive(false);
     }
     public void GoToAimMode()
     {

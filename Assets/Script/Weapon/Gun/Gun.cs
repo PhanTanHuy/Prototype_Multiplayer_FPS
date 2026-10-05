@@ -5,6 +5,7 @@ using Random = UnityEngine.Random;
 
 public abstract class Gun : Weapon
 {
+    public AudioClip shootSound;
     [Header("Gun Power")]
     [SerializeField] protected float distanceRaycast = 800;
     [SerializeField] protected float rpm = 600;
@@ -16,7 +17,6 @@ public abstract class Gun : Weapon
     [SerializeField] protected float offsetBoltZ;
     [SerializeField] protected Transform shellEjectPosition;
     [Header("Gun References")]
-    [SerializeField] protected WeaponAnimator weaponAnimator;
     [Header("Gun VFX")]
     [SerializeField] protected ParticleSystem muzzleFlash;
     private Vector3 originLocalPosition;
@@ -79,8 +79,15 @@ public abstract class Gun : Weapon
         muzzleFlash.Play();
         muzzleFlash.gameObject.transform.localRotation = Quaternion.Euler(new Vector3(Random.Range(0f, 360f), -90, 0));
         PoolObject.Instance.CreatmuzzleFlashSmoke(firePosition.position, firePosition.rotation);
+        if (shootSound != null)
+        {
+            playerHolder.playerNetworkSetup.SendPlayAttackSFX();
+        }
     }
-
+    public override void PlayAttackSFX()
+    {
+        AudioSource.PlayClipAtPoint(shootSound, transform.position);
+    }
     public virtual bool Shoot(float aimValue)
     {
         if (isReload) return false;
