@@ -8,7 +8,7 @@ using UnityEngine;
 public class MenuManager : MonoBehaviourPunCallbacks
 {
     public static MenuManager Instance;
-
+    public GameObject wattingImage;
     [Header("Create Room UI")]
     [SerializeField] private TMP_InputField roomNameInput;
     [SerializeField] private TMP_Text roomErrorText;
@@ -60,6 +60,7 @@ public class MenuManager : MonoBehaviourPunCallbacks
     private void Awake()
     {
         Instance = this;
+        wattingImage.SetActive(true);
         PhotonNetwork.AutomaticallySyncScene = true;
     }
 
@@ -91,7 +92,7 @@ public class MenuManager : MonoBehaviourPunCallbacks
     public override void OnJoinedLobby()
     {
         Debug.Log("Joined Lobby");
-
+        wattingImage.SetActive(false);
         // Photon bắt đầu gửi Room List
     }
 
@@ -108,13 +109,6 @@ public class MenuManager : MonoBehaviourPunCallbacks
         }
 
         string roomName = roomNameInput.text.Trim();
-
-        if (string.IsNullOrEmpty(roomName))
-        {
-            Debug.LogWarning("Room name không được để trống.");
-            return;
-        }
-
         CreateRoom(roomName);
     }
 
@@ -129,7 +123,7 @@ public class MenuManager : MonoBehaviourPunCallbacks
         // CHECK ROOM NAME
         // ==============================
 
-        if (string.IsNullOrEmpty(roomName))
+        if (roomName == "")
         {
             roomErrorText.text = "Tên phòng không được để trống!";
             return;
@@ -156,7 +150,6 @@ public class MenuManager : MonoBehaviourPunCallbacks
 
         Hashtable playerProperties = new Hashtable
     {
-        { "PlayerName", playerName },
         { "Character", character }
     };
 
@@ -201,6 +194,7 @@ public class MenuManager : MonoBehaviourPunCallbacks
             roomName,
             roomOptions
         );
+        wattingImage.SetActive(true);
     }
     public override void OnCreatedRoom()
     {
@@ -255,7 +249,6 @@ public class MenuManager : MonoBehaviourPunCallbacks
 
         Hashtable playerProperties = new Hashtable
         {
-            { "PlayerName", playerName },
             { "Character", character }
         };
 

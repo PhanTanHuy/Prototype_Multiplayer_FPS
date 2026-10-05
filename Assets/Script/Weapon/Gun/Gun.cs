@@ -35,7 +35,7 @@ public abstract class Gun : Weapon
         timePerRecoil = 60f / rpm;
         localOriginBoltPosition = bolt.localPosition;
         localEndBoltPosition = bolt.localPosition + new Vector3(0f, 0f, offsetBoltZ);
-        camTransform = Camera.main.transform;
+        camTransform = CameraHolder.instance.cameramain.transform;
     }
     public override void WeaponAttack(float aimValue)
     {

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerNetworkSetup : MonoBehaviourPun, IPunObservable
 {
+    public bool offlineMode;
     public GameObject playerCamera;
     public PlayerManagerState playerManagerState;
     public CameraHolder cameraHolder;
@@ -25,8 +26,14 @@ public class PlayerNetworkSetup : MonoBehaviourPun, IPunObservable
 
     private float networkCameraPitch;
     private float receivedCameraPitch;
+    private void Awake()
+    {
+        PhotonNetwork.OfflineMode = offlineMode;
+    }
+
     private void Start()
     {
+        if (offlineMode) return;
         if (photonView.IsMine)
         {
             playerNameText.transform.parent.gameObject.SetActive(false);
@@ -50,6 +57,7 @@ public class PlayerNetworkSetup : MonoBehaviourPun, IPunObservable
         cameraHolder.enabled = true;
         PlayerUI.SetActive(true);
         weaponSway.enabled = true;
+        this.enabled = true;
     }
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {

@@ -2524,7 +2524,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 3
   m_Height: 2
-  m_Radius: 0.2
+  m_Radius: 0.4
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
@@ -2770,6 +2770,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9db134db5e9a5b4d982bab16efc4b4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerNetworkSetup
+  offlineMode: 0
   playerCamera: {fileID: 425001185888844641}
   playerManagerState: {fileID: 458655155299022260}
   cameraHolder: {fileID: 6615053708013408714}
