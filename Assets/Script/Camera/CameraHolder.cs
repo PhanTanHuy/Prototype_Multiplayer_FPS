@@ -9,7 +9,7 @@ public class CameraHolder : MonoBehaviour
     [SerializeField] private float mouseSensitivity = 5f;
     [SerializeField] private float maxLookUpAngle = 80f;
     [SerializeField] private Transform rootPlayer;
-    [SerializeField] private CameraShake cameraShake;
+    public CameraShake cameraShake;
     public Camera cameramain;
     private float xRotation = 0f;
     private Vector2 mouseDelta;
@@ -125,7 +125,7 @@ public class CameraHolder : MonoBehaviour
         yield return null;
         float xRotBe = xRotation;
 
-        if (cameraShake != null) cameraShake.Shake(0.15f, -recoilAmmount / 3f);
+        if (cameraShake != null) cameraShake.Shake(0.15f, -recoilAmmount / 2.5f);
 
         recoilAmmount /= aimStateSensitivity;
         float timeRecoil = 0f;

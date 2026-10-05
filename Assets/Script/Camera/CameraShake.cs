@@ -27,25 +27,45 @@ public class CameraShake : MonoBehaviour
         float seedY = Random.Range(0f, 100f);
         float seedZ = Random.Range(0f, 100f);
 
-
         while (time < duration)
         {
-            float x = (Mathf.PerlinNoise(seedX, Time.time * 20f) - 0.5f);
-            float y = (Mathf.PerlinNoise(seedY, Time.time * 20f) - 0.5f);
-            float z = (Mathf.PerlinNoise(seedZ, Time.time * 20f) - 0.5f) * 2f;
+            // 0 -> 1
+            float normalizedTime = time / duration;
+
+            // 1 -> 0
+            float currentStrength = Mathf.Lerp(
+                strength,
+                0f,
+                normalizedTime
+            );
+
+            float x = Mathf.PerlinNoise(
+                seedX,
+                Time.time * 20f
+            ) - 0.5f;
+
+            float y = Mathf.PerlinNoise(
+                seedY,
+                Time.time * 20f
+            ) - 0.5f;
+
+            float z = (Mathf.PerlinNoise(
+                seedZ,
+                Time.time * 20f
+            ) - 0.5f) * 2f;
 
             Vector3 shakeEuler = new Vector3(
-                x * strength,
-                y * strength,
-                //0f,
-                //0f,
-                z * strength
+                x * currentStrength,
+                y * currentStrength,
+                z * currentStrength
             );
 
             transform.localRotation =
-                originalLocalRot * Quaternion.Euler(shakeEuler);
+                originalLocalRot *
+                Quaternion.Euler(shakeEuler);
 
             time += Time.deltaTime;
+
             yield return null;
         }
 

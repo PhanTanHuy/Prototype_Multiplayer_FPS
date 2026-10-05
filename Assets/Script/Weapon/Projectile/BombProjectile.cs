@@ -31,9 +31,39 @@ public class BombProjectile : MonoBehaviour
         explosionParticle.transform.position = explosionPosition;
         explosionParticle.Play();
 
+        float shake = CalculateShake(explosionPosition);
+
+        if (shake > 0f)
+        {
+            CameraHolder.instance.cameraShake.Shake(0.75f, shake);
+        }
+
         DetectHitBoxes(explosionPosition);
     }
+    private float CalculateShake(Vector3 explosionPosition)
+    {
+        Transform cameraTransform = CameraHolder.instance.transform;
 
+        float distance = Vector3.Distance(
+            cameraTransform.position,
+            explosionPosition
+        );
+
+        float maxDistance = 20f;
+        float maxShake = 10f;
+
+        float normalizedDistance = Mathf.Clamp01(
+            distance / maxDistance
+        );
+
+        float shake = Mathf.Lerp(
+            maxShake,
+            0f,
+            normalizedDistance
+        );
+
+        return shake;
+    }
     private void DetectHitBoxes(Vector3 position)
     {
         Collider[] colliders = Physics.OverlapSphere(
