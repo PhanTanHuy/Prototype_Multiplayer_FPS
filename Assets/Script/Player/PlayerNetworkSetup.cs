@@ -203,4 +203,5 @@ public class PlayerNetworkSetup : MonoBehaviourPun, IPunObservable
     {
         weaponHolder.currentWeapon.PlayAttackSFX();
     }
+    
 }

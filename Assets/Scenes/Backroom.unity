@@ -1685,7 +1685,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!136 &488719859
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3142,6 +3142,8 @@ MonoBehaviour:
   bulletHole: {fileID: 2065837096}
   blood: {fileID: 8422965739562524631}
   shell: {fileID: 977111762}
+  hitBody: {fileID: 8300000, guid: b87e738300173c040b78b0acd87d31f5, type: 3}
+  hitWall: {fileID: 8300000, guid: 7f2c467574b82a448aef4f1f345779de, type: 3}
 --- !u!114 &789743334
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -30811,7 +30811,7 @@ MonoBehaviour:
   aimSentivity: 2
   rootParent: {fileID: 0}
   weaponAnimator: {fileID: 3288655104071443617}
-  shootSound: {fileID: 8300000, guid: 01b65ffa69a864747bce0cd30905530a, type: 3}
+  shootSound: {fileID: 8300000, guid: b26f7cdc99675924a962bb9a85da2d08, type: 3}
   distanceRaycast: 300
   rpm: 50
   mag: 5

@@ -20,6 +20,9 @@ public class PoolObject : MonoBehaviourPun
     //private Queue<Bullet> bulletPool = new Queue<Bullet>();
     private Queue<BombProjectile> bombProjectilePool = new Queue<BombProjectile>();
     private Queue<Shell> shellPool = new Queue<Shell>();
+    public AudioClip hitBody, hitWall;
+
+
 
     private void Awake()
     {
@@ -35,7 +38,6 @@ public class PoolObject : MonoBehaviourPun
         InitPool<Shell>(shellPool, shell.gameObject, 300);
         InitPool<BombProjectile>(bombProjectilePool, bombProjectile.gameObject, 20);
     }
-
     private void InitPool<T>(Queue<T> q, GameObject obj, int num)
     {
         for (int i = 0; i < num; i++)
@@ -115,7 +117,7 @@ public class PoolObject : MonoBehaviourPun
         ps.gameObject.transform.position = position;
         ps.gameObject.transform.rotation = look;
         ps.Play();
-
+        AudioSource.PlayClipAtPoint(hitWall, position);
         StartCoroutine(IEReturnToPool<ParticleSystem>(bulletHolePool, ps.gameObject, 10f));
     }
 
@@ -134,7 +136,7 @@ public class PoolObject : MonoBehaviourPun
         ps.gameObject.transform.position = position;
         ps.gameObject.transform.rotation = look;
         ps.Play();
-
+        AudioSource.PlayClipAtPoint(hitBody, position);
         StartCoroutine(IEReturnToPool<ParticleSystem>(bloodPool, ps.gameObject, 10f));
     }
 
