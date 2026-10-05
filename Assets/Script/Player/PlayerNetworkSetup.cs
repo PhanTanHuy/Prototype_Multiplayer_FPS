@@ -39,6 +39,8 @@ public class PlayerNetworkSetup : MonoBehaviourPun, IPunObservable
             playerNameText.transform.parent.gameObject.SetActive(false);
         }
         playerNameText.text = photonView.Owner.NickName;
+        string na = playerNameText.text;
+        photonView.RPC(nameof(RPC_ShowPlayerJoined), RpcTarget.Others, na);
     }
     private void Update()
     {
@@ -87,6 +89,11 @@ public class PlayerNetworkSetup : MonoBehaviourPun, IPunObservable
             return;
 
         photonView.RPC(nameof(RPC_Reload), RpcTarget.Others);
+    }
+    [PunRPC]
+    private void RPC_ShowPlayerJoined(string playerName)
+    {
+        RoomManager.Instance.ShowPlayerJoinedMessage(playerName);
     }
 
     [PunRPC]

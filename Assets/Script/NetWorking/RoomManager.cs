@@ -40,14 +40,9 @@ public class RoomManager : MonoBehaviourPunCallbacks
     }
 
     // Được gọi trên các player ĐÃ ở trong room
-
-    [PunRPC]
-    private void RPC_ShowPlayerJoined(string playerName)
-    {
-        ShowPlayerJoinedMessage(playerName);
-    }
-
-    private void ShowPlayerJoinedMessage(string playerName)
+   
+   
+    public void ShowPlayerJoinedMessage(string playerName)
     {
         if (playerJoinText == null)
             return;
@@ -123,13 +118,9 @@ public class RoomManager : MonoBehaviourPunCallbacks
         Debug.Log(
             $"Player spawned | Character: {character} | Position: {spawnPosition}"
         );
-        photonView.RPC(
-            nameof(RPC_ShowPlayerJoined),
-            RpcTarget.All,
-            PhotonNetwork.LocalPlayer.NickName
-        );
+       
     }
-
+    
     public Vector3 GetSpawnPoint()
     {
         return spawnPoint[

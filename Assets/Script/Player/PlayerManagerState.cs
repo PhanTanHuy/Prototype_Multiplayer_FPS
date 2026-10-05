@@ -43,8 +43,6 @@ public class PlayerManagerState : BaseManagerState<PlayerManagerState>
     private void Start()
     {
         currentState = idleState;
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
 
         inputActions = new InputSystemActions();
         inputActions.Enable();

@@ -2437,6 +2437,7 @@ GameObject:
   - component: {fileID: 5893454612694530943}
   - component: {fileID: 1542681959619764957}
   - component: {fileID: 2067102474754685955}
+  - component: {fileID: 6885818861420335638}
   m_Layer: 0
   m_Name: swat2
   m_TagString: Player
@@ -2781,6 +2782,24 @@ MonoBehaviour:
   playerNameText: {fileID: 291308216261950370}
   healthManager: {fileID: 7186709597205721836}
   playerState: {fileID: 458655155299022260}
+--- !u!114 &6885818861420335638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5413200342388227637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Outline
+  outlineMode: 2
+  outlineColor: {r: 1, g: 0, b: 0, a: 1}
+  outlineWidth: 3
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &5699165859975214982
 GameObject:
   m_ObjectHideFlags: 0
