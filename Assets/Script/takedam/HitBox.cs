@@ -24,9 +24,9 @@ public class HitBox : MonoBehaviour
     public void TakeDame(int damage, Transform ori, Vector3 pos, Quaternion rot)
     {
         PoolObject.Instance.CreatBlood(pos, rot);
+        int multi = damageMultiplier[hitBoxTag];
         if (hitBoxTag == HitBoxTag.Head) PlayerUI.instance.SetTextHitHeadShot(damage);
         else PlayerUI.instance.SetTextHitNormal(damage);
-        int multi = damageMultiplier[hitBoxTag];
         //healthManager.TakeDame(multi * damage);
         healthManager.playerNetworkSetup.SendTakeDamage(multi * damage);
         //if (ori.root == this.transform.root) return;

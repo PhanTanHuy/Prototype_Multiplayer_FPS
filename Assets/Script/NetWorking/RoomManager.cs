@@ -40,16 +40,6 @@ public class RoomManager : MonoBehaviourPunCallbacks
     }
 
     // Được gọi trên các player ĐÃ ở trong room
-    public override void OnPlayerEnteredRoom(Player newPlayer)
-    {
-        Debug.Log($"Player joined: {newPlayer.NickName}");
-
-        photonView.RPC(
-            nameof(RPC_ShowPlayerJoined),
-            RpcTarget.All,
-            newPlayer.NickName
-        );
-    }
 
     [PunRPC]
     private void RPC_ShowPlayerJoined(string playerName)
@@ -132,6 +122,11 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
         Debug.Log(
             $"Player spawned | Character: {character} | Position: {spawnPosition}"
+        );
+        photonView.RPC(
+            nameof(RPC_ShowPlayerJoined),
+            RpcTarget.All,
+            PhotonNetwork.LocalPlayer.NickName
         );
     }
 

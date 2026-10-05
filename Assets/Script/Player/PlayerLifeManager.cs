@@ -6,7 +6,7 @@ public class PlayerLifeManager : LifeManager
    
     public override void ReSpawn()
     {
-        base.ReSpawn(); //sync
+        healthManager.RecoverHealth();
         transform.position = RoomManager.Instance.GetSpawnPoint(); // sync
         if (!photonView.IsMine) return;
         PlayerUI.instance.TurnOffWattingImage();
@@ -14,7 +14,6 @@ public class PlayerLifeManager : LifeManager
     }
     public override void Die()
     {
-        base.Die(); // sync
         if (!photonView.IsMine) return;
         playerManagerState.PlayerDie();
         PlayerUI.instance.TurnOnWattingImage();
