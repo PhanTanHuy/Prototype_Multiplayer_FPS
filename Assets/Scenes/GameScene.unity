@@ -2989,7 +2989,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PoolObject
   muzzleFlashSmoke: {fileID: 1182579489}
-  bullet: {fileID: 1744387652}
   bombProjectile: {fileID: 2040893559}
   bulletHole: {fileID: 2065837096}
   blood: {fileID: 8422965739562524631}
@@ -11832,6 +11831,7 @@ MonoBehaviour:
   maxLookUpAngle: 80
   rootPlayer: {fileID: 1401027522}
   cameraShake: {fileID: 0}
+  cameramain: {fileID: 0}
   mouseSmoothTime: 0.05
 --- !u!114 &1708122655
 MonoBehaviour:
@@ -12038,17 +12038,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8995816112916266695, guid: c257907506814224296ec1159c9a62cd, type: 3}
   m_PrefabInstance: {fileID: 4350748104146367815}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1744387652 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 53981553206927138, guid: c257907506814224296ec1159c9a62cd, type: 3}
-  m_PrefabInstance: {fileID: 4350748104146367815}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 482b2bb2b04543b4f818f41f0013b13d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Bullet
 --- !u!1 &1746821449
 GameObject:
   m_ObjectHideFlags: 0
@@ -13390,6 +13379,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionParticle: {fileID: 2289137038991090700}
   rb: {fileID: 488719858}
+  explosionRadius: 3
+  damage: 200
+  hitBoxLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!4 &2040893560
 Transform:
   m_ObjectHideFlags: 0

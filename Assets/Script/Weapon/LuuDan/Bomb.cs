@@ -3,6 +3,7 @@ using UnityEngine;
 public class Bomb : Weapon
 {
     [SerializeField] private Transform firePos;
+    [SerializeField] private WeaponAnimator weaponAnimator;
     private Transform cameraTransform;
     [SerializeField] private float timePerShoot;
     private float lastShootTime;
@@ -17,10 +18,14 @@ public class Bomb : Weapon
     {
         if (Time.time >= lastShootTime + timePerShoot)
         {
-            PoolObject.Instance.CreateBomb(firePos.position, cameraTransform.forward, rootPlayer);
-            Debug.Log("Create Bomb");
+            weaponAnimator.animator.enabled = true;
             lastShootTime = Time.time;
         }
+    }
+    public override void CreateObjectOnAttack()
+    {
+        base.CreateObjectOnAttack();
+        PoolObject.Instance.CreateBomb(firePos.position, cameraTransform.forward, rootPlayer);
     }
 
     public override void WeaponReload()

@@ -2,7 +2,7 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class WeaponAnimator : MonoBehaviour
 {
-    private Animator animator;
+    [HideInInspector] public Animator animator;
     [SerializeField] private Weapon weapon;
     private void Start()
     {
@@ -20,5 +20,9 @@ public class WeaponAnimator : MonoBehaviour
     public void AnimatedReload()
     {
         animator.enabled = true;
+    }
+    public void CreateObject()
+    {
+        weapon.CreateObjectOnAttack();
     }
 }

@@ -8,7 +8,7 @@ public class PoolObject : MonoBehaviourPun
     public static PoolObject Instance;
 
     [SerializeField] private ParticleSystem muzzleFlashSmoke;
-    [SerializeField] private Bullet bullet;
+    //[SerializeField] private Bullet bullet;
     [SerializeField] private BombProjectile bombProjectile;
     [SerializeField] private ParticleSystem bulletHole;
     [SerializeField] private ParticleSystem blood;
@@ -17,7 +17,7 @@ public class PoolObject : MonoBehaviourPun
     private Queue<ParticleSystem> muzzleFlashSmokePool = new Queue<ParticleSystem>();
     private Queue<ParticleSystem> bulletHolePool = new Queue<ParticleSystem>();
     private Queue<ParticleSystem> bloodPool = new Queue<ParticleSystem>();
-    private Queue<Bullet> bulletPool = new Queue<Bullet>();
+    //private Queue<Bullet> bulletPool = new Queue<Bullet>();
     private Queue<BombProjectile> bombProjectilePool = new Queue<BombProjectile>();
     private Queue<Shell> shellPool = new Queue<Shell>();
 
@@ -31,7 +31,7 @@ public class PoolObject : MonoBehaviourPun
         InitPool<ParticleSystem>(muzzleFlashSmokePool, muzzleFlashSmoke.gameObject, 10);
         InitPool<ParticleSystem>(bulletHolePool, bulletHole.gameObject, 300);
         InitPool<ParticleSystem>(bloodPool, blood.gameObject, 300);
-        InitPool<Bullet>(bulletPool, bullet.gameObject, 300);
+        //InitPool<Bullet>(bulletPool, bullet.gameObject, 300);
         InitPool<Shell>(shellPool, shell.gameObject, 300);
         InitPool<BombProjectile>(bombProjectilePool, bombProjectile.gameObject, 20);
     }
@@ -69,18 +69,18 @@ public class PoolObject : MonoBehaviourPun
     //    photonView.RPC(nameof(RPC_CreateBullet), RpcTarget.All, position, direction, speed, d);
     //}
 
-    [PunRPC]
-    private void RPC_CreateBullet(Vector3 position, Vector3 direction, float speed, int d)
-    {
-        if (bulletPool.Count == 0) return;
+    //[PunRPC]
+    //private void RPC_CreateBullet(Vector3 position, Vector3 direction, float speed, int d)
+    //{
+    //    if (bulletPool.Count == 0) return;
 
-        Bullet b = bulletPool.Dequeue();
-        b.gameObject.transform.position = position;
-        b.gameObject.SetActive(true);
-        b.SetBullet(direction, speed, d);
+    //    Bullet b = bulletPool.Dequeue();
+    //    b.gameObject.transform.position = position;
+    //    b.gameObject.SetActive(true);
+    //    b.SetBullet(direction, speed, d);
 
-        StartCoroutine(IEReturnToPool<Bullet>(bulletPool, b.gameObject, 5f));
-    }
+    //    StartCoroutine(IEReturnToPool<Bullet>(bulletPool, b.gameObject, 5f));
+    //}
 
     public void CreatShell(Vector3 position, Vector3 direction)
     {
