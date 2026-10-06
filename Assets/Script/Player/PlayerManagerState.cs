@@ -194,7 +194,6 @@ public class PlayerManagerState : BaseManagerState<PlayerManagerState>
     public void PlayerDie()
     {
         if (isDead) return;
-        characterController.enabled = false;
         isDead = true;
         cameraHolder.enabled = false;
         inputActions.Disable();
@@ -205,17 +204,18 @@ public class PlayerManagerState : BaseManagerState<PlayerManagerState>
     public void DisactivePlayer()
     {
         weaponHolder.Die();
+        characterController.enabled = false;
         transform.GetChild(0).gameObject.SetActive(false);
     }
     public void ActivePlayer()
     {
         weaponHolder.Live();
+        characterController.enabled = true;
         transform.GetChild(0).gameObject.SetActive(true);
     }
     public void PlayerLive()
     {
         isDead = false;
-        characterController.enabled = true;
         cameraHolder.enabled = true;
 
         VerticalVelocity = 0f;
@@ -304,9 +304,9 @@ public class PlayerManagerState : BaseManagerState<PlayerManagerState>
     {
         SwitchState(walkState);
     }
-    public void SendWeaponAttack(float vl)
+    public void SendWeaponAttack()
     {
-        playerNetworkSetup.SendWeaponAttack(vl);
+        playerNetworkSetup.SendWeaponAttack(transform.position);
     }
     public override void SwitchToRunState()
     {

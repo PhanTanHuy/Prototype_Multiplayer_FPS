@@ -9955,14 +9955,14 @@ MonoBehaviour:
   leftHandTarget: {fileID: 5326764687196407789}
   rightHandTarget: {fileID: 600660465358433371}
   playerHolder: {fileID: 0}
-  aimSentivity: 2
+  aimSentivity: 1.25
   rootParent: {fileID: 0}
   weaponAnimator: {fileID: 8691567592230471193}
   shootSound: {fileID: 8300000, guid: 01b65ffa69a864747bce0cd30905530a, type: 3}
   distanceRaycast: 1000
   rpm: 600
   mag: 30
-  recoilAmount: -2.5
+  recoilAmount: -8
   firePosition: {fileID: 6469408985459241025}
   bolt: {fileID: 4429566550288790799}
   offsetBoltZ: 0.0825857

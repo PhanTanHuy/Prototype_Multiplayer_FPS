@@ -81,10 +81,7 @@ public abstract class Gun : Weapon
         muzzleFlash.Play();
         muzzleFlash.gameObject.transform.localRotation = Quaternion.Euler(new Vector3(Random.Range(0f, 360f), -90, 0));
         PoolObject.Instance.CreatmuzzleFlashSmoke(firePosition.position, firePosition.rotation);
-        if (shootSound != null)
-        {
-            playerHolder.playerNetworkSetup.SendPlayAttackSFX();
-        }
+        PlayAttackSFX();
     }
     public override void PlayAttackSFX()
     {
@@ -105,7 +102,7 @@ public abstract class Gun : Weapon
         playerHolder.cameraHolder.RecoilCamera(recoilAmount);
 
         PlayAttackVisuals(aimValue);
-        playerHolder.SendWeaponAttack(aimValue); // Gửi lệnh cho máy khác chạy hiệu ứng bắn
+        playerHolder.SendWeaponAttack(); // Gửi lệnh cho máy khác chạy hiệu ứng bắn
 
         return true;
     }

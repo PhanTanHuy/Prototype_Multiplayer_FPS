@@ -13,6 +13,8 @@ public class PlayerNetworkSetup : MonoBehaviourPun, IPunObservable
     public WeaponSway weaponSway;
     public TextMeshProUGUI playerNameText;
     public HealthManager healthManager;
+    public Camera cameraMinimap;
+    public GameObject identityIcon;
     [SerializeField] private PlayerManagerState playerState;
 
     private int networkAnimState;
@@ -29,6 +31,7 @@ public class PlayerNetworkSetup : MonoBehaviourPun, IPunObservable
     private void Awake()
     {
         PhotonNetwork.OfflineMode = offlineMode;
+        if (offlineMode) SetLocalPlayer();
     }
 
     private void Start()
@@ -53,6 +56,7 @@ public class PlayerNetworkSetup : MonoBehaviourPun, IPunObservable
     }
     public void SetName()
     {
+        if (offlineMode) return;
         playerNameText.text = photonView.Owner.NickName;
     }
     public void SetLocalPlayer()
@@ -62,6 +66,11 @@ public class PlayerNetworkSetup : MonoBehaviourPun, IPunObservable
         cameraHolder.enabled = true;
         PlayerUI.SetActive(true);
         weaponSway.enabled = true;
+        cameraMinimap.gameObject.SetActive(true);
+        identityIcon.SetActive(true);
+        identityIcon.transform.GetChild(0).gameObject.SetActive(true); //local icon
+        identityIcon.transform.GetChild(1).gameObject.SetActive(false); //remote icon
+
         this.enabled = true;
         GetComponent<Outline>().enabled = false;
     }
@@ -106,15 +115,16 @@ public class PlayerNetworkSetup : MonoBehaviourPun, IPunObservable
         playerState.PlayNetworkReload();
     }
 
-    public void SendWeaponAttack(float aimValue)
+    public void SendWeaponAttack(Vector3 position)
     {
-        photonView.RPC(nameof(RPC_WeaponAttack), RpcTarget.Others, aimValue);
+        photonView.RPC(nameof(RPC_WeaponAttack), RpcTarget.Others, position);
     }
 
     [PunRPC]
-    private void RPC_WeaponAttack(float aimValue)
+    private void RPC_WeaponAttack(Vector3 positionAttacker)
     {
-        weaponHolder.currentWeapon.PlayAttackVisuals(aimValue);
+        RoomManager.Instance.ShowAttackDirection(positionAttacker, positionAttacker - transform.position, cameraMinimap);
+        weaponHolder.currentWeapon.PlayAttackVisuals(0);
     }
 
     public void SendDeath()
@@ -174,6 +184,7 @@ public class PlayerNetworkSetup : MonoBehaviourPun, IPunObservable
     [PunRPC]
     private void RPC_ActivePlayer()
     {
+        playerNameText.enabled = true;
         playerManagerState.ActivePlayer();
     }
     public void SendDisactivePlayer()
@@ -183,6 +194,7 @@ public class PlayerNetworkSetup : MonoBehaviourPun, IPunObservable
     [PunRPC]
     private void RPC_DisactivePlayer()
     {
+        playerNameText.enabled = false;
         playerManagerState.DisactivePlayer();
     }
     public void SendPlayWeaponAnimatorClip(int i)
@@ -194,14 +206,4 @@ public class PlayerNetworkSetup : MonoBehaviourPun, IPunObservable
     {
         AudioSource.PlayClipAtPoint(weaponHolder.currentWeapon.weaponAnimator.reloadAudioClips[i], transform.position);
     }
-    public void SendPlayAttackSFX()
-    {
-        photonView.RPC(nameof(RPC_PlayAttackSFX), RpcTarget.All);
-    }
-    [PunRPC]
-    private void RPC_PlayAttackSFX()
-    {
-        weaponHolder.currentWeapon.PlayAttackSFX();
-    }
-    
 }

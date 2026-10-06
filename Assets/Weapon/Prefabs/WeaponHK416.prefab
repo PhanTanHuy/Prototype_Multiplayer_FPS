@@ -403,7 +403,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 588631890387775857, guid: 77426db18e9d00c4f91c492985ce7ab0, type: 3}
       propertyPath: aimSentivity
-      value: 2
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 588631890387775857, guid: 77426db18e9d00c4f91c492985ce7ab0, type: 3}
       propertyPath: firePosition
@@ -411,7 +411,7 @@ PrefabInstance:
       objectReference: {fileID: 5139341238120610132}
     - target: {fileID: 588631890387775857, guid: 77426db18e9d00c4f91c492985ce7ab0, type: 3}
       propertyPath: recoilAmount
-      value: -2
+      value: -6
       objectReference: {fileID: 0}
     - target: {fileID: 588631890387775857, guid: 77426db18e9d00c4f91c492985ce7ab0, type: 3}
       propertyPath: weaponAnimator
