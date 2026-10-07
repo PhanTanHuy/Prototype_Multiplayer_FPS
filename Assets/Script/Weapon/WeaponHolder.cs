@@ -50,10 +50,6 @@ public class WeaponHolder : MonoBehaviour
         wp.SetLocalWeapon(playerHolder.photonView.IsMine);
         SetCurrentWeapon(wp);
     }
-    public void ChangeWeaponNetwork(int i)
-    {
-       ChangeWeaponLocal(i);
-    }
     public void ChangeWeaponLocal(int i)
     {
         if (weapons.Count <= 1) return;
@@ -71,6 +67,7 @@ public class WeaponHolder : MonoBehaviour
         currentWeapon.transform.parent.gameObject.SetActive(true);
         currentWeapon.transform.parent.localPosition = Vector3.zero;
         currentWeapon.transform.parent.localRotation = Quaternion.identity;
+        if (playerHolder.photonView.IsMine) PlayerUI.instance.SetWeapon(wp.imageWeapon, wp.CurrentAmmo, wp.Mag);
     }
     public void Die()
     {

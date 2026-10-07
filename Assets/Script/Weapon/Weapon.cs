@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public abstract class Weapon : PickupAbleItem
+public abstract class Weapon : MonoBehaviour
 {
     [SerializeField] protected int damage;
     [SerializeField] protected int cost;
@@ -12,13 +12,14 @@ public abstract class Weapon : PickupAbleItem
     public float AimSentivity { get { return aimSentivity; } }
     [HideInInspector] public Transform rootParent;
     [HideInInspector] public WeaponAnimator weaponAnimator;
+    public Sprite imageWeapon;
 
     private void Awake()
     {
         weaponAnimator = transform.parent.GetComponent<WeaponAnimator>();
     }
-    public int Damage { get { return damage; } }
-    public int Cost { get { return cost; } }
+    public virtual int CurrentAmmo { get; }
+    public virtual int Mag { get; }
 
     public abstract void WeaponAttack(float aimValue);
     public abstract void WeaponReload();

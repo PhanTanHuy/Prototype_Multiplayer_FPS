@@ -2,14 +2,15 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-
 using UnityEngine.UI;
 
 public class PlayerUI : MonoBehaviour
 {
     public static PlayerUI instance;
+
     [Header("Health UI")]
     [SerializeField] private Image healthImage;
+
     [Header("Crosshair")]
     [SerializeField] private RectTransform crossHair;
     [SerializeField] private Animator crossHairAnimator;
@@ -17,7 +18,6 @@ public class PlayerUI : MonoBehaviour
     [Header("Hit Text Pool")]
     [SerializeField] private TextMeshProUGUI textNormalHitPrefab;
     [SerializeField] private TextMeshProUGUI textHeadShotHitPrefab;
-
     [SerializeField] private Transform hitTextParent;
 
     [SerializeField] private int poolSize = 10;
@@ -25,28 +25,47 @@ public class PlayerUI : MonoBehaviour
     [Header("Hit Text Setting")]
     [SerializeField] private int maxActiveHitText = 10;
     [SerializeField] private float textLifeTime = 3f;
-    [SerializeField] private float normalTextHeight = 0f;
+    [SerializeField] private float fadeTime = 0.25f;
+    [SerializeField] private float textSpacingPercent = 0.25f;
 
     [Header("Respawn")]
     [SerializeField] private GameObject imageWattingRespawn;
+    [Header("WeaponInfo")]
+    [SerializeField] private Image weaponImg;
+    [SerializeField] private TextMeshProUGUI textMag;
 
 
-    // Pool
-    private Queue<TextMeshProUGUI> normalTextPool =
+
+
+    // =========================================================
+    // POOL
+    // =========================================================
+
+    private readonly Queue<TextMeshProUGUI> normalTextPool =
         new Queue<TextMeshProUGUI>();
 
-    private Queue<TextMeshProUGUI> headShotTextPool =
+    private readonly Queue<TextMeshProUGUI> headShotTextPool =
         new Queue<TextMeshProUGUI>();
 
 
-    // Những text đang active
-    private Queue<HitTextData> activeHitTexts =
-        new Queue<HitTextData>();
+    // =========================================================
+    // ACTIVE TEXT
+    // =========================================================
+
+    // Index 0 = text mới nhất
+    // Index cuối = text cũ nhất
+    private readonly List<TextMeshProUGUI> activeHitTexts =
+        new List<TextMeshProUGUI>();
 
 
-    // Khoảng cách Y hiện tại
-    private float currentY;
+    // Coroutine fade của từng text
+    private readonly Dictionary<TextMeshProUGUI, Coroutine> textCoroutines =
+        new Dictionary<TextMeshProUGUI, Coroutine>();
 
+
+    // =========================================================
+    // UNITY
+    // =========================================================
 
     private void Awake()
     {
@@ -55,37 +74,57 @@ public class PlayerUI : MonoBehaviour
         InitializePool();
     }
 
-
     private void OnDisable()
     {
         StopAllCoroutines();
+
+        textCoroutines.Clear();
+
+        activeHitTexts.Clear();
     }
 
+    public void SetWeapon(Sprite weaponSprite, int currentAmmo, int maxAmmo)
+    {
+        weaponImg.sprite = weaponSprite;
+        if (maxAmmo == 0)
+        {
+            textMag.text = "";
+            return;
+        }
+        UpdateMag(currentAmmo, maxAmmo);
+    }
 
+    public void UpdateMag(int currentAmmo, int maxAmmo)
+    {
+        textMag.text = $"{currentAmmo} / {maxAmmo}";
+    }
     // =========================================================
-    // POOL
+    // POOL INITIALIZE
     // =========================================================
 
     private void InitializePool()
     {
         if (hitTextParent == null)
         {
-            Debug.LogError("PlayerUI: Chưa gán Hit Text Parent!");
+            Debug.LogError(
+                "PlayerUI: Chưa gán Hit Text Parent!"
+            );
+
             return;
         }
 
-        // Nếu chưa nhập chiều cao text normal
-        // thì lấy trực tiếp từ prefab
-        if (normalTextHeight <= 0f)
+        if (textNormalHitPrefab == null ||
+            textHeadShotHitPrefab == null)
         {
-            RectTransform rect =
-                textNormalHitPrefab.GetComponent<RectTransform>();
+            Debug.LogError(
+                "PlayerUI: Chưa gán Hit Text Prefab!"
+            );
 
-            normalTextHeight = rect.rect.height;
+            return;
         }
 
 
-        // Normal Damage Pool
+        // Normal
         for (int i = 0; i < poolSize; i++)
         {
             TextMeshProUGUI text =
@@ -100,7 +139,7 @@ public class PlayerUI : MonoBehaviour
         }
 
 
-        // Headshot Pool
+        // Headshot
         for (int i = 0; i < poolSize; i++)
         {
             TextMeshProUGUI text =
@@ -112,8 +151,17 @@ public class PlayerUI : MonoBehaviour
             text.gameObject.SetActive(false);
 
             headShotTextPool.Enqueue(text);
+
+            // Đánh dấu object này thuộc Headshot Pool
+            headShotTexts.Add(text);
         }
     }
+
+
+    // =========================================================
+    // HEALTH
+    // =========================================================
+
     public void UpdateHealthUI(float fill)
     {
         if (healthImage == null)
@@ -122,8 +170,9 @@ public class PlayerUI : MonoBehaviour
         healthImage.fillAmount = fill;
     }
 
+
     // =========================================================
-    // NORMAL DAMAGE
+    // NORMAL HIT
     // =========================================================
 
     public void SetTextHitNormal(int dame)
@@ -152,16 +201,22 @@ public class PlayerUI : MonoBehaviour
     // SHOW HIT TEXT
     // =========================================================
 
-    private void ShowHitText(int dame, bool isHeadShot)
+    private void ShowHitText(
+        int dame,
+        bool isHeadShot
+    )
     {
-        // Nếu đã full 10 text
+        // Nếu full
+        // Xóa text cũ nhất
         if (activeHitTexts.Count >= maxActiveHitText)
         {
             RemoveOldestText();
         }
 
 
-        TextMeshProUGUI text = GetTextFromPool(isHeadShot);
+        // Lấy từ pool
+        TextMeshProUGUI text =
+            GetTextFromPool(isHeadShot);
 
         if (text == null)
         {
@@ -173,74 +228,77 @@ public class PlayerUI : MonoBehaviour
         }
 
 
-        // Set nội dung
-        if (isHeadShot)
-        {
-            text.text = "HEADSHOT : " + dame + " DMG";
-        }
-        else
-        {
-            text.text = "HIT : " + dame + " DMG";
-        }
+        // =====================================================
+        // SET TEXT
+        // =====================================================
 
-
-        // Lấy RectTransform
-        RectTransform rect =
-            text.GetComponent<RectTransform>();
+        text.text = isHeadShot
+            ? $"HEADSHOT : {dame} DMG"
+            : $"HIT : {dame} DMG";
 
 
         // =====================================================
-        // TÍNH VỊ TRÍ Y
+        // RESET ALPHA
         // =====================================================
 
-        float textHeight = rect.rect.height;
-
-        float spacing =
-            textHeight +
-            normalTextHeight * 0.25f;
+        Color color = text.color;
+        color.a = 1f;
+        text.color = color;
 
 
-        // Text mới nằm phía trên
-        currentY += spacing;
+        // =====================================================
+        // RESET POSITION
+        // =====================================================
+
+        text.rectTransform.anchoredPosition =
+            Vector2.zero;
 
 
-        Vector2 position =
-            rect.anchoredPosition;
+        // =====================================================
+        // ACTIVE
+        // =====================================================
 
-        position.y = currentY;
-
-        rect.anchoredPosition = position;
-
-
-        // Active
         text.gameObject.SetActive(true);
 
 
-        // Tạo data
-        HitTextData data =
-            new HitTextData();
+        // =====================================================
+        // INSERT TEXT MỚI VÀO ĐẦU
+        // =====================================================
 
-        data.text = text;
-        data.rect = rect;
-        data.isHeadShot = isHeadShot;
+        activeHitTexts.Insert(
+            0,
+            text
+        );
 
-        // Coroutine tự tắt sau 3 giây
-        data.clearCoroutine =
+
+        // =====================================================
+        // FADE COROUTINE
+        // =====================================================
+
+        Coroutine coroutine =
             StartCoroutine(
-                HideTextAfterTime(data)
+                FadeAndRemove(text)
             );
 
+        textCoroutines[text] =
+            coroutine;
 
-        // Đưa vào queue
-        activeHitTexts.Enqueue(data);
+
+        // =====================================================
+        // REPOSITION
+        // =====================================================
+
+        RepositionAllText();
     }
 
 
     // =========================================================
-    // GET TEXT FROM POOL
+    // GET FROM POOL
     // =========================================================
 
-    private TextMeshProUGUI GetTextFromPool(bool isHeadShot)
+    private TextMeshProUGUI GetTextFromPool(
+        bool isHeadShot
+    )
     {
         if (isHeadShot)
         {
@@ -249,13 +307,12 @@ public class PlayerUI : MonoBehaviour
 
             return headShotTextPool.Dequeue();
         }
-        else
-        {
-            if (normalTextPool.Count == 0)
-                return null;
 
-            return normalTextPool.Dequeue();
-        }
+
+        if (normalTextPool.Count == 0)
+            return null;
+
+        return normalTextPool.Dequeue();
     }
 
 
@@ -269,91 +326,199 @@ public class PlayerUI : MonoBehaviour
             return;
 
 
-        // Lấy text cũ nhất
-        HitTextData oldest =
-            activeHitTexts.Dequeue();
+        int lastIndex =
+            activeHitTexts.Count - 1;
 
 
-        // Dừng coroutine
-        if (oldest.clearCoroutine != null)
+        TextMeshProUGUI text =
+            activeHitTexts[lastIndex];
+
+
+        // Xóa khỏi active list
+        activeHitTexts.RemoveAt(
+            lastIndex
+        );
+
+
+        // Stop coroutine
+        StopTextCoroutine(text);
+
+
+        // Tắt
+        text.gameObject.SetActive(false);
+
+
+        // Trả pool
+        ReturnToPool(text);
+
+
+        // Xếp lại
+        RepositionAllText();
+    }
+
+
+    // =========================================================
+    // FADE + REMOVE
+    // =========================================================
+
+    private IEnumerator FadeAndRemove(
+        TextMeshProUGUI text
+    )
+    {
+        // Giữ nguyên alpha trong thời gian sống
+        float waitTime =
+            Mathf.Max(
+                0f,
+                textLifeTime - fadeTime
+            );
+
+        yield return new WaitForSeconds(
+            waitTime
+        );
+
+
+        // Nếu text đã bị remove
+        // bởi maxActiveHitText
+        if (!text.gameObject.activeSelf)
+            yield break;
+
+
+        // =====================================================
+        // FADE
+        // =====================================================
+
+        Color startColor =
+            text.color;
+
+        float startAlpha =
+            startColor.a;
+
+        float timer = 0f;
+
+
+        while (timer < fadeTime)
+        {
+            timer += Time.deltaTime;
+
+            float t =
+                Mathf.Clamp01(
+                    timer / fadeTime
+                );
+
+
+            Color color =
+                text.color;
+
+            color.a =
+                Mathf.Lerp(
+                    startAlpha,
+                    0f,
+                    t
+                );
+
+            text.color =
+                color;
+
+
+            yield return null;
+        }
+
+
+        // Đảm bảo alpha = 0
+        Color finalColor =
+            text.color;
+
+        finalColor.a = 0f;
+
+        text.color =
+            finalColor;
+
+
+        // =====================================================
+        // REMOVE
+        // =====================================================
+
+        RemoveText(text);
+    }
+
+
+    // =========================================================
+    // REMOVE TEXT
+    // =========================================================
+
+    private void RemoveText(
+        TextMeshProUGUI text
+    )
+    {
+        int index =
+            activeHitTexts.IndexOf(text);
+
+
+        // Text đã bị remove trước đó
+        if (index < 0)
+            return;
+
+
+        activeHitTexts.RemoveAt(
+            index
+        );
+
+
+        textCoroutines.Remove(
+            text
+        );
+
+
+        // Tắt
+        text.gameObject.SetActive(false);
+
+
+        // Reset alpha
+        Color color =
+            text.color;
+
+        color.a = 1f;
+
+        text.color =
+            color;
+
+
+        // Trả pool
+        ReturnToPool(text);
+
+
+        // Kéo text phía trên xuống
+        RepositionAllText();
+    }
+
+
+    // =========================================================
+    // STOP COROUTINE
+    // =========================================================
+
+    private void StopTextCoroutine(
+        TextMeshProUGUI text
+    )
+    {
+        if (!textCoroutines.TryGetValue(
+            text,
+            out Coroutine coroutine))
+        {
+            return;
+        }
+
+
+        if (coroutine != null)
         {
             StopCoroutine(
-                oldest.clearCoroutine
+                coroutine
             );
         }
 
 
-        // Tắt
-        oldest.text.gameObject.SetActive(false);
-
-
-        // Trả về pool
-        ReturnToPool(oldest);
-
-
-        // Xếp lại vị trí
-        RepositionAllText();
-    }
-
-
-    // =========================================================
-    // HIDE AFTER 3 SECONDS
-    // =========================================================
-
-    private IEnumerator HideTextAfterTime(
-        HitTextData data
-    )
-    {
-        yield return new WaitForSeconds(
-            textLifeTime
+        textCoroutines.Remove(
+            text
         );
-
-
-        // Text đã bị tắt trước đó
-        if (!data.text.gameObject.activeSelf)
-            yield break;
-
-
-        RemoveTextFromQueue(data);
-    }
-
-
-    // =========================================================
-    // REMOVE TEXT KHI HẾT 3 GIÂY
-    // =========================================================
-
-    private void RemoveTextFromQueue(
-        HitTextData target
-    )
-    {
-        Queue<HitTextData> newQueue =
-            new Queue<HitTextData>();
-
-
-        while (activeHitTexts.Count > 0)
-        {
-            HitTextData data =
-                activeHitTexts.Dequeue();
-
-
-            if (data == target)
-            {
-                data.text.gameObject.SetActive(false);
-
-                ReturnToPool(data);
-            }
-            else
-            {
-                newQueue.Enqueue(data);
-            }
-        }
-
-
-        activeHitTexts = newQueue;
-
-
-        // Xếp lại vị trí
-        RepositionAllText();
     }
 
 
@@ -361,25 +526,39 @@ public class PlayerUI : MonoBehaviour
     // RETURN TO POOL
     // =========================================================
 
-    private void ReturnToPool(
-        HitTextData data
-    )
+    private void ReturnToPool(TextMeshProUGUI text)
     {
-        data.text.text = string.Empty;
+        text.text = string.Empty;
 
-
-        if (data.isHeadShot)
+        if (headShotTexts.Contains(text))
         {
-            headShotTextPool.Enqueue(
-                data.text
-            );
+            headShotTextPool.Enqueue(text);
         }
         else
         {
-            normalTextPool.Enqueue(
-                data.text
-            );
+            normalTextPool.Enqueue(text);
         }
+    }
+
+
+    // =========================================================
+    // CHECK TYPE
+    // =========================================================
+
+    private bool IsHeadShotText(
+        TextMeshProUGUI text
+    )
+    {
+        // Các object được Instantiate từ
+        // headShotTextPrefab sẽ có cùng
+        // prefab source, nhưng cách đơn giản
+        // nhất ở đây là kiểm tra parent/name.
+        //
+        // Tuy nhiên không nên dựa vào name.
+        //
+        // Vì vậy phần này sẽ được thay bằng
+        // HashSet bên dưới.
+        return headShotTexts.Contains(text);
     }
 
 
@@ -392,31 +571,53 @@ public class PlayerUI : MonoBehaviour
         float y = 0f;
 
 
-        foreach (HitTextData data in activeHitTexts)
+        for (int i = 0;
+             i < activeHitTexts.Count;
+             i++)
         {
-            float textHeight =
-                data.rect.rect.height;
+            TextMeshProUGUI text =
+                activeHitTexts[i];
+
+
+            RectTransform rect =
+                text.rectTransform;
+
+
+            // Text mới nhất
+            // nằm ngay gốc
+            if (i == 0)
+            {
+                rect.anchoredPosition =
+                    Vector2.zero;
+
+                continue;
+            }
+
+
+            TextMeshProUGUI previous =
+                activeHitTexts[i - 1];
+
+
+            float previousHeight =
+                previous.rectTransform.rect.height;
 
 
             float spacing =
-                textHeight +
-                normalTextHeight * 0.25f;
+                previousHeight *
+                (1f + textSpacingPercent);
 
 
             y += spacing;
 
 
             Vector2 position =
-                data.rect.anchoredPosition;
+                rect.anchoredPosition;
 
             position.y = y;
 
-            data.rect.anchoredPosition =
+            rect.anchoredPosition =
                 position;
         }
-
-
-        currentY = y;
     }
 
 
@@ -426,18 +627,23 @@ public class PlayerUI : MonoBehaviour
 
     public void GoToAimMode()
     {
-        crossHair.gameObject.SetActive(false);
+        if (crossHair != null)
+            crossHair.gameObject.SetActive(false);
     }
 
 
     public void GoToNoneAimMode()
     {
-        crossHair.gameObject.SetActive(true);
+        if (crossHair != null)
+            crossHair.gameObject.SetActive(true);
     }
 
 
     public void HitSignal()
     {
+        if (crossHairAnimator == null)
+            return;
+
         crossHairAnimator.Play(
             "HitSignal",
             0,
@@ -452,26 +658,22 @@ public class PlayerUI : MonoBehaviour
 
     public void TurnOnWattingImage()
     {
-        imageWattingRespawn.SetActive(true);
+        if (imageWattingRespawn != null)
+            imageWattingRespawn.SetActive(true);
     }
 
 
     public void TurnOffWattingImage()
     {
-        imageWattingRespawn.SetActive(false);
+        if (imageWattingRespawn != null)
+            imageWattingRespawn.SetActive(false);
     }
 
 
     // =========================================================
-    // DATA
+    // HEADSHOT TRACKING
     // =========================================================
 
-    private class HitTextData
-    {
-        public TextMeshProUGUI text;
-        public RectTransform rect;
-        public bool isHeadShot;
-
-        public Coroutine clearCoroutine;
-    }
+    private readonly HashSet<TextMeshProUGUI> headShotTexts =
+        new HashSet<TextMeshProUGUI>();
 }

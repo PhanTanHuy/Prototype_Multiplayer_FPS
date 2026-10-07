@@ -66,7 +66,7 @@ public class EnemyManager : MonoBehaviour
             GameObject enemy = enemyPool.Dequeue();
             enemy.transform.position = transform.position;
             enemy.transform.rotation = Quaternion.identity;
-            enemy.GetComponent<LifeManager>().ReSpawn();
+            //enemy.GetComponent<LifeManager>().ReSpawn();
         }
     }
 

@@ -28,6 +28,8 @@ public abstract class Gun : Weapon
     protected Vector3 localOriginBoltPosition, localEndBoltPosition;
     protected Transform camTransform;
     protected LayerMask hitBoxLayer;
+    public override int CurrentAmmo => currentAmmo;
+    public override int Mag => mag;
     public virtual void Start()
     {
         originLocalPosition = transform.localPosition;
@@ -68,6 +70,7 @@ public abstract class Gun : Weapon
     public override void WeaponReloadDone()
     {
         currentAmmo = mag;
+        PlayerUI.instance.UpdateMag(mag, mag);
         isReload = false;
     }
     // Tách riêng các hiệu ứng hình ảnh/hạt (Visuals) ra một hàm
@@ -98,6 +101,7 @@ public abstract class Gun : Weapon
 
         // 1. LOGIC NÒNG CỐT (Chỉ chạy trên máy bạn)
         currentAmmo--;
+        PlayerUI.instance.UpdateMag(currentAmmo, mag);
         // Camera giật chỉ cần máy bạn thấy, không cần đồng bộ sang màn hình người khác
         playerHolder.cameraHolder.RecoilCamera(recoilAmount);
 
