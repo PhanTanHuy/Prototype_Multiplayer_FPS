@@ -4,16 +4,14 @@ using UnityEngine;
 
 public class PlayerNetworkSetup : MonoBehaviourPun, IPunObservable
 {
+    public static PlayerNetworkSetup Instance;
     public bool offlineMode;
     public GameObject playerCamera;
     public PlayerManagerState playerManagerState;
     public CameraHolder cameraHolder;
     public WeaponHolder weaponHolder;
-    public GameObject PlayerUI;
     public WeaponSway weaponSway;
     public TextMeshProUGUI playerNameText;
-    public HealthManager healthManager;
-    public Camera cameraMinimap;
     public GameObject identityIcon;
     [SerializeField] private PlayerManagerState playerState;
 
@@ -64,14 +62,12 @@ public class PlayerNetworkSetup : MonoBehaviourPun, IPunObservable
         playerCamera.SetActive(true);
         playerManagerState.enabled = true;
         cameraHolder.enabled = true;
-        PlayerUI.SetActive(true);
         weaponSway.enabled = true;
-        cameraMinimap.gameObject.SetActive(true);
         identityIcon.SetActive(true);
         identityIcon.transform.GetChild(0).gameObject.SetActive(true); //local icon
         identityIcon.transform.GetChild(1).gameObject.SetActive(false); //remote icon
-
         this.enabled = true;
+        Instance = this;
         GetComponent<Outline>().enabled = false;
     }
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
@@ -123,7 +119,7 @@ public class PlayerNetworkSetup : MonoBehaviourPun, IPunObservable
     [PunRPC]
     private void RPC_WeaponAttack(Vector3 positionAttacker)
     {
-        RoomManager.Instance.ShowAttackDirection(positionAttacker, positionAttacker - transform.position, cameraMinimap);
+        RoomManager.Instance.minimapCamera.ShowAttackDirection(positionAttacker, positionAttacker - transform.position);
         weaponHolder.currentWeapon.PlayAttackVisuals(0);
     }
 
@@ -158,24 +154,6 @@ public class PlayerNetworkSetup : MonoBehaviourPun, IPunObservable
     private void RPC_SetWeapon(int index)
     {
         playerState.ChangeWeapon(index);
-    }
-    public void SendTakeDamage(int damage)
-    {
-        photonView.RPC(nameof(RPC_TakeDamage), RpcTarget.All, damage);
-    }
-    [PunRPC]
-    private void RPC_TakeDamage(int damage)
-    {
-        healthManager.TakeDameSync(damage);
-    }
-    public void SendReSpawn()
-    {
-        photonView.RPC(nameof(RPC_ReSpawn), RpcTarget.All);
-    }
-    [PunRPC]
-    private void RPC_ReSpawn()
-    {
-        healthManager.ReSpawn();
     }
     public void SendActivePlayer()
     {

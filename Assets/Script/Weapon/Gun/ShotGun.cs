@@ -1,6 +1,6 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class ShotGun : Gun
 {
@@ -9,21 +9,32 @@ public class ShotGun : Gun
     public override bool Shoot(float aimValue)
     {
         if (!base.Shoot(aimValue)) return false;
-
         BoltAction();
-
         for (int i = 0; i < castPerShot; i++)
         {
             Vector3 shootDir = GetShotgunDirection(camTransform.forward, spreadAngle);
 
             if (Physics.Raycast(camTransform.position + camTransform.forward * 0.3f, shootDir, out RaycastHit hit, distanceRaycast, hitBoxLayer))
             {
-                OnHit(hit, shootDir);
+                OnHit(hit, camTransform.forward);
             }
         }
         return true;
     }
-
+    public void OnHitShotGun(RaycastHit hit, Vector3 moveDir)
+    {
+        Vector3 pos = hit.point + hit.normal * 0.01f;
+        Quaternion rot = Quaternion.LookRotation(hit.normal);
+        if (hit.collider.TryGetComponent<HitBox>(out HitBox target))
+        {
+            target.TakeDame(damage, this.transform, pos, rot);
+            PlayerUI.instance.HitSignal();
+        }
+        else
+        {
+            PoolObject.Instance.CreatBulletHole(pos, rot);
+        }
+    }
     Vector3 GetShotgunDirection(Vector3 forward, float angle)
     {
 

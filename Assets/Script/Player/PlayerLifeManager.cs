@@ -18,24 +18,20 @@ public class PlayerLifeManager : LifeManager
             child.gameObject.layer = LayerMask.NameToLayer("Default");
         }
     }
-    public override void ReSpawn()
+    public override void ReSpawn() // event callback
     {
-        healthManager.RecoverHealth();
+        healthManager.RecoverHealthSync();
         transform.position = RoomManager.Instance.GetSpawnPoint(); // sync
         if (!photonView.IsMine) return;
         PlayerUI.instance.TurnOffWattingImage();
+        PlayerUI.instance.UpdateHealthUI(healthManager.PercentHealth);
         playerManagerState.PlayerLive();
     }
-    public override void Die()
+    public override void Die() // event callback, targetall
     {
         if (!photonView.IsMine) return;
         playerManagerState.PlayerDie();
         PlayerUI.instance.TurnOnWattingImage();
         Invoke(nameof(ReSpawn), 3f); 
     }
-    private void SendReSpawn()
-    {
-        healthManager.playerNetworkSetup.SendReSpawn();
-    }
-
 }

@@ -19,16 +19,17 @@ public class HitBox : MonoBehaviour
         {
             { HitBoxTag.Leg, 1 },
             { HitBoxTag.Spine, 2 },
-            { HitBoxTag.Head, 5 }
+            { HitBoxTag.Head, 10 }
         };
     public void TakeDame(int damage, Transform ori, Vector3 pos, Quaternion rot)
     {
         PoolObject.Instance.CreatBlood(pos, rot);
         int multi = damageMultiplier[hitBoxTag];
+        damage *= multi;
         if (hitBoxTag == HitBoxTag.Head) PlayerUI.instance.SetTextHitHeadShot(damage);
         else PlayerUI.instance.SetTextHitNormal(damage);
         //healthManager.TakeDame(multi * damage);
-        healthManager.playerNetworkSetup.SendTakeDamage(multi * damage);
+        healthManager.SendTakeDamage(damage);
         //if (ori.root == this.transform.root) return;
       
     }

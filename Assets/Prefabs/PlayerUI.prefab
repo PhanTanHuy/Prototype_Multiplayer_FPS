@@ -313,7 +313,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_TargetDisplay: 0
 --- !u!114 &4191681027945813940
 MonoBehaviour:
@@ -367,10 +367,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7eae8485ca7e044b8f401e784c00d2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthImage: {fileID: 663327010841687762}
   crossHair: {fileID: 6821590385547763268}
   crossHairAnimator: {fileID: 549927671113917382}
-  textNormalHit: {fileID: 7895457419454382003}
-  textHeadShotHit: {fileID: 5048236842439602438}
+  textNormalHitPrefab: {fileID: 7895457419454382003}
+  textHeadShotHitPrefab: {fileID: 5048236842439602438}
+  hitTextParent: {fileID: 3308273905892397162}
+  poolSize: 10
+  maxActiveHitText: 10
+  textLifeTime: 3
+  normalTextHeight: 0
   imageWattingRespawn: {fileID: 8039795664085112818}
 --- !u!1 &2904053520008767271
 GameObject:
@@ -1154,7 +1160,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 14}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!1 &7416446708148107854
@@ -1268,7 +1274,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: -0.000027680346, y: 5.66}
-  m_SizeDelta: {x: 376, y: 8.9}
+  m_SizeDelta: {x: 376, y: 3.84}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &8807694274063152516
 CanvasRenderer:
@@ -1320,7 +1326,7 @@ GameObject:
   - component: {fileID: 598767807383088537}
   - component: {fileID: 6305370470252834425}
   m_Layer: 5
-  m_Name: Image
+  m_Name: RespawnWatting
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1442,7 +1448,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.4660377, g: 0.9831591, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

@@ -11,16 +11,11 @@ public abstract class LifeManager : MonoBehaviourPun
         healthManager.OnReSpawn += ReSpawn;
         GetComponent<PlayerNetworkSetup>().SetName();
     }
-    public virtual void FirstSpawn()
-    {
-
-    }
-    // can overide lai agent, switch state
     public virtual void ReSpawn()
     {
     
         foreach (HitBox hb in hitBoxes) hb.gameObject.SetActive(true);
-        healthManager.RecoverHealth();
+        healthManager.RecoverHealthSync();
     }
     public virtual void Die()
     {

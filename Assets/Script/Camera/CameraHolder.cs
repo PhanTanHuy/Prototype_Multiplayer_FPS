@@ -234,7 +234,7 @@ public class CameraHolder : MonoBehaviour
         {
             cameraShake.Shake(
                 0.15f,
-                -recoilAmmount / 2.5f
+                -recoilAmmount / 2f
             );
         }
 
@@ -244,7 +244,7 @@ public class CameraHolder : MonoBehaviour
 
         float rotY =
             recoilAmmount *
-            Random.Range(-1f, 1f) /
+            Random.Range(-0.2f, 0.2f) /
             0.15f;
 
         recoilAmmount *=
