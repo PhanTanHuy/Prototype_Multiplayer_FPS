@@ -52,11 +52,16 @@ public class PlayerNetworkSetup : MonoBehaviourPun, IPunObservable
         networkRigMode = playerState.GetNetworkRigMode();
         networkCameraPitch = playerState.GetNetworkCameraPitch();
     }
-    public void SetName()
+    public void SetUpRemotePlayer()
     {
         if (offlineMode) return;
         playerNameText.text = photonView.Owner.NickName;
-    }
+        Transform weaponRoot = playerManagerState.weaponHolder.transform;
+        foreach (Transform child in weaponRoot.GetComponentsInChildren<Transform>(true))
+        {
+            child.gameObject.layer = LayerMask.NameToLayer("Default");
+        }
+}
     public void SetLocalPlayer()
     {
         playerCamera.SetActive(true);

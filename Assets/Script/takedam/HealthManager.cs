@@ -37,4 +37,11 @@ public class HealthManager : MonoBehaviourPun
             OnZeroHealth?.Invoke();
         }
     }
+    public virtual void ReSpawn()
+    {
+
+    }
+    public virtual void Die()
+    {
+    }
 }
